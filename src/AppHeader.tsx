@@ -12,7 +12,7 @@ import { useModalRef } from "./misc/useModalRef";
 import { LockStateContext } from "./rpc/LockStateContext";
 import { LockState } from "@zmkfirmware/zmk-studio-ts-client/core";
 import { ConnectionContext } from "./rpc/ConnectionContext";
-import { ChevronDown, Undo2, Redo2, Save, Trash2, Download, Upload } from "lucide-react";
+import { ChevronDown, Undo2, Redo2, Save, Trash2 } from "lucide-react";
 import { Tooltip } from "./misc/Tooltip";
 import { GenericModal } from "./GenericModal";
 
@@ -169,26 +169,22 @@ export const AppHeader = ({
           </Button>
         </Tooltip>
         {onExportKeymap && (
-          <Tooltip label="Export Keymap">
-            <Button
-              className="flex items-center justify-center p-1.5 rounded enabled:hover:bg-base-300 disabled:opacity-50"
-              isDisabled={!connectedDeviceLabel}
-              onPress={onExportKeymap}
-            >
-              <Download className="inline-block w-4 mx-1" aria-label="Export Keymap" />
-            </Button>
-          </Tooltip>
+          <Button
+            className="flex items-center justify-center px-2 py-1 text-sm rounded enabled:hover:bg-base-300 disabled:opacity-50"
+            isDisabled={!connectedDeviceLabel}
+            onPress={onExportKeymap}
+          >
+            Download
+          </Button>
         )}
         {onImportKeymap && (
-          <Tooltip label="Import Keymap">
-            <Button
-              className="flex items-center justify-center p-1.5 rounded enabled:hover:bg-base-300 disabled:opacity-50"
-              isDisabled={!connectedDeviceLabel}
-              onPress={onImportKeymap}
-            >
-              <Upload className="inline-block w-4 mx-1" aria-label="Import Keymap" />
-            </Button>
-          </Tooltip>
+          <Button
+            className="flex items-center justify-center px-2 py-1 text-sm rounded enabled:hover:bg-base-300 disabled:opacity-50"
+            isDisabled={!connectedDeviceLabel}
+            onPress={onImportKeymap}
+          >
+            Upload
+          </Button>
         )}
       </div>
     </header>
