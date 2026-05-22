@@ -1,10 +1,10 @@
 name: "tauri-build"
 
+# Fork note: auto-build on push / release disabled to avoid burning CI on every
+# commit while signing secrets are not configured for this fork. Trigger
+# manually from the Actions tab when a desktop build is needed.
 on:
   workflow_dispatch:
-  push:
-  release:
-    types: [published]
 
 jobs:
   publish-tauri:
