@@ -417,7 +417,8 @@ function App() {
         }
       }
 
-      let appliedCount = 0;
+      let updatedCount = 0;
+      let unchangedCount = 0;
       let skippedCount = 0;
       let preservedCount = 0;
       let failedCount = 0;
@@ -448,6 +449,20 @@ function App() {
           const param1 = parsedBinding.params[0] || 0;
           const param2 = parsedBinding.params[1] || 0;
 
+          // Skip the RPC entirely when the file's value matches the device's
+          // current value. Sending setLayerBinding for a no-op still flips
+          // the firmware's "unsaved changes" flag, which would leave Save
+          // glowing as if there was something to persist when there isn't.
+          const current = targetLayer.bindings[ki];
+          if (
+            current?.behaviorId === behaviorId &&
+            current?.param1 === param1 &&
+            current?.param2 === param2
+          ) {
+            unchangedCount++;
+            continue;
+          }
+
           const resp = await call_rpc(conn.conn, {
             keymap: {
               setLayerBinding: {
@@ -459,7 +474,7 @@ function App() {
           });
           const code = resp.keymap?.setLayerBinding;
           if (code === 0 /* SET_LAYER_BINDING_RESP_OK */) {
-            appliedCount++;
+            updatedCount++;
             continue;
           }
 
@@ -495,7 +510,7 @@ function App() {
       }
 
       console.log(
-        `[import] applied=${appliedCount} preserved=${preservedCount} skipped=${skippedCount} failed=${failedCount}`
+        `[import] updated=${updatedCount} unchanged=${unchangedCount} preserved=${preservedCount} skipped=${skippedCount} failed=${failedCount}`
       );
       if (failedBindings.length > 0) {
         console.warn("[import] failed bindings:", failedBindings);
@@ -520,21 +535,31 @@ function App() {
       const failedDetail =
         failedCount > 0 ? ` Firmware rejected ${failedCount} (see console).` : "";
 
-      if (appliedCount === 0 && preservedCount === 0) {
+      if (
+        updatedCount === 0 &&
+        unchangedCount === 0 &&
+        preservedCount === 0
+      ) {
         notify(
           "error",
           `Import applied no bindings.${unknownDetail}${failedDetail}`
         );
+      } else if (updatedCount === 0 && failedCount === 0 && skippedCount === 0) {
+        // Everything in the file already matched the device — nothing to save.
+        notify(
+          "info",
+          `${file.name} already matches the device. No changes needed.${readOnlyDetail}`
+        );
       } else if (skippedCount > 0 || failedCount > 0) {
         notify(
           "warning",
-          `Imported ${appliedCount}, skipped ${skippedCount}, rejected ${failedCount}.${unknownDetail}${readOnlyDetail}${failedDetail}`,
+          `Updated ${updatedCount} (${unchangedCount} already matched), skipped ${skippedCount}, rejected ${failedCount}.${unknownDetail}${readOnlyDetail}${failedDetail}`,
           { action: persistReminder }
         );
       } else {
         notify(
           "success",
-          `Imported ${appliedCount} bindings from ${file.name}.${readOnlyDetail}`,
+          `Updated ${updatedCount} binding${updatedCount === 1 ? "" : "s"} from ${file.name} (${unchangedCount} already matched).${readOnlyDetail}`,
           { action: persistReminder }
         );
       }
