@@ -6,7 +6,11 @@ import { call_rpc } from "./rpc/logging";
 import type { Notification } from "@zmkfirmware/zmk-studio-ts-client/studio";
 import { ConnectionState, ConnectionContext } from "./rpc/ConnectionContext";
 import { Dispatch, useCallback, useEffect, useRef, useState } from "react";
-import { parseKeymapFile } from "./keymap-parser";
+import {
+  dtsRefForDisplayName,
+  formatBindingParam,
+  parseKeymapFile,
+} from "./keymap-parser";
 import { ConnectModal, TransportFactory } from "./ConnectModal";
 
 import type { RpcTransport } from "@zmkfirmware/zmk-studio-ts-client/transport/index";
@@ -30,6 +34,8 @@ import { valueAfter } from "./misc/async";
 import { AppFooter } from "./AppFooter";
 import { AboutModal } from "./AboutModal";
 import { LicenseNoticeModal } from "./misc/LicenseNoticeModal";
+import { ToastKind, useToast } from "./Toast";
+import type { GetBehaviorDetailsResponse } from "@zmkfirmware/zmk-studio-ts-client/behaviors";
 
 declare global {
   interface Window {
@@ -71,17 +77,17 @@ async function listen_for_notifications(
   notification_stream: ReadableStream<Notification>,
   signal: AbortSignal
 ): Promise<void> {
-  let reader = notification_stream.getReader();
+  const reader = notification_stream.getReader();
   const onAbort = () => {
     reader.cancel();
     reader.releaseLock();
   };
   signal.addEventListener("abort", onAbort, { once: true });
   do {
-    let pub = usePub();
+    const pub = usePub();
 
     try {
-      let { done, value } = await reader.read();
+      const { done, value } = await reader.read();
       if (done) {
         break;
       }
@@ -127,11 +133,12 @@ async function connect(
   transport: RpcTransport,
   setConn: Dispatch<ConnectionState>,
   setConnectedDeviceName: Dispatch<string | undefined>,
-  signal: AbortSignal
+  signal: AbortSignal,
+  notify: (kind: ToastKind, message: string) => void
 ) {
-  let conn = await create_rpc_connection(transport, { signal });
+  const conn = await create_rpc_connection(transport, { signal });
 
-  let details = await Promise.race([
+  const details = await Promise.race([
     call_rpc(conn, { core: { getDeviceInfo: true } })
       .then((r) => r?.core?.getDeviceInfo)
       .catch((e) => {
@@ -142,8 +149,7 @@ async function connect(
   ]);
 
   if (!details) {
-    // TODO: Show a proper toast/alert not using `window.alert`
-    window.alert("Failed to connect to the chosen device");
+    notify("error", "Failed to connect to the chosen device");
     return;
   }
 
@@ -162,6 +168,7 @@ async function connect(
 }
 
 function App() {
+  const { notify } = useToast();
   const [conn, setConn] = useState<ConnectionState>({ conn: null });
   const [connectedDeviceName, setConnectedDeviceName] = useState<
     string | undefined
@@ -190,7 +197,7 @@ function App() {
         return;
       }
 
-      let locked_resp = await call_rpc(conn.conn, {
+      const locked_resp = await call_rpc(conn.conn, {
         core: { getLockState: true },
       });
 
@@ -209,14 +216,24 @@ function App() {
         return;
       }
 
-      let resp = await call_rpc(conn.conn, { keymap: { saveChanges: true } });
+      notify("info", "Committing keymap to device flash…");
+      const resp = await call_rpc(conn.conn, { keymap: { saveChanges: true } });
       if (!resp.keymap?.saveChanges || resp.keymap?.saveChanges.err) {
         console.error("Failed to save changes", resp.keymap?.saveChanges);
+        notify(
+          "error",
+          `Save failed${resp.keymap?.saveChanges?.err ? `: ${resp.keymap.saveChanges.err}` : ""}`
+        );
+        return;
       }
+      notify("success", "Keymap saved to flash. It will persist across restarts.");
     }
 
-    doSave();
-  }, [conn]);
+    doSave().catch((e) => {
+      console.error("Save failed", e);
+      notify("error", `Save failed: ${e instanceof Error ? e.message : String(e)}`);
+    });
+  }, [conn, notify]);
 
   const discard = useCallback(() => {
     async function doDiscard() {
@@ -224,19 +241,28 @@ function App() {
         return;
       }
 
-      let resp = await call_rpc(conn.conn, {
+      const resp = await call_rpc(conn.conn, {
         keymap: { discardChanges: true },
       });
       if (!resp.keymap?.discardChanges) {
         console.error("Failed to discard changes", resp);
+        notify("error", "Failed to discard changes");
+        return;
       }
 
       reset();
       setConn({ conn: conn.conn });
+      notify("info", "Reverted to last saved keymap.");
     }
 
-    doDiscard();
-  }, [conn]);
+    doDiscard().catch((e) => {
+      console.error("Discard failed", e);
+      notify(
+        "error",
+        `Discard failed: ${e instanceof Error ? e.message : String(e)}`
+      );
+    });
+  }, [conn, notify]);
 
   const resetSettings = useCallback(() => {
     async function doReset() {
@@ -244,7 +270,7 @@ function App() {
         return;
       }
 
-      let resp = await call_rpc(conn.conn, {
+      const resp = await call_rpc(conn.conn, {
         core: { resetSettings: true },
       });
       if (!resp.core?.resetSettings) {
@@ -278,20 +304,21 @@ function App() {
         return;
       }
 
-      let keymapResp = await call_rpc(conn.conn, { keymap: { getKeymap: true } });
-      let keymap = keymapResp?.keymap?.getKeymap;
+      const keymapResp = await call_rpc(conn.conn, { keymap: { getKeymap: true } });
+      const keymap = keymapResp?.keymap?.getKeymap;
       if (!keymap) {
         console.error("Failed to fetch keymap for export", keymapResp);
+        notify("error", "Failed to fetch keymap from device");
         return;
       }
 
-      let behaviorList = await call_rpc(conn.conn, { behaviors: { listAllBehaviors: true } });
-      let behaviorIds = behaviorList?.behaviors?.listAllBehaviors?.behaviors || [];
+      const behaviorList = await call_rpc(conn.conn, { behaviors: { listAllBehaviors: true } });
+      const behaviorIds = behaviorList?.behaviors?.listAllBehaviors?.behaviors || [];
 
       const behaviors: Record<number, string> = {};
       for (const id of behaviorIds) {
-        let details = await call_rpc(conn.conn, { behaviors: { getBehaviorDetails: { behaviorId: id } } });
-        let d = details?.behaviors?.getBehaviorDetails;
+        const details = await call_rpc(conn.conn, { behaviors: { getBehaviorDetails: { behaviorId: id } } });
+        const d = details?.behaviors?.getBehaviorDetails;
         if (d) {
           behaviors[d.id] = d.displayName;
         }
@@ -303,14 +330,13 @@ function App() {
         const layerName = layer.name?.replace(/[^a-zA-Z0-9_]/g, "_") || `layer_${layer.id}`;
         content += `    ${layerName} {\n      bindings = <\n`;
         const bindingStrs = layer.bindings.map((b: { behaviorId: number; param1: number; param2: number }) => {
-          const name = behaviors[b.behaviorId] || `&unknown_${b.behaviorId}`;
-          const base = name.replace(/^&/, "");
-          const parts = [`&${base}`];
-          if (b.param1 !== 0) parts.push(String(b.param1));
-          if (b.param2 !== 0) parts.push(String(b.param2));
+          const displayName = behaviors[b.behaviorId] ?? `unknown_${b.behaviorId}`;
+          const ref = dtsRefForDisplayName(displayName);
+          const parts = [`&${ref}`];
+          if (b.param1 !== 0) parts.push(formatBindingParam(b.param1));
+          if (b.param2 !== 0) parts.push(formatBindingParam(b.param2));
           return parts.join(" ");
         });
-        // Pad all bindings to the same width for column alignment
         const maxLen = Math.max(...bindingStrs.map((s: string) => s.length));
         const padded = bindingStrs.map((s: string) => s.padEnd(maxLen));
         content += padded.map((s: string) => `        ${s}`).join("\n") + "\n";
@@ -322,14 +348,27 @@ function App() {
       const blob = new Blob([content], { type: "text/plain" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
+      const stamp = new Date()
+        .toISOString()
+        .replace(/[:.]/g, "-")
+        .slice(0, 19);
       a.href = url;
-      a.download = `${connectedDeviceName || "zmk"}.keymap`;
+      a.download = `${connectedDeviceName || "zmk"}-${stamp}.keymap`;
       a.click();
       URL.revokeObjectURL(url);
+
+      const layerCount = keymap.layers.length;
+      notify(
+        "success",
+        `Exported ${layerCount} layer${layerCount === 1 ? "" : "s"} to ${a.download}`
+      );
     }
 
-    doExport();
-  }, [conn, connectedDeviceName]);
+    doExport().catch((e) => {
+      console.error("Export failed", e);
+      notify("error", `Export failed: ${e instanceof Error ? e.message : String(e)}`);
+    });
+  }, [conn, connectedDeviceName, notify]);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -345,34 +384,52 @@ function App() {
       const text = await file.text();
       const parsedLayers = parseKeymapFile(text);
       if (parsedLayers.length === 0) {
-        console.error("No layers found in imported keymap");
+        notify(
+          "error",
+          `No layers found in ${file.name}. Is this a ZMK .keymap file?`
+        );
         return;
       }
 
-      // Fetch current keymap to get layer IDs
-      let keymapResp = await call_rpc(conn.conn, { keymap: { getKeymap: true } });
-      let keymap = keymapResp?.keymap?.getKeymap;
+      const keymapResp = await call_rpc(conn.conn, { keymap: { getKeymap: true } });
+      const keymap = keymapResp?.keymap?.getKeymap;
       if (!keymap) {
-        console.error("Failed to fetch current keymap", keymapResp);
+        notify("error", "Failed to fetch current keymap from device");
         return;
       }
 
-      // Fetch behavior list to map names to IDs
-      let behaviorList = await call_rpc(conn.conn, { behaviors: { listAllBehaviors: true } });
-      let behaviorIds = behaviorList?.behaviors?.listAllBehaviors?.behaviors || [];
+      const behaviorList = await call_rpc(conn.conn, { behaviors: { listAllBehaviors: true } });
+      const behaviorIds = behaviorList?.behaviors?.listAllBehaviors?.behaviors || [];
 
       const behaviorNameToId: Record<string, number> = {};
+      const behaviorDetailsById: Record<number, GetBehaviorDetailsResponse> = {};
       for (const id of behaviorIds) {
-        let details = await call_rpc(conn.conn, { behaviors: { getBehaviorDetails: { behaviorId: id } } });
-        let d = details?.behaviors?.getBehaviorDetails;
+        const details = await call_rpc(conn.conn, { behaviors: { getBehaviorDetails: { behaviorId: id } } });
+        const d = details?.behaviors?.getBehaviorDetails;
         if (d) {
           const name = d.displayName.replace(/^&/, "");
           behaviorNameToId[name.toLowerCase()] = d.id;
           behaviorNameToId[d.displayName.toLowerCase()] = d.id;
+          // Also accept the DTS reference form (e.g. "kp" for "Key Press") so
+          // that .keymap files can be imported using ZMK's standard syntax.
+          behaviorNameToId[dtsRefForDisplayName(d.displayName).toLowerCase()] = d.id;
+          behaviorDetailsById[d.id] = d;
         }
       }
 
-      // Apply each parsed layer's bindings
+      let appliedCount = 0;
+      let skippedCount = 0;
+      let preservedCount = 0;
+      let failedCount = 0;
+      const unknownBehaviors = new Set<string>();
+      const readOnlyBehaviors = new Set<string>();
+      const failedBindings: Array<{
+        layer: number;
+        position: number;
+        behavior: string;
+        resp: unknown;
+      }> = [];
+
       for (let li = 0; li < parsedLayers.length && li < keymap.layers.length; li++) {
         const parsedLayer = parsedLayers[li];
         const targetLayer = keymap.layers[li];
@@ -381,48 +438,125 @@ function App() {
           const parsedBinding = parsedLayer.bindings[ki];
           const behaviorName = parsedBinding.behavior.toLowerCase();
 
-          // Handle special behaviors
-          if (behaviorName === "trans" || behaviorName === "transparent") {
-            continue; // Skip transparent, keep existing
-          }
-          if (behaviorName === "none") {
-            continue; // Skip none, keep existing
-          }
-
           const behaviorId = behaviorNameToId[behaviorName];
           if (behaviorId === undefined) {
-            console.warn(`Unknown behavior: &${parsedBinding.behavior}, skipping`);
+            unknownBehaviors.add(parsedBinding.behavior);
+            skippedCount++;
             continue;
           }
 
           const param1 = parsedBinding.params[0] || 0;
           const param2 = parsedBinding.params[1] || 0;
 
-          await call_rpc(conn.conn, {
-            keymap: { setLayerBinding: { layerId: targetLayer.id, keyPosition: ki, binding: { behaviorId, param1, param2 } } },
+          const resp = await call_rpc(conn.conn, {
+            keymap: {
+              setLayerBinding: {
+                layerId: targetLayer.id,
+                keyPosition: ki,
+                binding: { behaviorId, param1, param2 },
+              },
+            },
           });
+          const code = resp.keymap?.setLayerBinding;
+          if (code === 0 /* SET_LAYER_BINDING_RESP_OK */) {
+            appliedCount++;
+            continue;
+          }
+
+          // Firmware rejected the call. ZMK ships some behaviors with
+          // `metadata: []` (e.g. ext_power, mouse_move, mouse_scroll on the
+          // tested Cornix build) which means "no setLayerBinding parameter
+          // shape is exposed via Studio". For those, treat the rejection as
+          // an expected "preserved" outcome: the saved value matches the
+          // file already, and there is no Studio API path to overwrite it.
+          // Other rejections are real param-shape mismatches and should
+          // surface to the user.
+          const det = behaviorDetailsById[behaviorId];
+          const isStudioReadOnly =
+            !det?.metadata || det.metadata.length === 0;
+          if (isStudioReadOnly) {
+            readOnlyBehaviors.add(parsedBinding.behavior);
+            preservedCount++;
+            continue;
+          }
+
+          failedCount++;
+          failedBindings.push({
+            layer: li,
+            position: ki,
+            behavior: parsedBinding.behavior,
+            resp: code,
+          });
+          console.warn(
+            `[import] setLayerBinding FAILED layer=${li} pos=${ki} behavior='${parsedBinding.behavior}' (id=${behaviorId}) params=[${param1}, ${param2}] resp=${code}`,
+            { metadata: det }
+          );
         }
       }
 
-      // Refresh the keymap state
+      console.log(
+        `[import] applied=${appliedCount} preserved=${preservedCount} skipped=${skippedCount} failed=${failedCount}`
+      );
+      if (failedBindings.length > 0) {
+        console.warn("[import] failed bindings:", failedBindings);
+      }
+
       setConn({ conn: conn.conn });
+
+      // setLayerBinding has already updated the device's live working keymap;
+      // it just hasn't been committed to flash yet. Be explicit so the user
+      // doesn't think the changes are unwritten.
+      const persistReminder =
+        "Changes are live on the device. Press Save to keep them after restart, or Discard to revert.";
+
+      const unknownDetail =
+        unknownBehaviors.size > 0
+          ? ` Unknown behaviors: ${[...unknownBehaviors].slice(0, 5).join(", ")}${unknownBehaviors.size > 5 ? ", …" : ""}.`
+          : "";
+      const readOnlyDetail =
+        readOnlyBehaviors.size > 0
+          ? ` ${preservedCount} preserved (ZMK Studio can't edit ${[...readOnlyBehaviors].join(", ")}; original values kept).`
+          : "";
+      const failedDetail =
+        failedCount > 0 ? ` Firmware rejected ${failedCount} (see console).` : "";
+
+      if (appliedCount === 0 && preservedCount === 0) {
+        notify(
+          "error",
+          `Import applied no bindings.${unknownDetail}${failedDetail}`
+        );
+      } else if (skippedCount > 0 || failedCount > 0) {
+        notify(
+          "warning",
+          `Imported ${appliedCount}, skipped ${skippedCount}, rejected ${failedCount}.${unknownDetail}${readOnlyDetail}${failedDetail}`,
+          { action: persistReminder }
+        );
+      } else {
+        notify(
+          "success",
+          `Imported ${appliedCount} bindings from ${file.name}.${readOnlyDetail}`,
+          { action: persistReminder }
+        );
+      }
     }
 
     const file = fileInputRef.current?.files?.[0];
     if (file) {
-      doImport(file);
-      // Reset input so same file can be re-imported
+      doImport(file).catch((e) => {
+        console.error("Import failed", e);
+        notify("error", `Import failed: ${e instanceof Error ? e.message : String(e)}`);
+      });
       fileInputRef.current!.value = "";
     }
-  }, [conn]);
+  }, [conn, notify]);
 
   const onConnect = useCallback(
     (t: RpcTransport) => {
       const ac = new AbortController();
       setConnectionAbort(ac);
-      connect(t, setConn, setConnectedDeviceName, ac.signal);
+      connect(t, setConn, setConnectedDeviceName, ac.signal, notify);
     },
-    [setConn, setConnectedDeviceName, setConnectedDeviceName]
+    [setConn, setConnectedDeviceName, notify]
   );
 
   return (
