@@ -1,10 +1,11 @@
 import { UsagePages } from "./keyboard-and-consumer-usage-tables.json";
-import HidOverrides from "./hid-usage-name-overrides.json";
+import HidOverrides from "./hid-usage-metadata.json";
 
 interface HidLabels {
   short?: string;
   med?: string;
   long?: string;
+  category?: string;
 }
 
 const overrides: Record<string, Record<string, HidLabels>> = HidOverrides;

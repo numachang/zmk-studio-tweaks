@@ -31,6 +31,7 @@ import { LockStateContext } from "../rpc/LockStateContext";
 import { LockState } from "@zmkfirmware/zmk-studio-ts-client/core";
 import { deserializeLayoutZoom, LayoutZoom } from "./PhysicalLayout";
 import { useLocalStorageState } from "../misc/useLocalStorageState";
+import { useToast } from "../Toast";
 
 type BehaviorMap = Record<number, GetBehaviorDetailsResponse>;
 
@@ -186,6 +187,7 @@ export default function Keyboard() {
 
   const conn = useContext(ConnectionContext);
   const undoRedo = useContext(UndoRedoContext);
+  const { notify } = useToast();
 
   useEffect(() => {
     setSelectedLayerIndex(0);
@@ -262,7 +264,15 @@ export default function Keyboard() {
             })
           );
         } else {
+          const name =
+            behaviors[binding.behaviorId]?.displayName ??
+            `behavior id ${binding.behaviorId}`;
           console.error("Failed to set binding", resp.keymap?.setLayerBinding);
+          notify(
+            "error",
+            `Couldn't assign "${name}" to this key — the firmware rejected the change.`,
+            { action: "This behavior may not be writable from Studio in this firmware build." }
+          );
         }
 
         return async () => {
@@ -285,6 +295,18 @@ export default function Keyboard() {
               })
             );
           } else {
+            const name =
+              behaviors[oldBinding.behaviorId]?.displayName ??
+              `behavior id ${oldBinding.behaviorId}`;
+            console.error(
+              "Failed to undo binding",
+              resp.keymap?.setLayerBinding
+            );
+            notify(
+              "error",
+              `Couldn't restore "${name}" — undo was rejected by the firmware.`,
+              { action: "The previous binding may no longer be writable from Studio." }
+            );
           }
         };
       });
@@ -501,7 +523,7 @@ export default function Keyboard() {
   }, [keymap, selectedLayerIndex]);
 
   return (
-    <div className="grid grid-cols-[auto_1fr] grid-rows-[1fr_minmax(10em,auto)] bg-base-300 max-w-full min-w-0 min-h-0">
+    <div className="grid grid-cols-[auto_1fr] grid-rows-[1fr_34em] bg-base-300 max-w-full min-w-0 min-h-0">
       <div className="p-2 flex flex-col gap-2 bg-base-200 row-span-2">
         {layouts && (
           <div className="col-start-3 row-start-1 row-end-2">
@@ -560,7 +582,7 @@ export default function Keyboard() {
         </div>
       )}
       {keymap && selectedBinding && (
-        <div className="p-2 col-start-2 row-start-2 bg-base-200">
+        <div className="p-2 col-start-2 row-start-2 bg-base-200 overflow-auto">
           <BehaviorBindingPicker
             binding={selectedBinding}
             behaviors={Object.values(behaviors)}
