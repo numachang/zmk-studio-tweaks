@@ -46,9 +46,10 @@ export const Key = ({
   const pixelWidth = width * oneU - 2;
   const pixelHeight = height * oneU - 2;
 
+  const shortHeader = shortenHeader(header);
   return (
     <button
-      className={`group rounded relative flex justify-center items-center cursor-pointer transition-all hover:shadow-xl hover:ring-1 hover:ring-gray-300 hover:scale-125 ${selected ? "bg-primary text-primary-content" : "bg-base-100 text-base-content"
+      className={`group rounded relative flex justify-center items-center cursor-pointer transition-colors hover:ring-1 hover:ring-gray-300 ${selected ? "bg-primary text-primary-content" : "bg-base-100 text-base-content"
         }`}
       style={{
         width: `${pixelWidth}px`,
@@ -56,8 +57,24 @@ export const Key = ({
       }}
       onClick={onClick}
     >
-      <div className={`absolute text-xs ${selected ? "text-primary-content" : "z1text-base-content"} opacity-80 top-1 text-nowrap left-1/2 font-light -translate-x-1/2 text-center`}>{shortenHeader(header)}</div>
-      {children}
+      {shortHeader && (
+        <div
+          className={`absolute top-0.5 left-1/2 -translate-x-1/2 text-xs leading-none px-1.5 py-0.5 rounded-md border text-nowrap truncate max-w-[90%] ${
+            selected
+              ? "border-primary-content/50 bg-primary-content/15 text-primary-content"
+              : "border-base-content/30 bg-base-content/10 text-base-content/80"
+          }`}
+        >
+          {shortHeader}
+        </div>
+      )}
+      <div
+        className={`absolute inset-0 flex items-center justify-center ${
+          shortHeader ? "pt-3.5" : ""
+        }`}
+      >
+        {children}
+      </div>
     </button>
   );
 };

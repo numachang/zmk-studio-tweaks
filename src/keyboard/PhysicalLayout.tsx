@@ -81,6 +81,50 @@ export const PhysicalLayout = ({
   const ref = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
 
+  // Bounding box that *includes* rotated keys. The naive max(k.x+k.width) /
+  // max(k.y+k.height) ignores rotation, so rotated thumb keys extend past the
+  // wrapper, the parent's centering uses the wrong size, and the visible
+  // keyboard ends up top-aligned with content clipping at the bottom.
+  let minX = 0;
+  let minY = 0;
+  let maxX = 0;
+  let maxY = 0;
+  for (const p of positions) {
+    const r = p.r || 0;
+    if (!r) {
+      if (p.x < minX) minX = p.x;
+      if (p.y < minY) minY = p.y;
+      if (p.x + p.width > maxX) maxX = p.x + p.width;
+      if (p.y + p.height > maxY) maxY = p.y + p.height;
+      continue;
+    }
+    const rx = p.rx ?? p.x;
+    const ry = p.ry ?? p.y;
+    const rad = (r * Math.PI) / 180;
+    const cos = Math.cos(rad);
+    const sin = Math.sin(rad);
+    const corners = [
+      [p.x, p.y],
+      [p.x + p.width, p.y],
+      [p.x + p.width, p.y + p.height],
+      [p.x, p.y + p.height],
+    ];
+    for (const [cx, cy] of corners) {
+      const dx = cx - rx;
+      const dy = cy - ry;
+      const rotX = dx * cos - dy * sin + rx;
+      const rotY = dx * sin + dy * cos + ry;
+      if (rotX < minX) minX = rotX;
+      if (rotY < minY) minY = rotY;
+      if (rotX > maxX) maxX = rotX;
+      if (rotY > maxY) maxY = rotY;
+    }
+  }
+  const origWidth = (maxX - minX) * oneU;
+  const origHeight = (maxY - minY) * oneU;
+  const offsetX = -minX * oneU;
+  const offsetY = -minY * oneU;
+
   useLayoutEffect(() => {
     const element = ref.current;
     if (!element) return;
@@ -90,10 +134,16 @@ export const PhysicalLayout = ({
 
     const calculateScale = () => {
       if (props.zoom === "auto") {
-        const padding = Math.min(window.innerWidth, window.innerHeight) * 0.05; // Padding when in auto mode
+        // Trimmer margin (~2% of the smaller viewport dim) than the original
+        // 5%, so the keyboard fills more of the available area without quite
+        // touching the edges.
+        const padding = Math.min(window.innerWidth, window.innerHeight) * 0.02;
+        // Compute from the constant original keyboard size, not the live
+        // element size — the element's clientHeight tracks the scaled wrapper
+        // and observing it creates a feedback loop where scale shrinks to 0.
         const newScale = Math.min(
-          parent.clientWidth / (element.clientWidth + 2 * padding),
-          parent.clientHeight / (element.clientHeight + 2 * padding),
+          parent.clientWidth / (origWidth + 2 * padding),
+          parent.clientHeight / (origHeight + 2 * padding),
         );
         setScale(newScale);
       } else {
@@ -101,34 +151,26 @@ export const PhysicalLayout = ({
       }
     };
 
-    calculateScale(); // Initial calculation
+    calculateScale();
 
     const resizeObserver = new ResizeObserver(() => {
       calculateScale();
     });
 
-    resizeObserver.observe(element);
+    // Only observe the parent — observing the (now scale-driven) element
+    // re-fires the loop above.
     resizeObserver.observe(parent);
 
     return () => {
       resizeObserver.disconnect();
     };
-  }, [props.zoom]);
-
-  // TODO: Add a bit of padding for rotation when supported
-  let rightMost = positions
-    .map((k) => k.x + k.width)
-    .reduce((a, b) => Math.max(a, b), 0);
-  let bottomMost = positions
-    .map((k) => k.y + k.height)
-    .reduce((a, b) => Math.max(a, b), 0);
+  }, [props.zoom, origWidth, origHeight]);
 
   const positionItems = positions.map((p, idx) => (
     <div className="absolute" style={scalePosition(p, oneU)}>
       <div
         key={p.id}
         onClick={() => onPositionClicked?.(idx)}
-        className="hover:[transform:translateZ(100px)] transition-transform duration-200"
       >
         <Key
           oneU={oneU}
@@ -139,19 +181,37 @@ export const PhysicalLayout = ({
     </div>
   ));
 
+  // Anchor the scale at top-left and size the DOM box to the visually scaled
+  // dimensions, so the parent's `items-center` actually centers what the user
+  // sees instead of the unscaled box (which made the keyboard hug the top and
+  // leave dead space at the bottom).
   return (
     <div
       className="relative"
       style={{
-        height: bottomMost * oneU + "px",
-        width: rightMost * oneU + "px",
-        transform: `scale(${scale})`,
-        transformStyle: "preserve-3d",
+        height: origHeight * scale + "px",
+        width: origWidth * scale + "px",
       }}
       ref={ref}
-      {...props}
     >
-      {positionItems}
+      <div
+        className="relative"
+        style={{
+          height: origHeight + "px",
+          width: origWidth + "px",
+          transform: `scale(${scale})`,
+          transformOrigin: "top left",
+          transformStyle: "preserve-3d",
+        }}
+        {...props}
+      >
+        <div
+          className="absolute inset-0"
+          style={{ transform: `translate(${offsetX}px, ${offsetY}px)` }}
+        >
+          {positionItems}
+        </div>
+      </div>
     </div>
   );
 };
