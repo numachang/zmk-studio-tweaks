@@ -59,6 +59,7 @@
 
 - `main` への直 push は避ける。機能ブランチを切る: `feature/<name>` または `chore/<name>`。
 - PR ベースで `main` に入れる（self-merge でも PR を経由）。
+- **clone 後に一度だけ** `gh repo set-default numachang/zmk-studio-tweaks` を実行する。`gh pr create` は何も指定しないと **upstream を base に取りに行く**（過去 2 回、誤って `zmkfirmware/zmk-studio` に PR が立った）。set-default はローカル `.git/config` のみ書き換え、push されない。
 
 ### コミット
 
