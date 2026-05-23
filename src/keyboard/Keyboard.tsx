@@ -295,6 +295,18 @@ export default function Keyboard() {
               })
             );
           } else {
+            const name =
+              behaviors[oldBinding.behaviorId]?.displayName ??
+              `behavior id ${oldBinding.behaviorId}`;
+            console.error(
+              "Failed to undo binding",
+              resp.keymap?.setLayerBinding
+            );
+            notify(
+              "error",
+              `Couldn't restore "${name}" — undo was rejected by the firmware.`,
+              { action: "The previous binding may no longer be writable from Studio." }
+            );
           }
         };
       });

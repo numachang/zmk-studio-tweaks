@@ -1,6 +1,6 @@
 import { BehaviorBindingParametersSet } from "@zmkfirmware/zmk-studio-ts-client/behaviors";
 import { Tab, TabList, TabPanel, Tabs } from "react-aria-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ParameterValuePicker } from "./ParameterValuePicker";
 import { HidUsagePicker } from "./HidUsagePicker";
 import { validateValue } from "./parameters";
@@ -40,6 +40,15 @@ export const BehaviorParametersPicker = ({
 
   const hasParam1 = param1Values.length > 0;
   const hasParam2 = param2Values.length > 0;
+
+  // Switching from a 2-param behavior (Mod-Tap, ...) to a 1-param one
+  // (Key Press, ...) hides the p2 tab. Snap back to p1 so we don't pass a
+  // dangling selectedKey to <Tabs>.
+  useEffect(() => {
+    if (!hasParam2 && activeParam === "p2") {
+      setActiveParam("p1");
+    }
+  }, [hasParam2, activeParam]);
 
   const param1Name = param1Values[0]?.name || "Param 1";
   const param2Name = param2Values[0]?.name || "Param 2";
