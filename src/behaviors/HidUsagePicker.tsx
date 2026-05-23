@@ -14,8 +14,8 @@ import {
   Tabs,
 } from "react-aria-components";
 import { hid_usage_page_get_ids, hid_usage_get_metadata } from "../hid-usages";
-import { useCallback, useMemo } from "react";
-import { ChevronDown } from "lucide-react";
+import { useCallback, useMemo, useState } from "react";
+import { ChevronDown, Search } from "lucide-react";
 
 export interface HidUsagePage {
   id: number;
@@ -161,7 +161,67 @@ const HidUsageGrid = ({
     return a.localeCompare(b);
   });
 
+  const [search, setSearch] = useState("");
+  const trimmedSearch = search.trim().toLowerCase();
+
+  const searchResults = useMemo(() => {
+    if (!trimmedSearch) {
+      return null;
+    }
+    return allUsages.filter((usage) => {
+      const metadata = hid_usage_get_metadata(usage.pageId, usage.Id);
+      const haystack = [
+        usage.Name,
+        metadata?.short,
+        metadata?.med,
+        metadata?.long,
+        metadata?.category,
+      ]
+        .filter((s): s is string => Boolean(s))
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(trimmedSearch);
+    });
+  }, [allUsages, trimmedSearch]);
+
+  const renderUsageButton = (usage: Usage) => {
+    const usageValue = (usage.pageId << 16) | usage.Id;
+    return (
+      <Button
+        key={usageValue}
+        onPress={() => onValueChanged(usageValue)}
+        className={`w-16 h-16 p-1 rounded border text-center flex items-center justify-center ${selectedKey === usageValue ? "bg-primary text-primary-content" : "bg-base-200 hover:bg-base-300"}`}
+      >
+        {getButtonLabel(usage)}
+      </Button>
+    );
+  };
+
   return (
+    <div className="flex flex-col gap-2">
+      <div className="relative">
+        <Search className="size-4 absolute left-2 top-1/2 -translate-y-1/2 text-base-content/50 pointer-events-none" />
+        <input
+          type="search"
+          aria-label="Filter keys"
+          placeholder="Filter keys..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full pl-8 pr-2 py-1 rounded border border-base-300 bg-base-100 focus:outline-none focus:border-primary"
+        />
+      </div>
+      {searchResults !== null ? (
+        <div
+          aria-label="Search results"
+          className="min-h-56 max-h-56 overflow-y-auto flex flex-wrap justify-start content-start gap-1 p-1 border rounded"
+        >
+          {searchResults.length === 0 ? (
+            <div className="p-2 text-base-content/60">No keys match "{search}".</div>
+          ) : (
+            searchResults.map(renderUsageButton)
+          )}
+        </div>
+      ) : (
     <Tabs className="flex flex-col">
       <TabList className="flex border-b">
         {sortedCategories.map((category) => (
@@ -214,22 +274,13 @@ const HidUsageGrid = ({
               </Popover>
             </ComboBox>
           ) : (
-            categorizedUsages[category].map((usage) => {
-              const usageValue = (usage.pageId << 16) | usage.Id;
-              return (
-                <Button
-                  key={usageValue}
-                  onPress={() => onValueChanged(usageValue)}
-                  className={`w-16 h-16 p-1 rounded border text-center flex items-center justify-center ${selectedKey === usageValue ? "bg-primary text-primary-content" : "bg-base-200 hover:bg-base-300"}`}
-                >
-                  {getButtonLabel(usage)}
-                </Button>
-              );
-            })
+            categorizedUsages[category].map(renderUsageButton)
           )}
         </TabPanel>
       ))}
     </Tabs>
+      )}
+    </div>
   );
 };
 

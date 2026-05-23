@@ -58,17 +58,33 @@ export const ParameterValuePicker = ({
       );
     } else if (values[0].layerId) {
       return (
-        <div>
-          <label>{values[0].name}: </label>
-          <select
-            value={value}
-            className="h-8 rounded"
-            onChange={(e) => onValueChanged(parseInt(e.target.value))}
+        <div className="flex flex-col gap-1">
+          <label className="text-sm">{values[0].name}:</label>
+          <div
+            role="radiogroup"
+            aria-label={values[0].name}
+            className="flex flex-wrap gap-1"
           >
-            {layers.map(({ name, id }) => (
-              <option value={id}>{name}</option>
-            ))}
-          </select>
+            {layers.map(({ name, id }, i) => {
+              const selected = value === id;
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  role="radio"
+                  aria-checked={selected}
+                  onClick={() => onValueChanged(id)}
+                  className={`px-3 py-1 rounded border text-sm ${
+                    selected
+                      ? "bg-primary text-primary-content border-primary"
+                      : "bg-base-200 hover:bg-base-300 border-base-300"
+                  }`}
+                >
+                  {name || i.toLocaleString()}
+                </button>
+              );
+            })}
+          </div>
         </div>
       );
     }
