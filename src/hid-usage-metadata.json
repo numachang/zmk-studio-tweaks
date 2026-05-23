@@ -203,52 +203,20 @@
     "115": { "category": "Apps/Media/Special" },
     "118": { "category": "Apps/Media/Special" },
     "133": { "short": ",", "category": "Numpad" },
-    "135": { "short": "Intl1", "med": "Int1 ろ", "category": "International" },
-    "136": {
-      "short": "Intl2",
-      "med": "Int2 かな",
-      "category": "International"
-    },
-    "137": { "short": "Intl3", "med": "Int3 ¥", "category": "International" },
-    "138": {
-      "short": "Intl4",
-      "med": "Int4 変換",
-      "category": "International"
-    },
-    "139": {
-      "short": "Intl5",
-      "med": "Int5 無変換",
-      "category": "International"
-    },
-    "140": { "short": "Intl6", "med": "Int6 ,", "category": "International" },
+    "135": { "short": "Intl1", "category": "International" },
+    "136": { "short": "Intl2", "category": "International" },
+    "137": { "short": "Intl3", "category": "International" },
+    "138": { "short": "Intl4", "category": "International" },
+    "139": { "short": "Intl5", "category": "International" },
+    "140": { "short": "Intl6", "category": "International" },
     "141": { "short": "Intl7", "category": "International" },
     "142": { "short": "Intl8", "category": "International" },
     "143": { "short": "Intl9", "category": "International" },
-    "144": {
-      "short": "Lang1",
-      "med": "Lang1 한/영",
-      "category": "International"
-    },
-    "145": {
-      "short": "Lang2",
-      "med": "Lang2 한자",
-      "category": "International"
-    },
-    "146": {
-      "short": "Lang3",
-      "med": "Lang3 カタカナ",
-      "category": "International"
-    },
-    "147": {
-      "short": "Lang4",
-      "med": "Lang4 ひらがな",
-      "category": "International"
-    },
-    "148": {
-      "short": "Lang5",
-      "med": "Lang5 半角/全角",
-      "category": "International"
-    },
+    "144": { "short": "Lang1", "category": "International" },
+    "145": { "short": "Lang2", "category": "International" },
+    "146": { "short": "Lang3", "category": "International" },
+    "147": { "short": "Lang4", "category": "International" },
+    "148": { "short": "Lang5", "category": "International" },
     "149": { "short": "Lang6", "category": "International" },
     "150": { "short": "Lang7", "category": "International" },
     "151": { "short": "Lang8", "category": "International" },
