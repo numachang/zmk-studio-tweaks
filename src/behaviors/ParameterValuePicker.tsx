@@ -25,7 +25,9 @@ export const ParameterValuePicker = ({
           onChange={(e) => onValueChanged(parseInt(e.target.value))}
         >
           {values.map((v) => (
-            <option value={v.constant}>{v.name}</option>
+            <option key={v.constant} value={v.constant}>
+              {v.name}
+            </option>
           ))}
         </select>
       </div>
