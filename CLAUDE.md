@@ -14,6 +14,7 @@
 
 このフォークは、ZMK プロジェクトの善意の上に成り立っています。次のことを必ず守ってください。
 
+- **「自分のための更新」は、決して upstream を汚さない**: 個人ページへのデプロイ設定、ローカル環境固有の tweak、フォーク限定の好みなど、**上流の利用者一般に価値が無い／関係しない変更**は、絶対に upstream リポジトリへ PR してはいけない。upstream に投げるのは「上流のユーザに広く意味のある変更」だけ。過去 2 回（closed [PR #172](https://github.com/zmkfirmware/zmk-studio/pull/172) / [PR #173](https://github.com/zmkfirmware/zmk-studio/pull/173)）この線を越えた。`gh pr create` を打つ前に base が `numachang/zmk-studio-tweaks` であることを毎回確認する。
 - **クレジットを残す**: README / コミットメッセージ / PR 説明で、上流 (`zmkfirmware/zmk-studio`, Apache-2.0) への謝意とリンクを明示する。
 - **上流をネガティブに書かない**: 「公式が遅いから」「メンテナが対応しないから」といったニュアンスは避ける。フォークの動機は「個人的な使い勝手の追求」として記述する。
 - **upstream に還元する姿勢を保つ**: 機能ができたら upstream にも PR を投げる。取り込まれなくても、投げたという事実が大事。
