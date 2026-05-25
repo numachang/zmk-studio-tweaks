@@ -36,6 +36,7 @@ import { AboutModal } from "./AboutModal";
 import { LicenseNoticeModal } from "./misc/LicenseNoticeModal";
 import { ToastKind, useToast } from "./Toast";
 import type { GetBehaviorDetailsResponse } from "@zmkfirmware/zmk-studio-ts-client/behaviors";
+import { HeroPage } from "./HeroPage";
 
 declare global {
   interface Window {
@@ -176,6 +177,7 @@ function App() {
   const [doIt, undo, redo, canUndo, canRedo, reset] = useUndoRedo();
   const [showAbout, setShowAbout] = useState(false);
   const [showLicenseNotice, setShowLicenseNotice] = useState(false);
+  const [showConnectModal, setShowConnectModal] = useState(false);
   const [connectionAbort, setConnectionAbort] = useState(new AbortController());
 
   const [lockState, setLockState] = useState<LockState>(
@@ -185,6 +187,12 @@ function App() {
   useSub("rpc_notification.core.lockStateChanged", (ls) => {
     setLockState(ls);
   });
+
+  useEffect(() => {
+    if (!conn.conn) {
+      setShowConnectModal(false);
+    }
+  }, [conn]);
 
   useEffect(() => {
     if (!conn) {
@@ -597,7 +605,7 @@ function App() {
           />
           <UnlockModal />
           <ConnectModal
-            open={!conn.conn}
+            open={showConnectModal && !conn.conn}
             transports={TRANSPORTS}
             onTransportCreated={onConnect}
           />
@@ -607,24 +615,33 @@ function App() {
             onClose={() => setShowLicenseNotice(false)}
           />
           <div className="bg-base-100 text-base-content h-full max-h-[100vh] w-full max-w-[100vw] inline-grid grid-cols-[auto] grid-rows-[auto_1fr_auto] overflow-hidden">
-            <AppHeader
-              connectedDeviceLabel={connectedDeviceName}
-              canUndo={canUndo}
-              canRedo={canRedo}
-              onUndo={undo}
-              onRedo={redo}
-              onSave={save}
-              onDiscard={discard}
-              onDisconnect={disconnect}
-              onResetSettings={resetSettings}
-              onExportKeymap={exportKeymap}
-              onImportKeymap={importKeymap}
-            />
-            <Keyboard />
-            <AppFooter
-              onShowAbout={() => setShowAbout(true)}
-              onShowLicenseNotice={() => setShowLicenseNotice(true)}
-            />
+            {conn.conn ? (
+              <>
+                <AppHeader
+                  connectedDeviceLabel={connectedDeviceName}
+                  canUndo={canUndo}
+                  canRedo={canRedo}
+                  onUndo={undo}
+                  onRedo={redo}
+                  onSave={save}
+                  onDiscard={discard}
+                  onDisconnect={disconnect}
+                  onResetSettings={resetSettings}
+                  onExportKeymap={exportKeymap}
+                  onImportKeymap={importKeymap}
+                />
+                <Keyboard />
+                <AppFooter
+                  onShowAbout={() => setShowAbout(true)}
+                  onShowLicenseNotice={() => setShowLicenseNotice(true)}
+                />
+              </>
+            ) : (
+              <HeroPage
+                onConnect={() => setShowConnectModal(true)}
+                hasTransports={TRANSPORTS.length > 0}
+              />
+            )}
           </div>
         </UndoRedoContext.Provider>
       </LockStateContext.Provider>
