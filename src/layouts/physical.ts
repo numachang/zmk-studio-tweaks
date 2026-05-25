@@ -4,13 +4,15 @@
 // The picker has two "basic-tier" tabs that draw a keycap grid:
 //
 //   - `Basic`     — ANSI 60% shape. The default for US-style keyboards.
-//   - `ISO/JIS`   — ISO 60% shape + a JIS-specific extras row (¥, `\_`,
-//                   無変換, 変換, かな). One tab covers everyone who isn't
-//                   ANSI: Europe / UK / ANZ uses ISO, Japan uses JIS, and
-//                   the two are mutually exclusive in practice. JIS users
-//                   see the IME / ¥ keys in the extras row rather than in
-//                   their physical positions, matching the upstream
-//                   convention in similar editors.
+//   - `ISO/JIS`   — either an ISO 60% or JIS 60% shape, picked from the
+//                   active host layout. JIS is Japan-only and ISO covers
+//                   the rest of the non-ANSI world, so the active host
+//                   layout uniquely identifies which physical shape the
+//                   user is on in the common case. Both shapes are
+//                   rendered as 5 rows with the layout-specific extras
+//                   (NUHS/NUBS for ISO; ¥/`\_`/IME keys for JIS) in
+//                   their real physical positions, not as a flat
+//                   "extras" row.
 //
 // Naming note: ZMK already uses "physical layout" to mean the connected
 // keyboard's actual key matrix (from RPC). Anything here is purely picker
@@ -112,16 +114,63 @@ export const ISO_ROWS: BasicCell[][] = [
 ];
 
 // =============================================================================
-// JIS-only physical keys that don't appear on an ISO 60%. Rendered as a
-// single extras row at the bottom of the ISO/JIS tab so Japanese users
-// can pick ¥ / `\_` / IME keys without leaving the basic-tier tab.
+// JIS 60% — same five-row form factor as ISO but with Japanese-specific
+// keys integrated in their real physical positions:
+//   - Row 1 ends with ¥ (INT3) before a 1U BkSp.
+//   - Row 2 has @ (LBKT) and [ (RBKT) where ANSI has [ and ].
+//   - Row 3 has ] (NUHS) right of `:`.
+//   - Row 4 has \_ (INT1) between `/` and a narrower RShft.
+//   - Row 5 has 無変換 (INT5), 変換 (INT4), and かな (LANG1) flanking a
+//     narrower Space.
+// Flattened Enter on row 3 only (no row-spanning), same simplification
+// as ISO.
 // =============================================================================
-export const JIS_EXTRAS: BasicCell[] = [
-  { id: 137 }, // INT3 = ¥|
-  { id: 135 }, // INT1 = \_
-  { id: 139 }, // INT5 = 無変換
-  { id: 138 }, // INT4 = 変換
-  { id: 144 }, // LANG1 = かな
+export const JIS_ROWS: BasicCell[][] = [
+  // 全/半 1234567890 - ^ ¥ BkSp(1U)
+  [
+    { id: 53 },                  // GRAVE = 全/半
+    { id: 30 }, { id: 31 }, { id: 32 }, { id: 33 }, { id: 34 },
+    { id: 35 }, { id: 36 }, { id: 37 }, { id: 38 }, { id: 39 },
+    { id: 45 },                  // -
+    { id: 46 },                  // ^
+    { id: 137 },                 // INT3 = ¥
+    { id: 42 },
+  ],
+  [
+    { id: 43, w: 1.5 },
+    { id: 20 }, { id: 26 }, { id: 8 }, { id: 21 }, { id: 23 },
+    { id: 28 }, { id: 24 }, { id: 12 }, { id: 18 }, { id: 19 },
+    { id: 47 },                  // LBKT = @
+    { id: 48 },                  // RBKT = [
+  ],
+  // Caps(1.75U) A-L ; : ] Ret(1.25U)
+  [
+    { id: 57, w: 1.75 },
+    { id: 4 }, { id: 22 }, { id: 7 }, { id: 9 }, { id: 10 },
+    { id: 11 }, { id: 13 }, { id: 14 }, { id: 15 },
+    { id: 51 },                  // SEMI = ;
+    { id: 52 },                  // SQT = :
+    { id: 50 },                  // NUHS = ]
+    { id: 40, w: 1.25 },
+  ],
+  // LShft(2.25U) Z-M , . / \_ RShft(1.75U)
+  [
+    { id: 225, w: 2.25 },
+    { id: 29 }, { id: 27 }, { id: 6 }, { id: 25 }, { id: 5 },
+    { id: 17 }, { id: 16 }, { id: 54 }, { id: 55 }, { id: 56 },
+    { id: 135 },                 // INT1 = \_
+    { id: 229, w: 1.75 },
+  ],
+  // LCtrl LGUI LAlt 無変換 Space 変換 かな RAlt RGUI Menu RCtrl
+  [
+    { id: 224, w: 1.25 }, { id: 227, w: 1.25 }, { id: 226, w: 1.25 },
+    { id: 139, w: 1.25 },        // INT5 = 無変換
+    { id: 44, w: 4 },
+    { id: 138, w: 1.25 },        // INT4 = 変換
+    { id: 144, w: 1.25 },        // LANG1 = かな
+    { id: 230, w: 1.25 }, { id: 231, w: 1.25 },
+    { id: 101, w: 1.25 }, { id: 228, w: 1.25 },
+  ],
 ];
 
 /**
@@ -134,16 +183,26 @@ export const JIS_EXTRAS: BasicCell[] = [
 export const BASIC_TIER_HID_IDS: ReadonlySet<number> = new Set([
   ...ANSI_ROWS.flatMap((row) => row.map((cell) => cell.id)),
   ...ISO_ROWS.flatMap((row) => row.map((cell) => cell.id)),
-  ...JIS_EXTRAS.map((cell) => cell.id),
+  ...JIS_ROWS.flatMap((row) => row.map((cell) => cell.id)),
 ]);
 
-/** HIDs that live on the ISO/JIS tab (ISO grid + JIS extras). */
-export const ISO_JIS_HID_IDS: ReadonlySet<number> = new Set([
-  ...ISO_ROWS.flatMap((row) => row.map((cell) => cell.id)),
-  ...JIS_EXTRAS.map((cell) => cell.id),
-]);
+/** HIDs unique to the JIS shape (not on ANSI or ISO). Used by auto-jump. */
+export const JIS_ONLY_HID_IDS: ReadonlySet<number> = (() => {
+  const ansi = new Set(ANSI_ROWS.flatMap((row) => row.map((cell) => cell.id)));
+  const iso = new Set(ISO_ROWS.flatMap((row) => row.map((cell) => cell.id)));
+  return new Set(
+    JIS_ROWS.flatMap((row) => row.map((cell) => cell.id)).filter(
+      (id) => !ansi.has(id) && !iso.has(id)
+    )
+  );
+})();
 
-/** HIDs that live on the ANSI tab. */
-export const ANSI_HID_IDS: ReadonlySet<number> = new Set(
-  ANSI_ROWS.flatMap((row) => row.map((cell) => cell.id))
-);
+/** HIDs unique to the ISO shape (not on ANSI). Used by auto-jump. */
+export const ISO_ONLY_HID_IDS: ReadonlySet<number> = (() => {
+  const ansi = new Set(ANSI_ROWS.flatMap((row) => row.map((cell) => cell.id)));
+  return new Set(
+    ISO_ROWS.flatMap((row) => row.map((cell) => cell.id)).filter(
+      (id) => !ansi.has(id)
+    )
+  );
+})();

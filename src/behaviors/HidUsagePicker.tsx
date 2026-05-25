@@ -17,13 +17,13 @@ import { hid_usage_page_get_ids, hid_usage_get_metadata } from "../hid-usages";
 import { useHostLayout } from "../layouts/LayoutContext";
 import { useLocalStorageState } from "../misc/useLocalStorageState";
 import {
-  ANSI_HID_IDS,
   ANSI_ROWS,
   BASIC_TIER_HID_IDS,
   type BasicCell,
-  ISO_JIS_HID_IDS,
+  ISO_ONLY_HID_IDS,
   ISO_ROWS,
-  JIS_EXTRAS,
+  JIS_ONLY_HID_IDS,
+  JIS_ROWS,
 } from "../layouts/physical";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
@@ -253,9 +253,16 @@ const HidUsageGrid = ({
   );
 
   const ansiRows = useMemo(() => buildShapeRows(ANSI_ROWS), [buildShapeRows]);
-  const isoJisRows = useMemo(
-    () => buildShapeRows(ISO_ROWS, JIS_EXTRAS),
-    [buildShapeRows]
+  // ISO/JIS tab renders the JIS shape when host = JIS (¥ / `\_` / IME
+  // keys in their real physical positions), otherwise the ISO shape.
+  // JIS is Japan-only and ISO covers the rest of the non-ANSI world,
+  // so host layout uniquely identifies the right shape in the common
+  // case; users with mismatched host/keyboard can still pick the
+  // unique keys directly from the picker even when the wrong shape
+  // is rendered.
+  const isoOrJisRows = useMemo(
+    () => buildShapeRows(layout.id === "jis" ? JIS_ROWS : ISO_ROWS),
+    [buildShapeRows, layout.id]
   );
 
   const UNIT_PX = 48;
@@ -396,9 +403,9 @@ const HidUsageGrid = ({
     const page = (masked >> 16) & 0xffff;
     const usageId = masked & 0xffff;
     if (page === 7 && BASIC_TIER_HID_IDS.has(usageId)) {
-      // ANSI-only keys (NUHS / NUBS / ¥ / IME) force the ISO/JIS tab;
-      // shared keys go wherever the user last was.
-      if (!ANSI_HID_IDS.has(usageId) && ISO_JIS_HID_IDS.has(usageId)) {
+      // ISO-only or JIS-only keys (NUHS / NUBS / ¥ / IME) force the
+      // ISO/JIS tab; ANSI-shared keys go wherever the user last was.
+      if (ISO_ONLY_HID_IDS.has(usageId) || JIS_ONLY_HID_IDS.has(usageId)) {
         setActiveTab(ISO_JIS_TAB_ID);
       } else {
         setActiveTab(preferredBasicTab);
@@ -511,14 +518,14 @@ const HidUsageGrid = ({
           id={category}
           className={
             // Unified height across all tabs so switching tabs doesn't
-            // shift the rest of the picker. Sized to fit the tallest
-            // case (ISO/JIS = ISO 60% + JIS extras row = 6 rows).
+            // shift the rest of the picker. Sized to fit the 5-row
+            // basic-tier shapes (ANSI / ISO / JIS all 5 rows tall).
             category === BASIC_TAB_ID ||
             category === ISO_JIS_TAB_ID ||
             category === "Numpad" ||
             category === "Function + Nav"
-              ? "min-h-[20rem] max-h-[20rem] overflow-auto p-1 border border-t-0 rounded-b rac-focus-visible:ring-2 rac-focus-visible:ring-primary"
-              : "min-h-[20rem] max-h-[20rem] overflow-y-auto flex flex-wrap justify-start content-start gap-1 p-1 border border-t-0 rounded-b rac-focus-visible:ring-2 rac-focus-visible:ring-primary"
+              ? "min-h-[17rem] max-h-[17rem] overflow-auto p-1 border border-t-0 rounded-b rac-focus-visible:ring-2 rac-focus-visible:ring-primary"
+              : "min-h-[17rem] max-h-[17rem] overflow-y-auto flex flex-wrap justify-start content-start gap-1 p-1 border border-t-0 rounded-b rac-focus-visible:ring-2 rac-focus-visible:ring-primary"
           }
         >
           {category === BASIC_TAB_ID ? (
@@ -531,7 +538,7 @@ const HidUsageGrid = ({
             </div>
           ) : category === ISO_JIS_TAB_ID ? (
             <div className="flex flex-col gap-1 w-fit">
-              {isoJisRows.map((row, i) => (
+              {isoOrJisRows.map((row, i) => (
                 <div key={i} className="flex gap-1">
                   {row.map(renderBasicButton)}
                 </div>
