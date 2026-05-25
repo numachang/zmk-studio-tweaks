@@ -21,11 +21,19 @@
 // =============================================================================
 
 export interface BasicCell {
-  /** HID usage ID on page 0x07 (keyboard / keypad). */
+  /**
+   * HID usage ID on page 0x07 (keyboard / keypad), or `-1` for a
+   * transparent spacer cell used to make a row visually line up
+   * (e.g. JIS row 2 needs a 1.5U spacer where the Enter key would
+   * otherwise span down from above).
+   */
   id: number;
   /** Width in keyboard units (1U = standard square). Defaults to 1. */
   w?: number;
 }
+
+/** Sentinel id for a transparent spacer cell. */
+export const SPACER_ID = -1;
 
 // =============================================================================
 // ANSI 60%
@@ -142,6 +150,11 @@ export const JIS_ROWS: BasicCell[][] = [
     { id: 28 }, { id: 24 }, { id: 12 }, { id: 18 }, { id: 19 },
     { id: 47 },                  // LBKT = @
     { id: 48 },                  // RBKT = [
+    // Enter spans rows 2-3 on a real JIS keyboard. We render Enter
+    // on row 3 only; this 1.5U spacer occupies the width that the
+    // top of the Enter key would have taken so the row reads as
+    // 15U like every other row.
+    { id: SPACER_ID, w: 1.5 },
   ],
   // Caps(1.75U) A-L ; : ] Ret(1.25U)
   [
@@ -162,10 +175,13 @@ export const JIS_ROWS: BasicCell[][] = [
     { id: 229, w: 1.75 },
   ],
   // LCtrl LGUI LAlt 無変換 Space 変換 かな RAlt RGUI Menu RCtrl
+  // (11 keys squeezed into the same 15U budget the other rows use, so
+  // each non-thumb key is 1.25U and Space gets the leftover 2.5U —
+  // shorter than ANSI's Space, matching real JIS bottom rows.)
   [
     { id: 224, w: 1.25 }, { id: 227, w: 1.25 }, { id: 226, w: 1.25 },
     { id: 139, w: 1.25 },        // INT5 = 無変換
-    { id: 44, w: 4 },
+    { id: 44, w: 2.5 },          // Space (smaller than ANSI's 6.25U)
     { id: 138, w: 1.25 },        // INT4 = 変換
     { id: 144, w: 1.25 },        // LANG1 = かな
     { id: 230, w: 1.25 }, { id: 231, w: 1.25 },

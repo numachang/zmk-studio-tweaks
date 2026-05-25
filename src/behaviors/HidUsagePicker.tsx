@@ -13,6 +13,7 @@ import {
   TabPanel,
   Tabs,
 } from "react-aria-components";
+import { Tooltip } from "../misc/Tooltip";
 import { hid_usage_page_get_ids, hid_usage_get_metadata } from "../hid-usages";
 import { useHostLayout } from "../layouts/LayoutContext";
 import { useLocalStorageState } from "../misc/useLocalStorageState";
@@ -24,6 +25,7 @@ import {
   ISO_ROWS,
   JIS_ONLY_HID_IDS,
   JIS_ROWS,
+  SPACER_ID,
 } from "../layouts/physical";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
@@ -225,29 +227,27 @@ const HidUsageGrid = ({
     return categories;
   }, [allUsages, layout]);
 
+  // null usage = transparent spacer cell (Enter-spans-rows placeholder).
+  type ShapeRowItem = { usage: Usage | null; w?: number };
+
   const buildShapeRows = useCallback(
-    (rows: ReadonlyArray<ReadonlyArray<BasicCell>>, extras: ReadonlyArray<BasicCell> = []) => {
+    (rows: ReadonlyArray<ReadonlyArray<BasicCell>>): ShapeRowItem[][] => {
       const byHidId = new Map<number, Usage>();
       for (const u of allUsages) {
         if (u.pageId === 7) byHidId.set(u.Id, u);
       }
-      const out: { usage: Usage; w?: number }[][] = rows.map((row) => {
-        const built: { usage: Usage; w?: number }[] = [];
+      return rows.map((row) => {
+        const built: ShapeRowItem[] = [];
         for (const cell of row) {
+          if (cell.id === SPACER_ID) {
+            built.push({ usage: null, w: cell.w });
+            continue;
+          }
           const u = byHidId.get(cell.id);
           if (u) built.push({ usage: u, w: cell.w });
         }
         return built;
       });
-      if (extras.length) {
-        const extrasRow: { usage: Usage; w?: number }[] = [];
-        for (const cell of extras) {
-          const u = byHidId.get(cell.id);
-          if (u) extrasRow.push({ usage: u, w: cell.w });
-        }
-        if (extrasRow.length) out.push(extrasRow);
-      }
-      return out;
     },
     [allUsages]
   );
@@ -332,30 +332,55 @@ const HidUsageGrid = ({
       navigationRows: NAVIGATION_LAYOUT.map(renderRow),
     };
   }, [allUsages]);
+  const cellWidthPx = (w?: number) =>
+    (w ?? 1) * UNIT_PX + ((w ?? 1) - 1) * 4; // include the absorbed gap
+
   const renderBasicButton = ({ usage, w }: { usage: Usage; w?: number }) => {
     const usageValue = (usage.pageId << 16) | usage.Id;
     const preferShort =
       !(usage.pageId === 7 && BASIC_PREFER_MED.has(usage.Id));
     const label = getButtonLabel(usage, { preferShort });
     const pair = label.match(/^(\S{1,2}) (\S{1,2})$/);
-    const width = (w ?? 1) * UNIT_PX + ((w ?? 1) - 1) * 4; // include the gap absorbed
+    const metadata = hid_usage_get_metadata(usage.pageId, usage.Id, layout);
+    // Browser tooltip carries the long-form identity: handy for keys like
+    // 変換 / 無変換 / かな where the on-cap label is the Japanese name but
+    // the user might recognise the HID identity (Int4 / Int5 / Lang1).
+    const tooltip = metadata.long || metadata.med || usage.Name;
+    const width = cellWidthPx(w);
     return (
-      <Button
-        key={usageValue}
-        onPress={() => onValueChanged(usageValue)}
-        style={{ width: `${width}px` }}
-        className={`h-12 p-0.5 rounded border text-center flex items-center justify-center text-sm leading-none shrink-0 ${selectedKey === usageValue ? "bg-primary text-primary-content" : "bg-base-200 hover:bg-base-300"}`}
-      >
-        {pair ? (
-          <span className="flex flex-col items-center gap-px">
-            <span className="text-[0.65em] opacity-70">{pair[2]}</span>
-            <span>{pair[1]}</span>
-          </span>
-        ) : (
-          label
-        )}
-      </Button>
+      <Tooltip key={usageValue} label={tooltip}>
+        <Button
+          onPress={() => onValueChanged(usageValue)}
+          style={{ width: `${width}px` }}
+          className={`h-12 p-0.5 rounded border text-center flex items-center justify-center text-sm leading-none shrink-0 ${selectedKey === usageValue ? "bg-primary text-primary-content" : "bg-base-200 hover:bg-base-300"}`}
+        >
+          {pair ? (
+            <span className="flex flex-col items-center gap-px">
+              <span className="text-[0.65em] opacity-70">{pair[2]}</span>
+              <span>{pair[1]}</span>
+            </span>
+          ) : (
+            label
+          )}
+        </Button>
+      </Tooltip>
     );
+  };
+
+  // Renders one item from a shape row — either a real key button or a
+  // transparent spacer (e.g. JIS row 2's Enter-spans-rows placeholder).
+  const renderBasicCell = (item: ShapeRowItem, index: number) => {
+    if (item.usage === null) {
+      return (
+        <div
+          key={`spacer-${index}`}
+          style={{ width: `${cellWidthPx(item.w)}px` }}
+          className="h-12 shrink-0"
+          aria-hidden="true"
+        />
+      );
+    }
+    return renderBasicButton({ usage: item.usage, w: item.w });
   };
 
   const sortedCategories = useMemo(() => {
@@ -532,7 +557,7 @@ const HidUsageGrid = ({
             <div className="flex flex-col gap-1 w-fit">
               {ansiRows.map((row, i) => (
                 <div key={i} className="flex gap-1">
-                  {row.map(renderBasicButton)}
+                  {row.map((cell, j) => renderBasicCell(cell, j))}
                 </div>
               ))}
             </div>
@@ -540,7 +565,7 @@ const HidUsageGrid = ({
             <div className="flex flex-col gap-1 w-fit">
               {isoOrJisRows.map((row, i) => (
                 <div key={i} className="flex gap-1">
-                  {row.map(renderBasicButton)}
+                  {row.map((cell, j) => renderBasicCell(cell, j))}
                 </div>
               ))}
             </div>
