@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { UsagePages } from "./keyboard-and-consumer-usage-tables.json";
-import HidOverrides from "./hid-usage-metadata.json";
+import { KEYCODES } from "./keycodes";
 import {
   hid_usage_get_label,
   hid_usage_get_metadata,
@@ -9,8 +9,8 @@ import {
 } from "./hid-usages";
 
 // Enumerate every (page, usage) pair that *could* surface a label in the UI:
-// every entry in the HID spec table for pages we use, plus every entry that
-// has a hand-curated override. Sorted so the snapshot diff is stable.
+// every entry in the HID spec table for pages we use, plus every entry in
+// the curated keycode table. Sorted so the snapshot diff is stable.
 const allPairs = (() => {
   const seen = new Set<string>();
   const out: Array<{ page: number; usage: number }> = [];
@@ -23,15 +23,11 @@ const allPairs = (() => {
       }
     }
   }
-  for (const [pageStr, idMap] of Object.entries(
-    HidOverrides as Record<string, Record<string, unknown>>
-  )) {
-    for (const idStr of Object.keys(idMap)) {
-      const k = `${pageStr}:${idStr}`;
-      if (!seen.has(k)) {
-        seen.add(k);
-        out.push({ page: Number(pageStr), usage: Number(idStr) });
-      }
+  for (const k of KEYCODES) {
+    const key = `${k.page}:${k.usage}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      out.push({ page: k.page, usage: k.usage });
     }
   }
   out.sort((a, b) => a.page - b.page || a.usage - b.usage);
