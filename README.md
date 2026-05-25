@@ -1,11 +1,21 @@
 # zmk-studio-tweaks
 
 A community fork of [zmk-studio](https://github.com/zmkfirmware/zmk-studio).
-Planned tweaks: keymap import/export, type-to-search key picker, and host-layout localization.
+Adds keymap import/export and a visual key picker on top of upstream; a host-layout localization
+tweak is still planned.
 
-> ⚠️ **Personal fork / Work in progress** — none of the tweaks below are implemented yet.
+> ⚠️ **Personal fork / Work in progress** — see the status table below for what's actually shipped.
 > This repo exists to track ideas, experiment, and (where possible) feed changes back upstream.
 > It is **not** a replacement for upstream ZMK Studio.
+
+## Try it
+
+A live build of the current `main` is hosted at **<https://zmk-studio-tweaks.numachang.com/>**.
+
+It runs entirely in the browser and talks to keyboards over the **Web Serial API**, so it only
+works in Chromium-based browsers (Chrome, Edge, Brave, …) on a machine where you can plug the
+keyboard in over USB. No data leaves your machine — the page is a static SPA hosted on
+Cloudflare and the keyboard connection is local.
 
 ## Based on
 
@@ -22,15 +32,30 @@ Some of these are already being discussed in upstream issues/PRs; this fork is a
 prototype them without blocking on upstream review cycles. Where a feature lands cleanly,
 the intent is to send it back upstream as a PR.
 
-## Planned tweaks
+## Tweaks
 
 | # | Feature | Status | Related upstream |
 | - | ------- | ------ | ---------------- |
-| 1 | **Keymap import/export** — round-trip a keymap as a JSON file | Planned | [PR #171](https://github.com/zmkfirmware/zmk-studio/pull/171), [issue #166](https://github.com/zmkfirmware/zmk-studio/issues/166) |
-| 2 | **Type-to-search key picker** — replace dropdown navigation with incremental search | Planned | [PR #159](https://github.com/zmkfirmware/zmk-studio/pull/159) |
-| 3 | **Host-layout localization** — choose how the host OS interprets keys (e.g. JIS / Japanese) | Planned | — |
+| 1 | **Keymap import/export** — round-trip a keymap as a JSON file | ✅ Shipped | [PR #171](https://github.com/zmkfirmware/zmk-studio/pull/171), [issue #166](https://github.com/zmkfirmware/zmk-studio/issues/166) |
+| 2 | **Visual key picker** — grid-style HID usage picker with cross-tab search, physical-keyboard layouts, and a chip-grid behavior selector | ✅ Shipped | [PR #159](https://github.com/zmkfirmware/zmk-studio/pull/159) |
+| 3 | **Host-layout localization** — choose how the host OS interprets keys (e.g. JIS / Japanese) | 🛠️ Planned | — |
 
-Roadmap only — nothing is shipped yet. See `CLAUDE.md` for the working stance behind these choices.
+The shipped tweaks live on `main` and are served from the [Try it](#try-it) link above.
+See `CLAUDE.md` for the working stance behind these choices.
+
+### What's actually changed vs. upstream
+
+- **Import / export buttons in the app header** — round-trip a keymap as a JSON file, with a
+  toast-based feedback system that surfaces firmware rejections instead of failing silently.
+- **Grid-style HID usage picker** — adapted from upstream [PR #159](https://github.com/zmkfirmware/zmk-studio/pull/159),
+  with an added cross-tab search bar so you can type to filter across every keycode category at once.
+- **Physical-keyboard layouts in the picker** — pick a keycode by clicking the corresponding key on
+  a rendered ANSI / ISO / JIS layout, instead of hunting through alphabetised lists.
+- **Chip-grid behavior selector** — the behavior chooser is grouped by tier and category instead of
+  a flat dropdown.
+- **Visual layer picker** — pick a target layer from a small layer-list panel instead of by index.
+- **Polished key preview** — long labels are fit to the key, and undo / setLayerBinding rejections
+  from the firmware are surfaced via toasts instead of being swallowed.
 
 ## Getting started (development)
 
@@ -38,15 +63,13 @@ The build setup is the same as upstream — see [zmk-studio's own README](https:
 
 ```bash
 npm install
-npm run dev
+npm run dev          # web build (Chromium-only, see note above)
+npm run build        # static SPA → dist/ (what Cloudflare serves)
+npm run tauri dev    # native desktop build via Tauri
 ```
 
-The web build talks to keyboards over the **Web Serial API**, which is only available in
-Chromium-based browsers (Chrome, Edge, Brave, …). A native build is also available via Tauri:
-
-```bash
-npm run tauri dev
-```
+The hosted [Try it](#try-it) site is just `npm run build` deployed as static assets on
+Cloudflare; there is no backend to run.
 
 ## Related upstream projects
 
