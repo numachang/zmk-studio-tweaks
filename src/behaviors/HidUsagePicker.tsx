@@ -14,6 +14,7 @@ import {
   Tabs,
 } from "react-aria-components";
 import { hid_usage_page_get_ids, hid_usage_get_metadata } from "../hid-usages";
+import { useHostLayout } from "../layouts/LayoutContext";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
 
@@ -163,6 +164,7 @@ const HidUsageGrid = ({
   onValueChanged,
   usagePages,
 }: HidUsagePickerProps) => {
+  const layout = useHostLayout();
   type Usage = {
     Name: string;
     Id: number;
@@ -197,7 +199,7 @@ const HidUsageGrid = ({
   const selectedKey = value !== undefined ? mask_mods(value) : null;
 
   const getButtonLabel = (usage: Usage, opts?: { preferShort?: boolean }) => {
-    const metadata = hid_usage_get_metadata(usage.pageId, usage.Id);
+    const metadata = hid_usage_get_metadata(usage.pageId, usage.Id, layout);
     if (opts?.preferShort && metadata?.short) {
       return metadata.short;
     }
@@ -221,7 +223,7 @@ const HidUsageGrid = ({
     const categories: Record<string, Usage[]> = {};
 
     for (const usage of allUsages) {
-      const metadata = hid_usage_get_metadata(usage.pageId, usage.Id);
+      const metadata = hid_usage_get_metadata(usage.pageId, usage.Id, layout);
       let category = metadata?.category || "Other";
       // Collapse the typing keys (alphabet + number row + adjacent
       // punctuation) into a single Basic tab. Two separate tabs for
@@ -251,7 +253,7 @@ const HidUsageGrid = ({
     }
 
     return categories;
-  }, [allUsages]);
+  }, [allUsages, layout]);
 
   const basicRows = useMemo(() => {
     // Pull from allUsages so the edge keys (Tab/BkSp/Ret/modifiers/...)
@@ -425,7 +427,7 @@ const HidUsageGrid = ({
       return null;
     }
     return allUsages.filter((usage) => {
-      const metadata = hid_usage_get_metadata(usage.pageId, usage.Id);
+      const metadata = hid_usage_get_metadata(usage.pageId, usage.Id, layout);
       const haystack = [
         usage.Name,
         metadata?.short,
@@ -438,7 +440,7 @@ const HidUsageGrid = ({
         .toLowerCase();
       return haystack.includes(trimmedSearch);
     });
-  }, [allUsages, trimmedSearch]);
+  }, [allUsages, trimmedSearch, layout]);
 
   const renderUsageButton = (usage: Usage) => {
     const usageValue = (usage.pageId << 16) | usage.Id;

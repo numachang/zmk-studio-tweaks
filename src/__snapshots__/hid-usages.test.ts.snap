@@ -8560,3 +8560,7531 @@ exports[`hid_usage_page_get_ids > returns the expected pages with stable usage c
   },
 ]
 `;
+
+exports[`host layout overlays > ch overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Y",
+      "med": "Y",
+      "short": "Y",
+    },
+    "ch": {
+      "category": "Letters",
+      "short": "Z",
+    },
+    "label": "Z",
+    "page": 7,
+    "usage": 28,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Z",
+      "med": "Z",
+      "short": "Z",
+    },
+    "ch": {
+      "category": "Letters",
+      "short": "Y",
+    },
+    "label": "Y",
+    "page": 7,
+    "usage": 29,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "1 +",
+    },
+    "label": "1 +",
+    "page": 7,
+    "usage": 30,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "2 "",
+    },
+    "label": "2 "",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "3 *",
+    },
+    "label": "3 *",
+    "page": 7,
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "4 ç",
+    },
+    "label": "4 ç",
+    "page": 7,
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "label": "5 %",
+    "page": 7,
+    "usage": 34,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "6 &",
+    },
+    "label": "6 &",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "7 /",
+    },
+    "label": "7 /",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "8 (",
+    },
+    "label": "8 (",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "9 )",
+    },
+    "label": "9 )",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "0 =",
+    },
+    "label": "0 =",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "' ?",
+    },
+    "label": "' ?",
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "^ \`",
+    },
+    "label": "^ \`",
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "ü  è  [ è  ü",
+    },
+    "label": "ü  è  [ è  ü",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "" !",
+    },
+    "label": "" !",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "$ £",
+    },
+    "label": "$ £",
+    "page": 7,
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "ch": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "$ £",
+    },
+    "label": "$ £",
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "ö  é é  ö",
+    },
+    "label": "ö  é é  ö",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "ä  à  { à  ä",
+    },
+    "label": "ä  à  { à  ä",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "§ °",
+    },
+    "label": "§ °",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": ", ;",
+    },
+    "label": ", ;",
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": ". :",
+    },
+    "label": ". :",
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "ch": {
+      "category": "Numbers + Punctuation",
+      "short": "- _",
+    },
+    "label": "- _",
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "ch": {
+      "category": "International",
+      "short": "< >",
+    },
+    "label": "< >",
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > da overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "2 "",
+    },
+    "label": "2 "",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "label": "3 #",
+    "page": 7,
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "4 ¤",
+    },
+    "label": "4 ¤",
+    "page": 7,
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "6 &",
+    },
+    "label": "6 &",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "7 /",
+    },
+    "label": "7 /",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "8 (",
+    },
+    "label": "8 (",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "9 )",
+    },
+    "label": "9 )",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "0 =",
+    },
+    "label": "0 =",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "+ ?",
+    },
+    "label": "+ ?",
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "´ \`",
+    },
+    "label": "´ \`",
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "Å",
+    },
+    "label": "Å",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "¨ ^",
+    },
+    "label": "¨ ^",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "' *",
+    },
+    "label": "' *",
+    "page": 7,
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "da": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "' *",
+    },
+    "label": "' *",
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "Æ",
+    },
+    "label": "Æ",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "Ø",
+    },
+    "label": "Ø",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "½ §",
+    },
+    "label": "½ §",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": ", ;",
+    },
+    "label": ", ;",
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": ". :",
+    },
+    "label": ". :",
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "da": {
+      "category": "Numbers + Punctuation",
+      "short": "- _",
+    },
+    "label": "- _",
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "da": {
+      "category": "International",
+      "short": "< >",
+    },
+    "label": "< >",
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > de overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Y",
+      "med": "Y",
+      "short": "Y",
+    },
+    "de": {
+      "category": "Letters",
+      "short": "Z",
+    },
+    "label": "Z",
+    "page": 7,
+    "usage": 28,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Z",
+      "med": "Z",
+      "short": "Z",
+    },
+    "de": {
+      "category": "Letters",
+      "short": "Y",
+    },
+    "label": "Y",
+    "page": 7,
+    "usage": 29,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "2 "",
+    },
+    "label": "2 "",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "3 §",
+    },
+    "label": "3 §",
+    "page": 7,
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "6 &",
+    },
+    "label": "6 &",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "7 /",
+    },
+    "label": "7 /",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "8 (",
+    },
+    "label": "8 (",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "9 )",
+    },
+    "label": "9 )",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "0 =",
+    },
+    "label": "0 =",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "ß ?",
+    },
+    "label": "ß ?",
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "´ \`",
+    },
+    "label": "´ \`",
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "Ü",
+    },
+    "label": "Ü",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "+ *",
+    },
+    "label": "+ *",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "de": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "# '",
+    },
+    "label": "# '",
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "Ö",
+    },
+    "label": "Ö",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "Ä",
+    },
+    "label": "Ä",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "^ °",
+    },
+    "label": "^ °",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": ", ;",
+    },
+    "label": ", ;",
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": ". :",
+    },
+    "label": ". :",
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "de": {
+      "category": "Numbers + Punctuation",
+      "short": "- _",
+    },
+    "label": "- _",
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "de": {
+      "category": "International",
+      "short": "< >",
+    },
+    "label": "< >",
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > en-ca overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard X",
+      "med": "X",
+      "short": "X",
+    },
+    "en-ca": {
+      "category": "Letters",
+      "short": "X",
+    },
+    "label": "X",
+    "page": 7,
+    "usage": 27,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Z",
+      "med": "Z",
+      "short": "Z",
+    },
+    "en-ca": {
+      "category": "Letters",
+      "short": "Z",
+    },
+    "label": "Z",
+    "page": 7,
+    "usage": 29,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ?",
+    },
+    "label": "6 ?",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "label": "7 &",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "label": "8 *",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "label": "9 (",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "label": "0 )",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "label": "= +",
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": "^ ¨",
+    },
+    "label": "^ ¨",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": "Ç",
+    },
+    "label": "Ç",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "en-ca": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "À",
+    },
+    "label": "À",
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "label": "; :",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": "È",
+    },
+    "label": "È",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": "/ \\",
+    },
+    "label": "/ \\",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": ", '",
+    },
+    "label": ", '",
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": ". "",
+    },
+    "label": ". "",
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "en-ca": {
+      "category": "Numbers + Punctuation",
+      "short": "É",
+    },
+    "label": "É",
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "en-ca": {
+      "category": "International",
+      "short": "Ù",
+    },
+    "label": "Ù",
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > en-uk overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "en-uk": {
+      "category": "Numbers + Punctuation",
+      "short": "2 "",
+    },
+    "label": "2 "",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "en-uk": {
+      "category": "Numbers + Punctuation",
+      "short": "3 £",
+    },
+    "label": "3 £",
+    "page": 7,
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "en-uk": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "label": "4 $",
+    "page": 7,
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "en-uk": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "# ~",
+    },
+    "label": "# ~",
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "en-uk": {
+      "category": "Numbers + Punctuation",
+      "short": "' @",
+    },
+    "label": "' @",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "en-uk": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ¬",
+    },
+    "label": "\` ¬",
+    "page": 7,
+    "usage": 53,
+  },
+]
+`;
+
+exports[`host layout overlays > es overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard E",
+      "med": "E",
+      "short": "E",
+    },
+    "es": {
+      "category": "Letters",
+      "short": "E",
+    },
+    "label": "E",
+    "page": 7,
+    "usage": 8,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "1 | !",
+    },
+    "label": "1 | !",
+    "page": 7,
+    "usage": 30,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @ "",
+    },
+    "label": "2 @ "",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "3 # ·",
+    },
+    "label": "3 # ·",
+    "page": 7,
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "4 ~ $",
+    },
+    "label": "4 ~ $",
+    "page": 7,
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "5 € %",
+    },
+    "label": "5 € %",
+    "page": 7,
+    "usage": 34,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ¬ &",
+    },
+    "label": "6 ¬ &",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "7 /",
+    },
+    "label": "7 /",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "8 (",
+    },
+    "label": "8 (",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "9 )",
+    },
+    "label": "9 )",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "0 =",
+    },
+    "label": "0 =",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "' ?",
+    },
+    "label": "' ?",
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "¿ ¡",
+    },
+    "label": "¿ ¡",
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "\` [ ^",
+    },
+    "label": "\` [ ^",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "+ ] *",
+    },
+    "label": "+ ] *",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "Ç",
+    },
+    "label": "Ç",
+    "page": 7,
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "es": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "Ç",
+    },
+    "label": "Ç",
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "Ñ",
+    },
+    "label": "Ñ",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "´ { ¨",
+    },
+    "label": "´ { ¨",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "| \\ °",
+    },
+    "label": "| \\ °",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": ", ;",
+    },
+    "label": ", ;",
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": ": .",
+    },
+    "label": ": .",
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "es": {
+      "category": "Numbers + Punctuation",
+      "short": "- _",
+    },
+    "label": "- _",
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "es": {
+      "category": "International",
+      "short": "< >",
+    },
+    "label": "< >",
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > es-latam overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Q",
+      "med": "Q",
+      "short": "Q",
+    },
+    "es-latam": {
+      "category": "Letters",
+      "short": "Q",
+    },
+    "label": "Q",
+    "page": 7,
+    "usage": 20,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "2 "",
+    },
+    "label": "2 "",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "6 &",
+    },
+    "label": "6 &",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "7 /",
+    },
+    "label": "7 /",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "8 (",
+    },
+    "label": "8 (",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "9 )",
+    },
+    "label": "9 )",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "0 =",
+    },
+    "label": "0 =",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "' \\ ?",
+    },
+    "label": "' \\ ?",
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "¿ ¡",
+    },
+    "label": "¿ ¡",
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "´ ¨",
+    },
+    "label": "´ ¨",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "+ *",
+    },
+    "label": "+ *",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "label": "] }",
+    "page": 7,
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "Ñ",
+    },
+    "label": "Ñ",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "{ [",
+    },
+    "label": "{ [",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "| ¬ °",
+    },
+    "label": "| ¬ °",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": ", ;",
+    },
+    "label": ", ;",
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": ": .",
+    },
+    "label": ": .",
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "es-latam": {
+      "category": "Numbers + Punctuation",
+      "short": "- _",
+    },
+    "label": "- _",
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "es-latam": {
+      "category": "International",
+      "short": "< >",
+    },
+    "label": "< >",
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > eurkey overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard A",
+      "med": "A",
+      "short": "A",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "A",
+    },
+    "label": "A",
+    "page": 7,
+    "usage": 4,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard B",
+      "med": "B",
+      "short": "B",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "B",
+    },
+    "label": "B",
+    "page": 7,
+    "usage": 5,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard C",
+      "med": "C",
+      "short": "C",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "C",
+    },
+    "label": "C",
+    "page": 7,
+    "usage": 6,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard D",
+      "med": "D",
+      "short": "D",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "D",
+    },
+    "label": "D",
+    "page": 7,
+    "usage": 7,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard E",
+      "med": "E",
+      "short": "E",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "E",
+    },
+    "label": "E",
+    "page": 7,
+    "usage": 8,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard F",
+      "med": "F",
+      "short": "F",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "F",
+    },
+    "label": "F",
+    "page": 7,
+    "usage": 9,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard G",
+      "med": "G",
+      "short": "G",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "G",
+    },
+    "label": "G",
+    "page": 7,
+    "usage": 10,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard H",
+      "med": "H",
+      "short": "H",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "H",
+    },
+    "label": "H",
+    "page": 7,
+    "usage": 11,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard I",
+      "med": "I",
+      "short": "I",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "I",
+    },
+    "label": "I",
+    "page": 7,
+    "usage": 12,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard J",
+      "med": "J",
+      "short": "J",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "J",
+    },
+    "label": "J",
+    "page": 7,
+    "usage": 13,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard K",
+      "med": "K",
+      "short": "K",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "K",
+    },
+    "label": "K",
+    "page": 7,
+    "usage": 14,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard L",
+      "med": "L",
+      "short": "L",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "L",
+    },
+    "label": "L",
+    "page": 7,
+    "usage": 15,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard M",
+      "med": "M",
+      "short": "M",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "M Ω √",
+    },
+    "label": "M Ω √",
+    "page": 7,
+    "usage": 16,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard N",
+      "med": "N",
+      "short": "N",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "N",
+    },
+    "label": "N",
+    "page": 7,
+    "usage": 17,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard O",
+      "med": "O",
+      "short": "O",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "O",
+    },
+    "label": "O",
+    "page": 7,
+    "usage": 18,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard P",
+      "med": "P",
+      "short": "P",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "P",
+    },
+    "label": "P",
+    "page": 7,
+    "usage": 19,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Q",
+      "med": "Q",
+      "short": "Q",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "Q",
+    },
+    "label": "Q",
+    "page": 7,
+    "usage": 20,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard R",
+      "med": "R",
+      "short": "R",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "R",
+    },
+    "label": "R",
+    "page": 7,
+    "usage": 21,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard S",
+      "med": "S",
+      "short": "S",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "S",
+    },
+    "label": "S",
+    "page": 7,
+    "usage": 22,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard T",
+      "med": "T",
+      "short": "T",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "T",
+    },
+    "label": "T",
+    "page": 7,
+    "usage": 23,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard U",
+      "med": "U",
+      "short": "U",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "U",
+    },
+    "label": "U",
+    "page": 7,
+    "usage": 24,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard V",
+      "med": "V",
+      "short": "V",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "V",
+    },
+    "label": "V",
+    "page": 7,
+    "usage": 25,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard W",
+      "med": "W",
+      "short": "W",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "W",
+    },
+    "label": "W",
+    "page": 7,
+    "usage": 26,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard X",
+      "med": "X",
+      "short": "X",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "X",
+    },
+    "label": "X",
+    "page": 7,
+    "usage": 27,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Y",
+      "med": "Y",
+      "short": "Y",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "Y",
+    },
+    "label": "Y",
+    "page": 7,
+    "usage": 28,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Z",
+      "med": "Z",
+      "short": "Z",
+    },
+    "eurkey": {
+      "category": "Letters",
+      "short": "Z",
+    },
+    "label": "Z",
+    "page": 7,
+    "usage": 29,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "1 ¡ ! ¹",
+    },
+    "label": "1 ¡ ! ¹",
+    "page": 7,
+    "usage": 30,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "2 ª @ ²",
+    },
+    "label": "2 ª @ ²",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "3 º # ³",
+    },
+    "label": "3 º # ³",
+    "page": 7,
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "4 £ $ ¥",
+    },
+    "label": "4 £ $ ¥",
+    "page": 7,
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "5 € % ¢",
+    },
+    "label": "5 € % ¢",
+    "page": 7,
+    "usage": 34,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^ ^ ˇ",
+    },
+    "label": "6 ^ ^ ˇ",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "7 ˚ & ¯",
+    },
+    "label": "7 ˚ & ¯",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "8 „ * ‚",
+    },
+    "label": "8 „ * ‚",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "9 “ ( ‘",
+    },
+    "label": "9 “ ( ‘",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "0 ” ) ’",
+    },
+    "label": "0 ” ) ’",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- © _ №",
+    },
+    "label": "- © _ №",
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= × + ÷",
+    },
+    "label": "= × + ÷",
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "[ « { ‹",
+    },
+    "label": "[ « { ‹",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "] » } ›",
+    },
+    "label": "] » } ›",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ ¬ | ¦",
+    },
+    "label": "\\ ¬ | ¦",
+    "page": 7,
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "; ° : ·",
+    },
+    "label": "; ° : ·",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "' ´ " ¨",
+    },
+    "label": "' ´ " ¨",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "\` \` ~ ~",
+    },
+    "label": "\` \` ~ ~",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": ", ò < Ò",
+    },
+    "label": ", ò < Ò",
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": ". ó > Ó",
+    },
+    "label": ". ó > Ó",
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "eurkey": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ¿ ? …",
+    },
+    "label": "/ ¿ ? …",
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "eurkey": {
+      "category": "International",
+      "short": "\\ |",
+    },
+    "label": "\\ |",
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > fr overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard A",
+      "med": "A",
+      "short": "A",
+    },
+    "fr": {
+      "category": "Letters",
+      "short": "Q",
+    },
+    "label": "Q",
+    "page": 7,
+    "usage": 4,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard M",
+      "med": "M",
+      "short": "M",
+    },
+    "fr": {
+      "category": "Letters",
+      "short": ", ?",
+    },
+    "label": ", ?",
+    "page": 7,
+    "usage": 16,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Q",
+      "med": "Q",
+      "short": "Q",
+    },
+    "fr": {
+      "category": "Letters",
+      "short": "A",
+    },
+    "label": "A",
+    "page": 7,
+    "usage": 20,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard W",
+      "med": "W",
+      "short": "W",
+    },
+    "fr": {
+      "category": "Letters",
+      "short": "Z",
+    },
+    "label": "Z",
+    "page": 7,
+    "usage": 26,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Z",
+      "med": "Z",
+      "short": "Z",
+    },
+    "fr": {
+      "category": "Letters",
+      "short": "W",
+    },
+    "label": "W",
+    "page": 7,
+    "usage": 29,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "& 1",
+    },
+    "label": "& 1",
+    "page": 7,
+    "usage": 30,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "é 2",
+    },
+    "label": "é 2",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "" 3",
+    },
+    "label": "" 3",
+    "page": 7,
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "' 4",
+    },
+    "label": "' 4",
+    "page": 7,
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "( 5",
+    },
+    "label": "( 5",
+    "page": 7,
+    "usage": 34,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "- 6",
+    },
+    "label": "- 6",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "è 7",
+    },
+    "label": "è 7",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "_ 8",
+    },
+    "label": "_ 8",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "ç 9",
+    },
+    "label": "ç 9",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "à 0",
+    },
+    "label": "à 0",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": ") °",
+    },
+    "label": ") °",
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "^ ¨",
+    },
+    "label": "^ ¨",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "$ £",
+    },
+    "label": "$ £",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "fr": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "* µ",
+    },
+    "label": "* µ",
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "M",
+    },
+    "label": "M",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "ù %",
+    },
+    "label": "ù %",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "²",
+    },
+    "label": "²",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "; .",
+    },
+    "label": "; .",
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": ": /",
+    },
+    "label": ": /",
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "fr": {
+      "category": "Numbers + Punctuation",
+      "short": "! §",
+    },
+    "label": "! §",
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "fr": {
+      "category": "International",
+      "short": "< >",
+    },
+    "label": "< >",
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > hr overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard B",
+      "med": "B",
+      "short": "B",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "B",
+    },
+    "label": "B",
+    "page": 7,
+    "usage": 5,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard E",
+      "med": "E",
+      "short": "E",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "E",
+    },
+    "label": "E",
+    "page": 7,
+    "usage": 8,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard F",
+      "med": "F",
+      "short": "F",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "F",
+    },
+    "label": "F",
+    "page": 7,
+    "usage": 9,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard G",
+      "med": "G",
+      "short": "G",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "G",
+    },
+    "label": "G",
+    "page": 7,
+    "usage": 10,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard K",
+      "med": "K",
+      "short": "K",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "K",
+    },
+    "label": "K",
+    "page": 7,
+    "usage": 14,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard L",
+      "med": "L",
+      "short": "L",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "L",
+    },
+    "label": "L",
+    "page": 7,
+    "usage": 15,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard M",
+      "med": "M",
+      "short": "M",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "M",
+    },
+    "label": "M",
+    "page": 7,
+    "usage": 16,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard N",
+      "med": "N",
+      "short": "N",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "N",
+    },
+    "label": "N",
+    "page": 7,
+    "usage": 17,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Q",
+      "med": "Q",
+      "short": "Q",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "Q",
+    },
+    "label": "Q",
+    "page": 7,
+    "usage": 20,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard V",
+      "med": "V",
+      "short": "V",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "V",
+    },
+    "label": "V",
+    "page": 7,
+    "usage": 25,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard W",
+      "med": "W",
+      "short": "W",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "W",
+    },
+    "label": "W",
+    "page": 7,
+    "usage": 26,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Y",
+      "med": "Y",
+      "short": "Y",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "Z",
+    },
+    "label": "Z",
+    "page": 7,
+    "usage": 28,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Z",
+      "med": "Z",
+      "short": "Z",
+    },
+    "hr": {
+      "category": "Letters",
+      "short": "Y",
+    },
+    "label": "Y",
+    "page": 7,
+    "usage": 29,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "1 ~ !",
+    },
+    "label": "1 ~ !",
+    "page": 7,
+    "usage": 30,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "2 ˇ "",
+    },
+    "label": "2 ˇ "",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "3 ^ #",
+    },
+    "label": "3 ^ #",
+    "page": 7,
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "4 ˘ $",
+    },
+    "label": "4 ˘ $",
+    "page": 7,
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "5 ° %",
+    },
+    "label": "5 ° %",
+    "page": 7,
+    "usage": 34,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ˛ &",
+    },
+    "label": "6 ˛ &",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "7 \` /",
+    },
+    "label": "7 \` /",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "8 ˙ (",
+    },
+    "label": "8 ˙ (",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "9 ´ )",
+    },
+    "label": "9 ´ )",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "0 ˝ =",
+    },
+    "label": "0 ˝ =",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "' ¨ ?",
+    },
+    "label": "' ¨ ?",
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "+ ¸ *",
+    },
+    "label": "+ ¸ *",
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "Š",
+    },
+    "label": "Š",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "Đ",
+    },
+    "label": "Đ",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "Ž",
+    },
+    "label": "Ž",
+    "page": 7,
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "hr": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "Ž",
+    },
+    "label": "Ž",
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "Č",
+    },
+    "label": "Č",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "Ć",
+    },
+    "label": "Ć",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "¸ ¨",
+    },
+    "label": "¸ ¨",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": ", ;",
+    },
+    "label": ", ;",
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": ". :",
+    },
+    "label": ". :",
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "hr": {
+      "category": "Numbers + Punctuation",
+      "short": "- _",
+    },
+    "label": "- _",
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "hr": {
+      "category": "International",
+      "short": "< >",
+    },
+    "label": "< >",
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > hu overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard A",
+      "med": "A",
+      "short": "A",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "A",
+    },
+    "label": "A",
+    "page": 7,
+    "usage": 4,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard B",
+      "med": "B",
+      "short": "B",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "B",
+    },
+    "label": "B",
+    "page": 7,
+    "usage": 5,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard C",
+      "med": "C",
+      "short": "C",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "C",
+    },
+    "label": "C",
+    "page": 7,
+    "usage": 6,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard D",
+      "med": "D",
+      "short": "D",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "D",
+    },
+    "label": "D",
+    "page": 7,
+    "usage": 7,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard E",
+      "med": "E",
+      "short": "E",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "E",
+    },
+    "label": "E",
+    "page": 7,
+    "usage": 8,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard F",
+      "med": "F",
+      "short": "F",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "F",
+    },
+    "label": "F",
+    "page": 7,
+    "usage": 9,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard G",
+      "med": "G",
+      "short": "G",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "G",
+    },
+    "label": "G",
+    "page": 7,
+    "usage": 10,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard I",
+      "med": "I",
+      "short": "I",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "I",
+    },
+    "label": "I",
+    "page": 7,
+    "usage": 12,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard J",
+      "med": "J",
+      "short": "J",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "J",
+    },
+    "label": "J",
+    "page": 7,
+    "usage": 13,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard K",
+      "med": "K",
+      "short": "K",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "K",
+    },
+    "label": "K",
+    "page": 7,
+    "usage": 14,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard L",
+      "med": "L",
+      "short": "L",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "L",
+    },
+    "label": "L",
+    "page": 7,
+    "usage": 15,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard N",
+      "med": "N",
+      "short": "N",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "N",
+    },
+    "label": "N",
+    "page": 7,
+    "usage": 17,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Q",
+      "med": "Q",
+      "short": "Q",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "Q",
+    },
+    "label": "Q",
+    "page": 7,
+    "usage": 20,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard S",
+      "med": "S",
+      "short": "S",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "S",
+    },
+    "label": "S",
+    "page": 7,
+    "usage": 22,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard U",
+      "med": "U",
+      "short": "U",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "U",
+    },
+    "label": "U",
+    "page": 7,
+    "usage": 24,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard V",
+      "med": "V",
+      "short": "V",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "V",
+    },
+    "label": "V",
+    "page": 7,
+    "usage": 25,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard W",
+      "med": "W",
+      "short": "W",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "W",
+    },
+    "label": "W",
+    "page": 7,
+    "usage": 26,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard X",
+      "med": "X",
+      "short": "X",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "X",
+    },
+    "label": "X",
+    "page": 7,
+    "usage": 27,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Y",
+      "med": "Y",
+      "short": "Y",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "Z",
+    },
+    "label": "Z",
+    "page": 7,
+    "usage": 28,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Z",
+      "med": "Z",
+      "short": "Z",
+    },
+    "hu": {
+      "category": "Letters",
+      "short": "Y",
+    },
+    "label": "Y",
+    "page": 7,
+    "usage": 29,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "1 ~ '",
+    },
+    "label": "1 ~ '",
+    "page": 7,
+    "usage": 30,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "2 ˇ "",
+    },
+    "label": "2 ˇ "",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "3 ^ +",
+    },
+    "label": "3 ^ +",
+    "page": 7,
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "4 ˘ !",
+    },
+    "label": "4 ˘ !",
+    "page": 7,
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "5 ° %",
+    },
+    "label": "5 ° %",
+    "page": 7,
+    "usage": 34,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ˛ /",
+    },
+    "label": "6 ˛ /",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "7 \` =",
+    },
+    "label": "7 \` =",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "8 ˙ (",
+    },
+    "label": "8 ˙ (",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "9 ´ )",
+    },
+    "label": "9 ´ )",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "Ö",
+    },
+    "label": "Ö",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "Ü",
+    },
+    "label": "Ü",
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "Ó",
+    },
+    "label": "Ó",
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "Ő",
+    },
+    "label": "Ő",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "Ú",
+    },
+    "label": "Ú",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "hu": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "Ű",
+    },
+    "label": "Ű",
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "É",
+    },
+    "label": "É",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "Á",
+    },
+    "label": "Á",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "0 §",
+    },
+    "label": "0 §",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": ", ; ?",
+    },
+    "label": ", ; ?",
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": ". :",
+    },
+    "label": ". :",
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "hu": {
+      "category": "Numbers + Punctuation",
+      "short": "- * _",
+    },
+    "label": "- * _",
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "hu": {
+      "category": "International",
+      "short": "Í",
+    },
+    "label": "Í",
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > it overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard E",
+      "med": "E",
+      "short": "E",
+    },
+    "it": {
+      "category": "Letters",
+      "short": "E",
+    },
+    "label": "E",
+    "page": 7,
+    "usage": 8,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "label": "1 !",
+    "page": 7,
+    "usage": 30,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "2 "",
+    },
+    "label": "2 "",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "3 £",
+    },
+    "label": "3 £",
+    "page": 7,
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "6 &",
+    },
+    "label": "6 &",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "7 /",
+    },
+    "label": "7 /",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "8 (",
+    },
+    "label": "8 (",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "9 )",
+    },
+    "label": "9 )",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "0 =",
+    },
+    "label": "0 =",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "' ?",
+    },
+    "label": "' ?",
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "ì ^",
+    },
+    "label": "ì ^",
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "è  [ é",
+    },
+    "label": "è  [ é",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "+  ] *",
+    },
+    "label": "+  ] *",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "ù §",
+    },
+    "label": "ù §",
+    "page": 7,
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "it": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "ù §",
+    },
+    "label": "ù §",
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "ò  @ ç",
+    },
+    "label": "ò  @ ç",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "à  # º",
+    },
+    "label": "à  # º",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "label": "\\ |",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": ", ;",
+    },
+    "label": ", ;",
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": ". :",
+    },
+    "label": ". :",
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "it": {
+      "category": "Numbers + Punctuation",
+      "short": "- _",
+    },
+    "label": "- _",
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "it": {
+      "category": "International",
+      "short": "< >",
+    },
+    "label": "< >",
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > jis overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "short": "2 "",
+    },
+    "label": "2 "",
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "short": "6 &",
+    },
+    "label": "6 &",
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "short": "7 '",
+    },
+    "label": "7 '",
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "short": "8 (",
+    },
+    "label": "8 (",
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "short": "9 )",
+    },
+    "label": "9 )",
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "short": "0",
+    },
+    "label": "0",
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- =",
+    },
+    "label": "- =",
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "^ ~",
+    },
+    "label": "^ ~",
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "short": "@ \`",
+    },
+    "label": "@ \`",
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "label": "[ {",
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "jis": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "] }",
+    },
+    "label": "] }",
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "short": "; +",
+    },
+    "label": "; +",
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "short": ": *",
+    },
+    "label": ": *",
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "jis": {
+      "category": "Numbers + Punctuation",
+      "long": "Hankaku / Zenkaku",
+      "med": "Zen/Han",
+      "short": "全/半",
+    },
+    "label": "全/半",
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "Intl1",
+    },
+    "jis": {
+      "category": "International",
+      "long": "International1 (ろ)",
+      "med": "ろ (Intl1)",
+      "short": "\\_",
+    },
+    "label": "\\_",
+    "page": 7,
+    "usage": 135,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "Intl3",
+    },
+    "jis": {
+      "category": "International",
+      "long": "International3 (¥)",
+      "med": "¥ (Intl3)",
+      "short": "¥ |",
+    },
+    "label": "¥ |",
+    "page": 7,
+    "usage": 137,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "Lang1",
+    },
+    "jis": {
+      "category": "International",
+      "long": "Lang1 (Hiragana/Katakana)",
+      "med": "Lang1 / かな",
+      "short": "かな",
+    },
+    "label": "かな",
+    "page": 7,
+    "usage": 144,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "Lang2",
+    },
+    "jis": {
+      "category": "International",
+      "long": "Lang2 (Eisuu)",
+      "med": "Lang2 / 英数",
+      "short": "英数",
+    },
+    "label": "英数",
+    "page": 7,
+    "usage": 145,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "Lang3",
+    },
+    "jis": {
+      "category": "International",
+      "long": "Lang3 (Kanji)",
+      "med": "Lang3 / 漢字",
+      "short": "漢字",
+    },
+    "label": "漢字",
+    "page": 7,
+    "usage": 146,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "Lang4",
+    },
+    "jis": {
+      "category": "International",
+      "long": "Lang4 (Hiragana)",
+      "med": "Lang4 / ひらがな",
+      "short": "ひら",
+    },
+    "label": "ひら",
+    "page": 7,
+    "usage": 147,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "Lang5",
+    },
+    "jis": {
+      "category": "International",
+      "long": "Lang5 (Katakana)",
+      "med": "Lang5 / カタカナ",
+      "short": "カナ",
+    },
+    "label": "カナ",
+    "page": 7,
+    "usage": 148,
+  },
+]
+`;
+
+exports[`host layout overlays > ko overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "International",
+      "short": "Lang1",
+    },
+    "ko": {
+      "category": "International",
+      "long": "Lang1 (Hangul / English)",
+      "med": "Lang1 / 한영",
+      "short": "한/영",
+    },
+    "label": "한/영",
+    "page": 7,
+    "usage": 144,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "Lang2",
+    },
+    "ko": {
+      "category": "International",
+      "long": "Lang2 (Hanja)",
+      "med": "Lang2 / 한자",
+      "short": "한자",
+    },
+    "label": "한자",
+    "page": 7,
+    "usage": 145,
+  },
+]
+`;
+
+exports[`host layout overlays > no overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "label": "2 "",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "2 "",
+    },
+    "page": 7,
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "label": "3 #",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "page": 7,
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "label": "4 ¤",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "4 ¤",
+    },
+    "page": 7,
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "label": "6 &",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "6 &",
+    },
+    "page": 7,
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "label": "7 /",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "7 /",
+    },
+    "page": 7,
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "label": "8 (",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "8 (",
+    },
+    "page": 7,
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "label": "9 )",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "9 )",
+    },
+    "page": 7,
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "label": "0 =",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "0 =",
+    },
+    "page": 7,
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "label": "+ ?",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "+ ?",
+    },
+    "page": 7,
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "label": "\\ \`",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "\\ \`",
+    },
+    "page": 7,
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "label": "Å",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "Å",
+    },
+    "page": 7,
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "label": "¨ ^",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "¨ ^",
+    },
+    "page": 7,
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "label": "' *",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "' *",
+    },
+    "page": 7,
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "label": "' *",
+    "no": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "' *",
+    },
+    "page": 7,
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "label": "Ø",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "Ø",
+    },
+    "page": 7,
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "label": "Æ",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "Æ",
+    },
+    "page": 7,
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "label": "| §",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "| §",
+    },
+    "page": 7,
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "label": ", ;",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": ", ;",
+    },
+    "page": 7,
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "label": ". :",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": ". :",
+    },
+    "page": 7,
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "label": "- _",
+    "no": {
+      "category": "Numbers + Punctuation",
+      "short": "- _",
+    },
+    "page": 7,
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "label": "< >",
+    "no": {
+      "category": "International",
+      "short": "< >",
+    },
+    "page": 7,
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > pl overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard A",
+      "med": "A",
+      "short": "A",
+    },
+    "label": "A",
+    "page": 7,
+    "pl": {
+      "category": "Letters",
+      "short": "A",
+    },
+    "usage": 4,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard C",
+      "med": "C",
+      "short": "C",
+    },
+    "label": "C",
+    "page": 7,
+    "pl": {
+      "category": "Letters",
+      "short": "C",
+    },
+    "usage": 6,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard E",
+      "med": "E",
+      "short": "E",
+    },
+    "label": "E",
+    "page": 7,
+    "pl": {
+      "category": "Letters",
+      "short": "E",
+    },
+    "usage": 8,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard L",
+      "med": "L",
+      "short": "L",
+    },
+    "label": "L",
+    "page": 7,
+    "pl": {
+      "category": "Letters",
+      "short": "L",
+    },
+    "usage": 15,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard N",
+      "med": "N",
+      "short": "N",
+    },
+    "label": "N",
+    "page": 7,
+    "pl": {
+      "category": "Letters",
+      "short": "N",
+    },
+    "usage": 17,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard O",
+      "med": "O",
+      "short": "O",
+    },
+    "label": "O",
+    "page": 7,
+    "pl": {
+      "category": "Letters",
+      "short": "O",
+    },
+    "usage": 18,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard S",
+      "med": "S",
+      "short": "S",
+    },
+    "label": "S",
+    "page": 7,
+    "pl": {
+      "category": "Letters",
+      "short": "S",
+    },
+    "usage": 22,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard X",
+      "med": "X",
+      "short": "X",
+    },
+    "label": "X",
+    "page": 7,
+    "pl": {
+      "category": "Letters",
+      "short": "X",
+    },
+    "usage": 27,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Z",
+      "med": "Z",
+      "short": "Z",
+    },
+    "label": "Z",
+    "page": 7,
+    "pl": {
+      "category": "Letters",
+      "short": "Z",
+    },
+    "usage": 29,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "label": "1 !",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "usage": 30,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "label": "2 @",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "label": "3 #",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "label": "4 $",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "label": "5 %",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "usage": 34,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "label": "6 ^",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "label": "7 &",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "label": "8 *",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "label": "9 (",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "label": "0 )",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "label": "- _",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "label": "= +",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "label": "[ {",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "label": "] }",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "label": "\\ |",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "label": "; :",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "label": "' "",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "label": "\` ~",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "label": ", <",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "label": ". >",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "label": "/ ?",
+    "page": 7,
+    "pl": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "label": "\\ |",
+    "page": 7,
+    "pl": {
+      "category": "International",
+      "short": "\\ |",
+    },
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > pt overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard E",
+      "med": "E",
+      "short": "E",
+    },
+    "label": "€ E",
+    "page": 7,
+    "pt": {
+      "category": "Letters",
+      "short": "€ E",
+    },
+    "usage": 8,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "label": "2 @ "",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @ "",
+    },
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "label": "3 £ #",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "3 £ #",
+    },
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "label": "4 § $",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "4 § $",
+    },
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "label": "7 { /",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "7 { /",
+    },
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "label": "8 [ (",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "8 [ (",
+    },
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "label": "9 ] )",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "9 ] )",
+    },
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "label": "0 } =",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "0 } =",
+    },
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "label": "? '",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "? '",
+    },
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "label": "« »",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "« »",
+    },
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "label": "+ ¨ *",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "+ ¨ *",
+    },
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "label": "´ \`",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "´ \`",
+    },
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "label": "~ ^",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "~ ^",
+    },
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "label": "~ ^",
+    "page": 7,
+    "pt": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "~ ^",
+    },
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "label": "Ç",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "Ç",
+    },
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "label": "º ª",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "º ª",
+    },
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "label": "\\ |",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "label": ", ;",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": ", ;",
+    },
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "label": ". :",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": ". :",
+    },
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "label": "- _",
+    "page": 7,
+    "pt": {
+      "category": "Numbers + Punctuation",
+      "short": "- _",
+    },
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "label": "< >",
+    "page": 7,
+    "pt": {
+      "category": "International",
+      "short": "< >",
+    },
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > pt-br overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "label": "6 ¨",
+    "page": 7,
+    "pt-br": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ¨",
+    },
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "label": "´ \`",
+    "page": 7,
+    "pt-br": {
+      "category": "Numbers + Punctuation",
+      "short": "´ \`",
+    },
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "label": "[ {",
+    "page": 7,
+    "pt-br": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "label": "] }",
+    "page": 7,
+    "pt-br": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "label": "] }",
+    "page": 7,
+    "pt-br": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "] }",
+    },
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "label": "Ç",
+    "page": 7,
+    "pt-br": {
+      "category": "Numbers + Punctuation",
+      "short": "Ç",
+    },
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "label": "~ ^",
+    "page": 7,
+    "pt-br": {
+      "category": "Numbers + Punctuation",
+      "short": "~ ^",
+    },
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "label": "' "",
+    "page": 7,
+    "pt-br": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "label": "; :",
+    "page": 7,
+    "pt-br": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "label": "\\ |",
+    "page": 7,
+    "pt-br": {
+      "category": "International",
+      "short": "\\ |",
+    },
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > sk overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard B",
+      "med": "B",
+      "short": "B",
+    },
+    "label": "B",
+    "page": 7,
+    "sk": {
+      "category": "Letters",
+      "short": "B",
+    },
+    "usage": 5,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard E",
+      "med": "E",
+      "short": "E",
+    },
+    "label": "E",
+    "page": 7,
+    "sk": {
+      "category": "Letters",
+      "short": "E",
+    },
+    "usage": 8,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard N",
+      "med": "N",
+      "short": "N",
+    },
+    "label": "N",
+    "page": 7,
+    "sk": {
+      "category": "Letters",
+      "short": "N",
+    },
+    "usage": 17,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard P",
+      "med": "P",
+      "short": "P",
+    },
+    "label": "P",
+    "page": 7,
+    "sk": {
+      "category": "Letters",
+      "short": "P",
+    },
+    "usage": 19,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Q",
+      "med": "Q",
+      "short": "Q",
+    },
+    "label": "Q",
+    "page": 7,
+    "sk": {
+      "category": "Letters",
+      "short": "Q",
+    },
+    "usage": 20,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard V",
+      "med": "V",
+      "short": "V",
+    },
+    "label": "V",
+    "page": 7,
+    "sk": {
+      "category": "Letters",
+      "short": "V",
+    },
+    "usage": 25,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard W",
+      "med": "W",
+      "short": "W",
+    },
+    "label": "W",
+    "page": 7,
+    "sk": {
+      "category": "Letters",
+      "short": "W",
+    },
+    "usage": 26,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard X",
+      "med": "X",
+      "short": "X",
+    },
+    "label": "X",
+    "page": 7,
+    "sk": {
+      "category": "Letters",
+      "short": "X",
+    },
+    "usage": 27,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Z",
+      "med": "Z",
+      "short": "Z",
+    },
+    "label": "Z",
+    "page": 7,
+    "sk": {
+      "category": "Letters",
+      "short": "Z",
+    },
+    "usage": 29,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "label": "+  ^ 1",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "+  ^ 1",
+    },
+    "usage": 30,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "label": "ľ  ˘ 2",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "ľ  ˘ 2",
+    },
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "label": "š  ° 3",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "š  ° 3",
+    },
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "label": "č  ˛ 4",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "č  ˛ 4",
+    },
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "label": "ť  \` 5",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "ť  \` 5",
+    },
+    "usage": 34,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "label": "ž  ˙ 6",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "ž  ˙ 6",
+    },
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "label": "ý  ˝ 7",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "ý  ˝ 7",
+    },
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "label": "á  ¨ 8",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "á  ¨ 8",
+    },
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "label": "í  ¸ 9",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "í  ¸ 9",
+    },
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "label": "é 0",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "é 0",
+    },
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "label": "= %",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "= %",
+    },
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "label": "´ ˇ",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "´ ˇ",
+    },
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "label": "ú  ÷ /",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "ú  ÷ /",
+    },
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "label": "ä  × (",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "ä  × (",
+    },
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "label": "ň )",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "ň )",
+    },
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "label": "ô "",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "ô "",
+    },
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "label": "§ !",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "§ !",
+    },
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "label": "°  ~ ;",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "°  ~ ;",
+    },
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "label": ", ?",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": ", ?",
+    },
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "label": ". :",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": ". :",
+    },
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "label": "- _",
+    "page": 7,
+    "sk": {
+      "category": "Numbers + Punctuation",
+      "short": "- _",
+    },
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "label": "&  < *",
+    "page": 7,
+    "sk": {
+      "category": "International",
+      "short": "&  < *",
+    },
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > sv overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "label": "2 "",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "2 "",
+    },
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "label": "3 #",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "label": "4 ¤",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "4 ¤",
+    },
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "label": "5 %",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "usage": 34,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "label": "6 &",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "6 &",
+    },
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "label": "7 /",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "7 /",
+    },
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "label": "8 (",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "8 (",
+    },
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "label": "9 )",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "9 )",
+    },
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "label": "0 =",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "0 =",
+    },
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "label": "+ ?",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "+ ?",
+    },
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "label": "´ \`",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "´ \`",
+    },
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "label": "Å",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "Å",
+    },
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "label": "¨ ^",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "¨ ^",
+    },
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\\ |",
+    },
+    "label": "' *",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "' *",
+    },
+    "usage": 49,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "label": "' *",
+    "page": 7,
+    "sv": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "' *",
+    },
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "label": "Ö",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "Ö",
+    },
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "label": "Ä",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "Ä",
+    },
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "label": "§ ½",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "§ ½",
+    },
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "label": ", ;",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": ", ;",
+    },
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "label": ". :",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": ". :",
+    },
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "label": "- _",
+    "page": 7,
+    "sv": {
+      "category": "Numbers + Punctuation",
+      "short": "- _",
+    },
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "label": "> <",
+    "page": 7,
+    "sv": {
+      "category": "International",
+      "short": "> <",
+    },
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > tr overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard A",
+      "med": "A",
+      "short": "A",
+    },
+    "label": "A",
+    "page": 7,
+    "tr": {
+      "category": "Letters",
+      "short": "A",
+    },
+    "usage": 4,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard E",
+      "med": "E",
+      "short": "E",
+    },
+    "label": "E",
+    "page": 7,
+    "tr": {
+      "category": "Letters",
+      "short": "E",
+    },
+    "usage": 8,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Q",
+      "med": "Q",
+      "short": "Q",
+    },
+    "label": "Q",
+    "page": 7,
+    "tr": {
+      "category": "Letters",
+      "short": "Q",
+    },
+    "usage": 20,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard S",
+      "med": "S",
+      "short": "S",
+    },
+    "label": "S",
+    "page": 7,
+    "tr": {
+      "category": "Letters",
+      "short": "S",
+    },
+    "usage": 22,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard T",
+      "med": "T",
+      "short": "T",
+    },
+    "label": "T",
+    "page": 7,
+    "tr": {
+      "category": "Letters",
+      "short": "T",
+    },
+    "usage": 23,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "label": "1 !",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "usage": 30,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "label": "2 '",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "2 '",
+    },
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "label": "3 ^",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "3 ^",
+    },
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "label": "4 +",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "4 +",
+    },
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "label": "5 %",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "usage": 34,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "label": "6 &",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "6 &",
+    },
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "label": "7 /",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "7 /",
+    },
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "label": "8 (",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "8 (",
+    },
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "label": "9 )",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "9 )",
+    },
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "label": "0 =",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "0 =",
+    },
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "label": "* ?",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "* ?",
+    },
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "label": "- _",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "- _",
+    },
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "label": "Ğ",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "Ğ",
+    },
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "label": "Ü",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "Ü",
+    },
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "label": ", ;",
+    "page": 7,
+    "tr": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": ", ;",
+    },
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "label": "Ş",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "Ş",
+    },
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "label": "İ",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "İ",
+    },
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "label": "" é",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "" é",
+    },
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "label": "Ö",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "Ö",
+    },
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "label": "Ç",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": "Ç",
+    },
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "label": ". :",
+    "page": 7,
+    "tr": {
+      "category": "Numbers + Punctuation",
+      "short": ". :",
+    },
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "label": "< >",
+    "page": 7,
+    "tr": {
+      "category": "International",
+      "short": "< >",
+    },
+    "usage": 100,
+  },
+]
+`;
+
+exports[`host layout overlays > us-intl overlay label snapshot > captures the overlay label mapping 1`] = `
+[
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard A",
+      "med": "A",
+      "short": "A",
+    },
+    "label": "a  á A  Á",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "a  á A  Á",
+    },
+    "usage": 4,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard B",
+      "med": "B",
+      "short": "B",
+    },
+    "label": "B",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "B",
+    },
+    "usage": 5,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard C",
+      "med": "C",
+      "short": "C",
+    },
+    "label": "c  © C  ¢",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "c  © C  ¢",
+    },
+    "usage": 6,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard D",
+      "med": "D",
+      "short": "D",
+    },
+    "label": "d  ð D  Ð",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "d  ð D  Ð",
+    },
+    "usage": 7,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard E",
+      "med": "E",
+      "short": "E",
+    },
+    "label": "e  é E  É",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "e  é E  É",
+    },
+    "usage": 8,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard F",
+      "med": "F",
+      "short": "F",
+    },
+    "label": "F",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "F",
+    },
+    "usage": 9,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard G",
+      "med": "G",
+      "short": "G",
+    },
+    "label": "G",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "G",
+    },
+    "usage": 10,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard H",
+      "med": "H",
+      "short": "H",
+    },
+    "label": "H",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "H",
+    },
+    "usage": 11,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard I",
+      "med": "I",
+      "short": "I",
+    },
+    "label": "i  í I  Í",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "i  í I  Í",
+    },
+    "usage": 12,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard J",
+      "med": "J",
+      "short": "J",
+    },
+    "label": "J",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "J",
+    },
+    "usage": 13,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard K",
+      "med": "K",
+      "short": "K",
+    },
+    "label": "K",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "K",
+    },
+    "usage": 14,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard L",
+      "med": "L",
+      "short": "L",
+    },
+    "label": "l  ø L  Ø",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "l  ø L  Ø",
+    },
+    "usage": 15,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard M",
+      "med": "M",
+      "short": "M",
+    },
+    "label": "M",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "M",
+    },
+    "usage": 16,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard N",
+      "med": "N",
+      "short": "N",
+    },
+    "label": "n  ñ N  Ñ",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "n  ñ N  Ñ",
+    },
+    "usage": 17,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard O",
+      "med": "O",
+      "short": "O",
+    },
+    "label": "o  ó O  Ó",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "o  ó O  Ó",
+    },
+    "usage": 18,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard P",
+      "med": "P",
+      "short": "P",
+    },
+    "label": "p  ö P  Ö",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "p  ö P  Ö",
+    },
+    "usage": 19,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Q",
+      "med": "Q",
+      "short": "Q",
+    },
+    "label": "q  ä Q  Ä",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "q  ä Q  Ä",
+    },
+    "usage": 20,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard R",
+      "med": "R",
+      "short": "R",
+    },
+    "label": "R",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "R",
+    },
+    "usage": 21,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard S",
+      "med": "S",
+      "short": "S",
+    },
+    "label": "s  ß S  §",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "s  ß S  §",
+    },
+    "usage": 22,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard T",
+      "med": "T",
+      "short": "T",
+    },
+    "label": "t  þ T  Þ",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "t  þ T  Þ",
+    },
+    "usage": 23,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard U",
+      "med": "U",
+      "short": "U",
+    },
+    "label": "u  ú U  Ú",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "u  ú U  Ú",
+    },
+    "usage": 24,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard V",
+      "med": "V",
+      "short": "V",
+    },
+    "label": "V",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "V",
+    },
+    "usage": 25,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard W",
+      "med": "W",
+      "short": "W",
+    },
+    "label": "w  å W  Å",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "w  å W  Å",
+    },
+    "usage": 26,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard X",
+      "med": "X",
+      "short": "X",
+    },
+    "label": "X",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "X",
+    },
+    "usage": 27,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Y",
+      "med": "Y",
+      "short": "Y",
+    },
+    "label": "y  ü Y  Ü",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "y  ü Y  Ü",
+    },
+    "usage": 28,
+  },
+  {
+    "base": {
+      "category": "Letters",
+      "long": "Keyboard Z",
+      "med": "Z",
+      "short": "Z",
+    },
+    "label": "z  æ Z  Æ",
+    "page": 7,
+    "us-intl": {
+      "category": "Letters",
+      "short": "z  æ Z  Æ",
+    },
+    "usage": 29,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "1 !",
+    },
+    "label": "1  ¡ !  ¹",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "1  ¡ !  ¹",
+    },
+    "usage": 30,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "2 @",
+    },
+    "label": "@",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "@",
+    },
+    "usage": 31,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "3 #",
+    },
+    "label": "#",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "#",
+    },
+    "usage": 32,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "4 $",
+    },
+    "label": "4  ¤ $  £",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "4  ¤ $  £",
+    },
+    "usage": 33,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "5 %",
+    },
+    "label": "%",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "%",
+    },
+    "usage": 34,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "6 ^",
+    },
+    "label": "^",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "^",
+    },
+    "usage": 35,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "7 &",
+    },
+    "label": "&",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "&",
+    },
+    "usage": 36,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "8 *",
+    },
+    "label": "*",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "*",
+    },
+    "usage": 37,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "9 (",
+    },
+    "label": "(",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "(",
+    },
+    "usage": 38,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "0 )",
+    },
+    "label": ")",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": ")",
+    },
+    "usage": 39,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "- _",
+    },
+    "label": "_",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "med": "Dash",
+      "short": "_",
+    },
+    "usage": 45,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "= +",
+    },
+    "label": "=  × +  ÷",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "med": "Equals",
+      "short": "=  × +  ÷",
+    },
+    "usage": 46,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "[ {",
+    },
+    "label": "{",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "{",
+    },
+    "usage": 47,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "] }",
+    },
+    "label": "}",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "}",
+    },
+    "usage": 48,
+  },
+  {
+    "base": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "NUHS",
+    },
+    "label": "\\  ¬ |  ¦",
+    "page": 7,
+    "us-intl": {
+      "category": "International",
+      "long": "NonUS Hash",
+      "short": "\\  ¬ |  ¦",
+    },
+    "usage": 50,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "; :",
+    },
+    "label": ";  ¶ :  °",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": ";  ¶ :  °",
+    },
+    "usage": 51,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "' "",
+    },
+    "label": "'  ´ "  ¨",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "'  ´ "  ¨",
+    },
+    "usage": 52,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "\` ~",
+    },
+    "label": "~",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "~",
+    },
+    "usage": 53,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ", <",
+    },
+    "label": ",  ç <  Ç",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": ",  ç <  Ç",
+    },
+    "usage": 54,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": ". >",
+    },
+    "label": ">",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": ">",
+    },
+    "usage": 55,
+  },
+  {
+    "base": {
+      "category": "Numbers + Punctuation",
+      "short": "/ ?",
+    },
+    "label": "?",
+    "page": 7,
+    "us-intl": {
+      "category": "Numbers + Punctuation",
+      "short": "?",
+    },
+    "usage": 56,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "NUBS",
+    },
+    "label": "|",
+    "page": 7,
+    "us-intl": {
+      "category": "International",
+      "short": "|",
+    },
+    "usage": 100,
+  },
+]
+`;

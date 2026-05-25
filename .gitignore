@@ -25,3 +25,6 @@ src/data
 *.sw?
 
 *storybook.log
+
+# Layout-import script's download cache (re-fetched on demand)
+scripts/.layout-cache/
