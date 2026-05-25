@@ -1,0 +1,530 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`keymap-parser canonical table > captures every canonical ZMK name <-> HID code mapping 1`] = `
+[
+  {
+    "code": "0x00070004",
+    "name": "A",
+  },
+  {
+    "code": "0x00070005",
+    "name": "B",
+  },
+  {
+    "code": "0x00070006",
+    "name": "C",
+  },
+  {
+    "code": "0x00070007",
+    "name": "D",
+  },
+  {
+    "code": "0x00070008",
+    "name": "E",
+  },
+  {
+    "code": "0x00070009",
+    "name": "F",
+  },
+  {
+    "code": "0x0007000a",
+    "name": "G",
+  },
+  {
+    "code": "0x0007000b",
+    "name": "H",
+  },
+  {
+    "code": "0x0007000c",
+    "name": "I",
+  },
+  {
+    "code": "0x0007000d",
+    "name": "J",
+  },
+  {
+    "code": "0x0007000e",
+    "name": "K",
+  },
+  {
+    "code": "0x0007000f",
+    "name": "L",
+  },
+  {
+    "code": "0x00070010",
+    "name": "M",
+  },
+  {
+    "code": "0x00070011",
+    "name": "N",
+  },
+  {
+    "code": "0x00070012",
+    "name": "O",
+  },
+  {
+    "code": "0x00070013",
+    "name": "P",
+  },
+  {
+    "code": "0x00070014",
+    "name": "Q",
+  },
+  {
+    "code": "0x00070015",
+    "name": "R",
+  },
+  {
+    "code": "0x00070016",
+    "name": "S",
+  },
+  {
+    "code": "0x00070017",
+    "name": "T",
+  },
+  {
+    "code": "0x00070018",
+    "name": "U",
+  },
+  {
+    "code": "0x00070019",
+    "name": "V",
+  },
+  {
+    "code": "0x0007001a",
+    "name": "W",
+  },
+  {
+    "code": "0x0007001b",
+    "name": "X",
+  },
+  {
+    "code": "0x0007001c",
+    "name": "Y",
+  },
+  {
+    "code": "0x0007001d",
+    "name": "Z",
+  },
+  {
+    "code": "0x0007001e",
+    "name": "N1",
+  },
+  {
+    "code": "0x0007001f",
+    "name": "N2",
+  },
+  {
+    "code": "0x00070020",
+    "name": "N3",
+  },
+  {
+    "code": "0x00070021",
+    "name": "N4",
+  },
+  {
+    "code": "0x00070022",
+    "name": "N5",
+  },
+  {
+    "code": "0x00070023",
+    "name": "N6",
+  },
+  {
+    "code": "0x00070024",
+    "name": "N7",
+  },
+  {
+    "code": "0x00070025",
+    "name": "N8",
+  },
+  {
+    "code": "0x00070026",
+    "name": "N9",
+  },
+  {
+    "code": "0x00070027",
+    "name": "N0",
+  },
+  {
+    "code": "0x00070028",
+    "name": "RET",
+  },
+  {
+    "code": "0x00070029",
+    "name": "ESC",
+  },
+  {
+    "code": "0x0007002a",
+    "name": "BSPC",
+  },
+  {
+    "code": "0x0007002b",
+    "name": "TAB",
+  },
+  {
+    "code": "0x0007002c",
+    "name": "SPACE",
+  },
+  {
+    "code": "0x0007002d",
+    "name": "MINUS",
+  },
+  {
+    "code": "0x0007002e",
+    "name": "EQUAL",
+  },
+  {
+    "code": "0x0007002f",
+    "name": "LBKT",
+  },
+  {
+    "code": "0x00070030",
+    "name": "RBKT",
+  },
+  {
+    "code": "0x00070031",
+    "name": "BSLH",
+  },
+  {
+    "code": "0x00070032",
+    "name": "NUHS",
+  },
+  {
+    "code": "0x00070033",
+    "name": "SEMI",
+  },
+  {
+    "code": "0x00070034",
+    "name": "SQT",
+  },
+  {
+    "code": "0x00070035",
+    "name": "GRAVE",
+  },
+  {
+    "code": "0x00070036",
+    "name": "COMMA",
+  },
+  {
+    "code": "0x00070037",
+    "name": "DOT",
+  },
+  {
+    "code": "0x00070038",
+    "name": "FSLH",
+  },
+  {
+    "code": "0x00070039",
+    "name": "CAPS",
+  },
+  {
+    "code": "0x0007003a",
+    "name": "F1",
+  },
+  {
+    "code": "0x0007003b",
+    "name": "F2",
+  },
+  {
+    "code": "0x0007003c",
+    "name": "F3",
+  },
+  {
+    "code": "0x0007003d",
+    "name": "F4",
+  },
+  {
+    "code": "0x0007003e",
+    "name": "F5",
+  },
+  {
+    "code": "0x0007003f",
+    "name": "F6",
+  },
+  {
+    "code": "0x00070040",
+    "name": "F7",
+  },
+  {
+    "code": "0x00070041",
+    "name": "F8",
+  },
+  {
+    "code": "0x00070042",
+    "name": "F9",
+  },
+  {
+    "code": "0x00070043",
+    "name": "F10",
+  },
+  {
+    "code": "0x00070044",
+    "name": "F11",
+  },
+  {
+    "code": "0x00070045",
+    "name": "F12",
+  },
+  {
+    "code": "0x00070046",
+    "name": "PRSC",
+  },
+  {
+    "code": "0x00070047",
+    "name": "SLCK",
+  },
+  {
+    "code": "0x00070048",
+    "name": "PAUSE",
+  },
+  {
+    "code": "0x00070049",
+    "name": "INS",
+  },
+  {
+    "code": "0x0007004a",
+    "name": "HOME",
+  },
+  {
+    "code": "0x0007004b",
+    "name": "PGUP",
+  },
+  {
+    "code": "0x0007004c",
+    "name": "DEL",
+  },
+  {
+    "code": "0x0007004d",
+    "name": "END",
+  },
+  {
+    "code": "0x0007004e",
+    "name": "PGDN",
+  },
+  {
+    "code": "0x0007004f",
+    "name": "RIGHT",
+  },
+  {
+    "code": "0x00070050",
+    "name": "LEFT",
+  },
+  {
+    "code": "0x00070051",
+    "name": "DOWN",
+  },
+  {
+    "code": "0x00070052",
+    "name": "UP",
+  },
+  {
+    "code": "0x00070053",
+    "name": "KP_NUM",
+  },
+  {
+    "code": "0x00070054",
+    "name": "KP_SLASH",
+  },
+  {
+    "code": "0x00070055",
+    "name": "KP_ASTERISK",
+  },
+  {
+    "code": "0x00070056",
+    "name": "KP_MINUS",
+  },
+  {
+    "code": "0x00070057",
+    "name": "KP_PLUS",
+  },
+  {
+    "code": "0x00070058",
+    "name": "KP_ENTER",
+  },
+  {
+    "code": "0x00070059",
+    "name": "KP_N1",
+  },
+  {
+    "code": "0x0007005a",
+    "name": "KP_N2",
+  },
+  {
+    "code": "0x0007005b",
+    "name": "KP_N3",
+  },
+  {
+    "code": "0x0007005c",
+    "name": "KP_N4",
+  },
+  {
+    "code": "0x0007005d",
+    "name": "KP_N5",
+  },
+  {
+    "code": "0x0007005e",
+    "name": "KP_N6",
+  },
+  {
+    "code": "0x0007005f",
+    "name": "KP_N7",
+  },
+  {
+    "code": "0x00070060",
+    "name": "KP_N8",
+  },
+  {
+    "code": "0x00070061",
+    "name": "KP_N9",
+  },
+  {
+    "code": "0x00070062",
+    "name": "KP_N0",
+  },
+  {
+    "code": "0x00070063",
+    "name": "KP_DOT",
+  },
+  {
+    "code": "0x00070064",
+    "name": "NUBS",
+  },
+  {
+    "code": "0x00070065",
+    "name": "K_APP",
+  },
+  {
+    "code": "0x00070067",
+    "name": "KP_EQUAL",
+  },
+  {
+    "code": "0x00070068",
+    "name": "F13",
+  },
+  {
+    "code": "0x00070069",
+    "name": "F14",
+  },
+  {
+    "code": "0x0007006a",
+    "name": "F15",
+  },
+  {
+    "code": "0x0007006b",
+    "name": "F16",
+  },
+  {
+    "code": "0x0007006c",
+    "name": "F17",
+  },
+  {
+    "code": "0x0007006d",
+    "name": "F18",
+  },
+  {
+    "code": "0x0007006e",
+    "name": "F19",
+  },
+  {
+    "code": "0x0007006f",
+    "name": "F20",
+  },
+  {
+    "code": "0x00070070",
+    "name": "F21",
+  },
+  {
+    "code": "0x00070071",
+    "name": "F22",
+  },
+  {
+    "code": "0x00070072",
+    "name": "F23",
+  },
+  {
+    "code": "0x00070073",
+    "name": "F24",
+  },
+  {
+    "code": "0x000700e0",
+    "name": "LCTL",
+  },
+  {
+    "code": "0x000700e1",
+    "name": "LSHFT",
+  },
+  {
+    "code": "0x000700e2",
+    "name": "LALT",
+  },
+  {
+    "code": "0x000700e3",
+    "name": "LGUI",
+  },
+  {
+    "code": "0x000700e4",
+    "name": "RCTL",
+  },
+  {
+    "code": "0x000700e5",
+    "name": "RSHFT",
+  },
+  {
+    "code": "0x000700e6",
+    "name": "RALT",
+  },
+  {
+    "code": "0x000700e7",
+    "name": "RGUI",
+  },
+  {
+    "code": "0x000c0030",
+    "name": "C_PWR",
+  },
+  {
+    "code": "0x000c0032",
+    "name": "C_SLEEP",
+  },
+  {
+    "code": "0x000c006f",
+    "name": "C_BRI_UP",
+  },
+  {
+    "code": "0x000c0070",
+    "name": "C_BRI_DN",
+  },
+  {
+    "code": "0x000c00b5",
+    "name": "C_NEXT",
+  },
+  {
+    "code": "0x000c00b6",
+    "name": "C_PREV",
+  },
+  {
+    "code": "0x000c00b7",
+    "name": "C_STOP",
+  },
+  {
+    "code": "0x000c00b8",
+    "name": "C_EJECT",
+  },
+  {
+    "code": "0x000c00cd",
+    "name": "C_PP",
+  },
+  {
+    "code": "0x000c00e2",
+    "name": "C_MUTE",
+  },
+  {
+    "code": "0x000c00e9",
+    "name": "C_VOL_UP",
+  },
+  {
+    "code": "0x000c00ea",
+    "name": "C_VOL_DN",
+  },
+]
+`;
