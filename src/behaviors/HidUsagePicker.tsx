@@ -14,60 +14,10 @@ import {
   Tabs,
 } from "react-aria-components";
 import { hid_usage_page_get_ids, hid_usage_get_metadata } from "../hid-usages";
-import { useHostLayout } from "../layouts/LayoutContext";
+import { useHostLayout, useKeyboardShape } from "../layouts/LayoutContext";
+import { type BasicCell, shapeHidIds } from "../layouts/physical";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
-
-type BasicCell = { id: number; w?: number };
-
-// ANSI 60% layout in HID page 7 IDs with per-key width multipliers (1U =
-// standard square). Mirrors a real keyboard so the user can grab Caps /
-// Shift / Space / Mods without leaving the tab and so the layout reads as a
-// keyboard rather than a grid.
-const BASIC_LAYOUT: BasicCell[][] = [
-  // ` 1234567890 - = BkSp(2U)
-  [
-    { id: 53 },
-    { id: 30 }, { id: 31 }, { id: 32 }, { id: 33 }, { id: 34 },
-    { id: 35 }, { id: 36 }, { id: 37 }, { id: 38 }, { id: 39 },
-    { id: 45 }, { id: 46 }, { id: 42, w: 2 },
-  ],
-  // Tab(1.5U) Q-P [ ] \(1.5U)
-  [
-    { id: 43, w: 1.5 },
-    { id: 20 }, { id: 26 }, { id: 8 }, { id: 21 }, { id: 23 },
-    { id: 28 }, { id: 24 }, { id: 12 }, { id: 18 }, { id: 19 },
-    { id: 47 }, { id: 48 }, { id: 49, w: 1.5 },
-  ],
-  // Caps(1.75U) A-L ; ' Ret(2.25U)
-  [
-    { id: 57, w: 1.75 },
-    { id: 4 }, { id: 22 }, { id: 7 }, { id: 9 }, { id: 10 },
-    { id: 11 }, { id: 13 }, { id: 14 }, { id: 15 },
-    { id: 51 }, { id: 52 },
-    { id: 40, w: 2.25 },
-  ],
-  // LShft(2.25U) Z-M , . / RShft(2.75U)
-  [
-    { id: 225, w: 2.25 },
-    { id: 29 }, { id: 27 }, { id: 6 }, { id: 25 }, { id: 5 },
-    { id: 17 }, { id: 16 }, { id: 54 }, { id: 55 }, { id: 56 },
-    { id: 229, w: 2.75 },
-  ],
-  // LCtrl LGUI LAlt(1.25U each) Space(6.25U) RAlt RGUI Menu RCtrl(1.25U each)
-  [
-    { id: 224, w: 1.25 }, { id: 227, w: 1.25 }, { id: 226, w: 1.25 },
-    { id: 44, w: 6.25 },
-    { id: 230, w: 1.25 }, { id: 231, w: 1.25 },
-    { id: 101, w: 1.25 }, { id: 228, w: 1.25 },
-  ],
-];
-
-// Set of HID page 7 IDs that appear on BASIC_LAYOUT, used to keep them
-// out of Navigation/etc. so the Basic tab is their only home.
-const BASIC_LAYOUT_HID_IDS = new Set<number>(
-  BASIC_LAYOUT.flatMap((row) => row.map((cell) => cell.id))
-);
 
 // Standard numeric keypad layout. + and KP Enter are normally 1U×2U and 0
 // is 2U×1U on a real numpad; we keep heights uniform and only widen 0 to
@@ -165,6 +115,8 @@ const HidUsageGrid = ({
   usagePages,
 }: HidUsagePickerProps) => {
   const layout = useHostLayout();
+  const shape = useKeyboardShape();
+  const basicLayoutHidIds = useMemo(() => shapeHidIds(shape), [shape]);
   type Usage = {
     Name: string;
     Id: number;
@@ -242,7 +194,7 @@ const HidUsageGrid = ({
       // Caps, Ret, BkSp, Space, Menu, ...) lives in the Basic tab alone —
       // otherwise it'd appear in Navigation too and the auto-jump would
       // prefer that stale duplicate.
-      if (usage.pageId === 7 && BASIC_LAYOUT_HID_IDS.has(usage.Id)) {
+      if (usage.pageId === 7 && basicLayoutHidIds.has(usage.Id)) {
         category = "Basic";
       }
 
@@ -253,7 +205,7 @@ const HidUsageGrid = ({
     }
 
     return categories;
-  }, [allUsages, layout]);
+  }, [allUsages, layout, basicLayoutHidIds]);
 
   const basicRows = useMemo(() => {
     // Pull from allUsages so the edge keys (Tab/BkSp/Ret/modifiers/...)
@@ -265,7 +217,7 @@ const HidUsageGrid = ({
       }
     }
     const placed = new Set<Usage>();
-    const rows = BASIC_LAYOUT.map((row) => {
+    const rows = shape.rows.map((row: BasicCell[]) => {
       const out: { usage: Usage; w?: number }[] = [];
       for (const cell of row) {
         const u = byHidId.get(cell.id);
@@ -283,7 +235,7 @@ const HidUsageGrid = ({
       rows.push(extras.map((u) => ({ usage: u })));
     }
     return rows;
-  }, [allUsages, categorizedUsages]);
+  }, [allUsages, categorizedUsages, shape]);
 
   const UNIT_PX = 48;
   // HID IDs whose "short" label (e.g. "Shft", "Ctrl") loses the L/R
