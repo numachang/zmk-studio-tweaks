@@ -511,14 +511,14 @@ const HidUsageGrid = ({
           id={category}
           className={
             // Unified height across all tabs so switching tabs doesn't
-            // shift the rest of the picker. Sized to fit the tallest case
-            // (Basic = ANSI 60% layout).
+            // shift the rest of the picker. Sized to fit the tallest
+            // case (ISO/JIS = ISO 60% + JIS extras row = 6 rows).
             category === BASIC_TAB_ID ||
             category === ISO_JIS_TAB_ID ||
             category === "Numpad" ||
             category === "Function + Nav"
-              ? "min-h-[17rem] max-h-[17rem] overflow-auto p-1 border border-t-0 rounded-b rac-focus-visible:ring-2 rac-focus-visible:ring-primary"
-              : "min-h-[17rem] max-h-[17rem] overflow-y-auto flex flex-wrap justify-start content-start gap-1 p-1 border border-t-0 rounded-b rac-focus-visible:ring-2 rac-focus-visible:ring-primary"
+              ? "min-h-[20rem] max-h-[20rem] overflow-auto p-1 border border-t-0 rounded-b rac-focus-visible:ring-2 rac-focus-visible:ring-primary"
+              : "min-h-[20rem] max-h-[20rem] overflow-y-auto flex flex-wrap justify-start content-start gap-1 p-1 border border-t-0 rounded-b rac-focus-visible:ring-2 rac-focus-visible:ring-primary"
           }
         >
           {category === BASIC_TAB_ID ? (

@@ -46,6 +46,10 @@ const entries: [number, LayoutOverride][] = [
   // user can find them by typing the Japanese label into picker search.
   [hid(KBD, 135), { short: "\\_", med: "ろ (Intl1)", long: "International1 (ろ)" }],
   [hid(KBD, 137), { short: "¥ |", med: "¥ (Intl3)", long: "International3 (¥)" }],
+  // INT4 / INT5 are the conversion keys flanking the space bar on a
+  // JIS keyboard. They're labelled 変換 / 無変換 in physical Japanese.
+  [hid(KBD, 138), { short: "変換", med: "変換 (Intl4)", long: "International4 (Henkan)" }],
+  [hid(KBD, 139), { short: "無変換", med: "無変換 (Intl5)", long: "International5 (Muhenkan)" }],
   [hid(KBD, 144), { short: "かな", med: "Lang1 / かな", long: "Lang1 (Hiragana/Katakana)" }],
   [hid(KBD, 145), { short: "英数", med: "Lang2 / 英数", long: "Lang2 (Eisuu)" }],
   [hid(KBD, 146), { short: "漢字", med: "Lang3 / 漢字", long: "Lang3 (Kanji)" }],

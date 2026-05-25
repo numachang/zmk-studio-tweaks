@@ -13056,6 +13056,36 @@ exports[`host layout overlays > jis overlay label snapshot > captures the overla
   {
     "base": {
       "category": "International",
+      "short": "Intl4",
+    },
+    "jis": {
+      "category": "International",
+      "long": "International4 (Henkan)",
+      "med": "変換 (Intl4)",
+      "short": "変換",
+    },
+    "label": "変換",
+    "page": 7,
+    "usage": 138,
+  },
+  {
+    "base": {
+      "category": "International",
+      "short": "Intl5",
+    },
+    "jis": {
+      "category": "International",
+      "long": "International5 (Muhenkan)",
+      "med": "無変換 (Intl5)",
+      "short": "無変換",
+    },
+    "label": "無変換",
+    "page": 7,
+    "usage": 139,
+  },
+  {
+    "base": {
+      "category": "International",
       "short": "Lang1",
     },
     "jis": {
