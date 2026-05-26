@@ -195,12 +195,17 @@ export const JIS_ROWS: BasicCell[][] = [
  * Function / Numpad / International / Other tabs (otherwise the same
  * HID code would be reachable from two tabs and the auto-jump would
  * sometimes prefer the stale duplicate).
+ *
+ * Spacer cells (`SPACER_ID`) are filtered out — they aren't real HID
+ * usages and shouldn't leak into a set typed as "HID IDs".
  */
-export const BASIC_TIER_HID_IDS: ReadonlySet<number> = new Set([
-  ...ANSI_ROWS.flatMap((row) => row.map((cell) => cell.id)),
-  ...ISO_ROWS.flatMap((row) => row.map((cell) => cell.id)),
-  ...JIS_ROWS.flatMap((row) => row.map((cell) => cell.id)),
-]);
+export const BASIC_TIER_HID_IDS: ReadonlySet<number> = new Set(
+  [
+    ...ANSI_ROWS.flatMap((row) => row.map((cell) => cell.id)),
+    ...ISO_ROWS.flatMap((row) => row.map((cell) => cell.id)),
+    ...JIS_ROWS.flatMap((row) => row.map((cell) => cell.id)),
+  ].filter((id) => id !== SPACER_ID)
+);
 
 /** HIDs unique to the JIS shape (not on ANSI or ISO). Used by auto-jump. */
 export const JIS_ONLY_HID_IDS: ReadonlySet<number> = (() => {

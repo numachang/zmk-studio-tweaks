@@ -56,6 +56,14 @@ export const hid_usage_get_metadata = (
   // win over the base SSOT for whichever of short/med/long they define.
   // Category never changes per host layout (it's a picker-tab concern,
   // not a typing one).
+  //
+  // When an overlay provides `short` but not `med` / `long`, fall back
+  // to the overlay's own `short` rather than to the base SSOT's
+  // `med` / `long`. Otherwise a French user with overlay `{ short: "- =" }`
+  // for the MINUS key would still see the un-localized base
+  // `med = "Dash"` at medium widths — the picker would say "- =" but
+  // the keymap view would say "Dash" for the same binding, which reads
+  // as incoherent. The overlay owns the editorial label or it doesn't.
   const code = (usage_page << 16) | usage_id;
   const entry = KEYCODE_BY_HID.get(code);
   const overlay = layout?.overrides.get(code);
@@ -65,10 +73,14 @@ export const hid_usage_get_metadata = (
     const out: { short?: string; med?: string; long?: string; category?: string } = {
       short: baseShort,
     };
-    const med = overlay?.med ?? entry?.med;
-    if (med !== undefined) out.med = med;
-    const long = overlay?.long ?? entry?.long;
-    if (long !== undefined) out.long = long;
+    if (overlay?.short !== undefined) {
+      // Overlay owns this row's labels.
+      out.med = overlay.med ?? overlay.short;
+      out.long = overlay.long ?? overlay.med ?? overlay.short;
+    } else {
+      if (entry?.med !== undefined) out.med = entry.med;
+      if (entry?.long !== undefined) out.long = entry.long;
+    }
     if (entry?.category !== undefined) out.category = entry.category;
     return out;
   }
