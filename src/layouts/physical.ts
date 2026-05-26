@@ -4,15 +4,13 @@
 // The picker has two "basic-tier" tabs that draw a keycap grid:
 //
 //   - `Basic`     — ANSI 60% shape. The default for US-style keyboards.
-//   - `ISO/JIS`   — either an ISO 60% or JIS 60% shape, picked from the
-//                   active host layout. JIS is Japan-only and ISO covers
-//                   the rest of the non-ANSI world, so the active host
-//                   layout uniquely identifies which physical shape the
-//                   user is on in the common case. Both shapes are
-//                   rendered as 5 rows with the layout-specific extras
-//                   (NUHS/NUBS for ISO; ¥/`\_`/IME keys for JIS) in
-//                   their real physical positions, not as a flat
-//                   "extras" row.
+//   - `ISO/JIS`   — an alternate shape picked from the active host layout's
+//                   `physical` hint: ISO 60% for European hosts, JIS 60%
+//                   for Japan, an ANSI-Korean variant for Korea (ANSI
+//                   five-row shape with `한자` / `한/영` (LANG2 / LANG1)
+//                   flanking Space). Each shape draws the layout-specific
+//                   extras in their real physical positions rather than
+//                   as a flat "extras" row.
 //
 // Naming note: ZMK already uses "physical layout" to mean the connected
 // keyboard's actual key matrix (from RPC). Anything here is purely picker
@@ -189,6 +187,28 @@ export const JIS_ROWS: BasicCell[][] = [
   ],
 ];
 
+// =============================================================================
+// Korean (ANSI + IME extras) — same five-row form as ANSI for rows 1-4,
+// but row 5 has 한자 (LANG2) and 한/영 (LANG1) flanking a slightly
+// narrower Space, matching real Korean keyboards (which are ANSI-shaped
+// other than these two extra keys near Space).
+// =============================================================================
+export const KO_ROWS: BasicCell[][] = [
+  ANSI_ROWS[0],
+  ANSI_ROWS[1],
+  ANSI_ROWS[2],
+  ANSI_ROWS[3],
+  // LCtrl LGUI LAlt 한자 Space 한/영 RAlt RGUI Menu RCtrl
+  [
+    { id: 224, w: 1.25 }, { id: 227, w: 1.25 }, { id: 226, w: 1.25 },
+    { id: 145, w: 1.25 },        // LANG2 = 한자
+    { id: 44, w: 3.75 },
+    { id: 144, w: 1.25 },        // LANG1 = 한/영
+    { id: 230, w: 1.25 }, { id: 231, w: 1.25 },
+    { id: 101, w: 1.25 }, { id: 228, w: 1.25 },
+  ],
+];
+
 /**
  * Union of every HID page-7 usage that appears on any basic-tier tab.
  * Used by the picker to keep those keys from also surfacing in the
@@ -204,6 +224,7 @@ export const BASIC_TIER_HID_IDS: ReadonlySet<number> = new Set(
     ...ANSI_ROWS.flatMap((row) => row.map((cell) => cell.id)),
     ...ISO_ROWS.flatMap((row) => row.map((cell) => cell.id)),
     ...JIS_ROWS.flatMap((row) => row.map((cell) => cell.id)),
+    ...KO_ROWS.flatMap((row) => row.map((cell) => cell.id)),
   ].filter((id) => id !== SPACER_ID)
 );
 
@@ -223,6 +244,16 @@ export const ISO_ONLY_HID_IDS: ReadonlySet<number> = (() => {
   const ansi = new Set(ANSI_ROWS.flatMap((row) => row.map((cell) => cell.id)));
   return new Set(
     ISO_ROWS.flatMap((row) => row.map((cell) => cell.id)).filter(
+      (id) => !ansi.has(id)
+    )
+  );
+})();
+
+/** HIDs unique to the Korean shape (not on ANSI). Used by auto-jump. */
+export const KO_ONLY_HID_IDS: ReadonlySet<number> = (() => {
+  const ansi = new Set(ANSI_ROWS.flatMap((row) => row.map((cell) => cell.id)));
+  return new Set(
+    KO_ROWS.flatMap((row) => row.map((cell) => cell.id)).filter(
       (id) => !ansi.has(id)
     )
   );
