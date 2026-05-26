@@ -7,6 +7,7 @@ import {
   hid_usage_get_metadata,
   hid_usage_page_get_ids,
 } from "./hid-usages";
+import { JIS_LAYOUT, LAYOUTS, US_ANSI_LAYOUT } from "./layouts";
 
 // Enumerate every (page, usage) pair that *could* surface a label in the UI:
 // every entry in the HID spec table for pages we use, plus every entry in
@@ -66,5 +67,69 @@ describe("hid_usage_page_get_ids", () => {
       usageCount: hid_usage_page_get_ids(p.Id)?.UsageIds.length ?? 0,
     }));
     expect(pages).toMatchSnapshot();
+  });
+});
+
+describe("host layout overlays", () => {
+  it("US ANSI overlay is the identity (matches the no-layout snapshot)", () => {
+    // Belt-and-suspenders: us-ansi has an empty override map, so every
+    // call should be byte-identical to the layout-less default. If anyone
+    // ever puts an override in us-ansi.ts this will trip.
+    for (const { page, usage } of allPairs) {
+      expect(hid_usage_get_metadata(page, usage, US_ANSI_LAYOUT)).toEqual(
+        hid_usage_get_metadata(page, usage)
+      );
+    }
+  });
+
+  // Each non-identity layout: only HIDs the overlay touches should differ
+  // from the base SSOT. Catches the overlay leaking through for keys it
+  // wasn't supposed to relabel.
+  describe.each(
+    LAYOUTS.filter((l) => l.overrides.size > 0).map((l) => [l.id, l])
+  )("%s overlay isolation", (_id, layout) => {
+    it("only changes HIDs it explicitly overrides", () => {
+      for (const { page, usage } of allPairs) {
+        const code = (page << 16) | usage;
+        if (layout.overrides.has(code)) continue;
+        const base = hid_usage_get_metadata(page, usage);
+        const overlayed = hid_usage_get_metadata(page, usage, layout);
+        expect(overlayed, `${layout.id} HID ${page}:${usage}`).toEqual(base);
+      }
+    });
+  });
+
+  // Per-layout label snapshot: just the HIDs each layout actually
+  // overrides. Adding/removing entries via `python scripts/import-layouts.py`
+  // or hand edit will trip the corresponding snapshot, making the diff
+  // obvious in code review.
+  describe.each(
+    LAYOUTS.filter((l) => l.overrides.size > 0).map((l) => [l.id, l])
+  )("%s overlay label snapshot", (_id, layout) => {
+    it("captures the overlay label mapping", () => {
+      const overridden = [...layout.overrides.keys()].sort((a, b) => a - b);
+      const snapshot = overridden.map((code) => {
+        const page = (code >> 16) & 0xffff;
+        const usage = code & 0xffff;
+        return {
+          page,
+          usage,
+          base: hid_usage_get_metadata(page, usage),
+          [layout.id]: hid_usage_get_metadata(page, usage, layout),
+          label: hid_usage_get_label(page, usage, layout),
+        };
+      });
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
+  it("LAYOUTS exposes us-ansi first as the default", () => {
+    expect(LAYOUTS[0]).toBe(US_ANSI_LAYOUT);
+    expect(LAYOUTS.find((l) => l.id === "jis")).toBe(JIS_LAYOUT);
+  });
+
+  it("every registered layout has a unique stable ID", () => {
+    const ids = LAYOUTS.map((l) => l.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 });

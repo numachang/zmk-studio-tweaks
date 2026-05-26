@@ -13,60 +13,33 @@ import {
   TabPanel,
   Tabs,
 } from "react-aria-components";
+import { Tooltip } from "../misc/Tooltip";
 import { hid_usage_page_get_ids, hid_usage_get_metadata } from "../hid-usages";
+import { useHostLayout } from "../layouts/LayoutContext";
+import { useLocalStorageState } from "../misc/useLocalStorageState";
+import {
+  ANSI_ROWS,
+  BASIC_TIER_HID_IDS,
+  type BasicCell,
+  ISO_ONLY_HID_IDS,
+  ISO_ROWS,
+  JIS_ONLY_HID_IDS,
+  JIS_ROWS,
+  SPACER_ID,
+} from "../layouts/physical";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
 
-type BasicCell = { id: number; w?: number };
-
-// ANSI 60% layout in HID page 7 IDs with per-key width multipliers (1U =
-// standard square). Mirrors a real keyboard so the user can grab Caps /
-// Shift / Space / Mods without leaving the tab and so the layout reads as a
-// keyboard rather than a grid.
-const BASIC_LAYOUT: BasicCell[][] = [
-  // ` 1234567890 - = BkSp(2U)
-  [
-    { id: 53 },
-    { id: 30 }, { id: 31 }, { id: 32 }, { id: 33 }, { id: 34 },
-    { id: 35 }, { id: 36 }, { id: 37 }, { id: 38 }, { id: 39 },
-    { id: 45 }, { id: 46 }, { id: 42, w: 2 },
-  ],
-  // Tab(1.5U) Q-P [ ] \(1.5U)
-  [
-    { id: 43, w: 1.5 },
-    { id: 20 }, { id: 26 }, { id: 8 }, { id: 21 }, { id: 23 },
-    { id: 28 }, { id: 24 }, { id: 12 }, { id: 18 }, { id: 19 },
-    { id: 47 }, { id: 48 }, { id: 49, w: 1.5 },
-  ],
-  // Caps(1.75U) A-L ; ' Ret(2.25U)
-  [
-    { id: 57, w: 1.75 },
-    { id: 4 }, { id: 22 }, { id: 7 }, { id: 9 }, { id: 10 },
-    { id: 11 }, { id: 13 }, { id: 14 }, { id: 15 },
-    { id: 51 }, { id: 52 },
-    { id: 40, w: 2.25 },
-  ],
-  // LShft(2.25U) Z-M , . / RShft(2.75U)
-  [
-    { id: 225, w: 2.25 },
-    { id: 29 }, { id: 27 }, { id: 6 }, { id: 25 }, { id: 5 },
-    { id: 17 }, { id: 16 }, { id: 54 }, { id: 55 }, { id: 56 },
-    { id: 229, w: 2.75 },
-  ],
-  // LCtrl LGUI LAlt(1.25U each) Space(6.25U) RAlt RGUI Menu RCtrl(1.25U each)
-  [
-    { id: 224, w: 1.25 }, { id: 227, w: 1.25 }, { id: 226, w: 1.25 },
-    { id: 44, w: 6.25 },
-    { id: 230, w: 1.25 }, { id: 231, w: 1.25 },
-    { id: 101, w: 1.25 }, { id: 228, w: 1.25 },
-  ],
-];
-
-// Set of HID page 7 IDs that appear on BASIC_LAYOUT, used to keep them
-// out of Navigation/etc. so the Basic tab is their only home.
-const BASIC_LAYOUT_HID_IDS = new Set<number>(
-  BASIC_LAYOUT.flatMap((row) => row.map((cell) => cell.id))
-);
+// Two basic-tier tabs cover the whole "typing" keycode space:
+//   - Basic    -> ANSI 60% rendering
+//   - ISO/JIS  -> ISO 60% rendering + JIS extras row (¥ / `\_` / IME keys)
+// JIS users see ¥ / IME keys in the extras row rather than in their
+// physical bottom-row positions; same convention as upstream visual
+// pickers, and avoids forcing every user to pick between three shapes
+// when in practice they're mutually exclusive.
+const BASIC_TAB_ID = "Basic";
+const ISO_JIS_TAB_ID = "ISO/JIS";
+const BASIC_TIER_TABS: ReadonlyArray<string> = [BASIC_TAB_ID, ISO_JIS_TAB_ID];
 
 // Standard numeric keypad layout. + and KP Enter are normally 1U×2U and 0
 // is 2U×1U on a real numpad; we keep heights uniform and only widen 0 to
@@ -163,6 +136,7 @@ const HidUsageGrid = ({
   onValueChanged,
   usagePages,
 }: HidUsagePickerProps) => {
+  const layout = useHostLayout();
   type Usage = {
     Name: string;
     Id: number;
@@ -197,7 +171,7 @@ const HidUsageGrid = ({
   const selectedKey = value !== undefined ? mask_mods(value) : null;
 
   const getButtonLabel = (usage: Usage, opts?: { preferShort?: boolean }) => {
-    const metadata = hid_usage_get_metadata(usage.pageId, usage.Id);
+    const metadata = hid_usage_get_metadata(usage.pageId, usage.Id, layout);
     if (opts?.preferShort && metadata?.short) {
       return metadata.short;
     }
@@ -221,27 +195,27 @@ const HidUsageGrid = ({
     const categories: Record<string, Usage[]> = {};
 
     for (const usage of allUsages) {
-      const metadata = hid_usage_get_metadata(usage.pageId, usage.Id);
+      const metadata = hid_usage_get_metadata(usage.pageId, usage.Id, layout);
       let category = metadata?.category || "Other";
-      // Collapse the typing keys (alphabet + number row + adjacent
-      // punctuation) into a single Basic tab. Two separate tabs for
-      // "Letters" vs "Numbers" forces an extra click for the most common
-      // edits.
-      if (category === "Letters" || category === "Numbers + Punctuation") {
-        category = "Basic";
-      }
       // The old "Function + Navigation" metadata category covers the TKL
       // function row + navigation cluster + arrows. We keep them in one
       // tab — they share screen real estate cleanly without scrolling.
       if (category === "Function + Navigation") {
         category = "Function + Nav";
       }
-      // Anything explicitly placed on the Basic layout (modifiers, Tab,
-      // Caps, Ret, BkSp, Space, Menu, ...) lives in the Basic tab alone —
-      // otherwise it'd appear in Navigation too and the auto-jump would
-      // prefer that stale duplicate.
-      if (usage.pageId === 7 && BASIC_LAYOUT_HID_IDS.has(usage.Id)) {
-        category = "Basic";
+      // Letters / Numbers + Punctuation always land on a basic-tier tab
+      // (rendered explicitly per shape, no flat-list fallback needed) so
+      // they shouldn't appear under their original metadata category.
+      if (category === "Letters" || category === "Numbers + Punctuation") {
+        continue;
+      }
+      // Anything on a basic-tier shape (Tab / Caps / mods / Space / etc.,
+      // plus ISO NUHS/NUBS and JIS ¥/IME extras) is handled by the Basic
+      // or ISO/JIS tab's explicit grid — drop from category tabs so it
+      // doesn't surface twice and the auto-jump doesn't prefer a stale
+      // duplicate.
+      if (usage.pageId === 7 && BASIC_TIER_HID_IDS.has(usage.Id)) {
+        continue;
       }
 
       if (!categories[category]) {
@@ -251,37 +225,45 @@ const HidUsageGrid = ({
     }
 
     return categories;
-  }, [allUsages]);
+  }, [allUsages, layout]);
 
-  const basicRows = useMemo(() => {
-    // Pull from allUsages so the edge keys (Tab/BkSp/Ret/modifiers/...)
-    // appear here regardless of which category their metadata assigns them.
-    const byHidId = new Map<number, Usage>();
-    for (const u of allUsages) {
-      if (u.pageId === 7) {
-        byHidId.set(u.Id, u);
+  // null usage = transparent spacer cell (Enter-spans-rows placeholder).
+  type ShapeRowItem = { usage: Usage | null; w?: number };
+
+  const buildShapeRows = useCallback(
+    (rows: ReadonlyArray<ReadonlyArray<BasicCell>>): ShapeRowItem[][] => {
+      const byHidId = new Map<number, Usage>();
+      for (const u of allUsages) {
+        if (u.pageId === 7) byHidId.set(u.Id, u);
       }
-    }
-    const placed = new Set<Usage>();
-    const rows = BASIC_LAYOUT.map((row) => {
-      const out: { usage: Usage; w?: number }[] = [];
-      for (const cell of row) {
-        const u = byHidId.get(cell.id);
-        if (u) {
-          out.push({ usage: u, w: cell.w });
-          placed.add(u);
+      return rows.map((row) => {
+        const built: ShapeRowItem[] = [];
+        for (const cell of row) {
+          if (cell.id === SPACER_ID) {
+            built.push({ usage: null, w: cell.w });
+            continue;
+          }
+          const u = byHidId.get(cell.id);
+          if (u) built.push({ usage: u, w: cell.w });
         }
-      }
-      return out;
-    });
-    const extras = (categorizedUsages["Basic"] || []).filter(
-      (u) => !placed.has(u)
-    );
-    if (extras.length) {
-      rows.push(extras.map((u) => ({ usage: u })));
-    }
-    return rows;
-  }, [allUsages, categorizedUsages]);
+        return built;
+      });
+    },
+    [allUsages]
+  );
+
+  const ansiRows = useMemo(() => buildShapeRows(ANSI_ROWS), [buildShapeRows]);
+  // ISO/JIS tab renders the JIS shape when host = JIS (¥ / `\_` / IME
+  // keys in their real physical positions), otherwise the ISO shape.
+  // JIS is Japan-only and ISO covers the rest of the non-ANSI world,
+  // so host layout uniquely identifies the right shape in the common
+  // case; users with mismatched host/keyboard can still pick the
+  // unique keys directly from the picker even when the wrong shape
+  // is rendered.
+  const isoOrJisRows = useMemo(
+    () => buildShapeRows(layout.id === "jis" ? JIS_ROWS : ISO_ROWS),
+    [buildShapeRows, layout.id]
+  );
 
   const UNIT_PX = 48;
   // HID IDs whose "short" label (e.g. "Shft", "Ctrl") loses the L/R
@@ -350,35 +332,59 @@ const HidUsageGrid = ({
       navigationRows: NAVIGATION_LAYOUT.map(renderRow),
     };
   }, [allUsages]);
+  const cellWidthPx = (w?: number) =>
+    (w ?? 1) * UNIT_PX + ((w ?? 1) - 1) * 4; // include the absorbed gap
+
   const renderBasicButton = ({ usage, w }: { usage: Usage; w?: number }) => {
     const usageValue = (usage.pageId << 16) | usage.Id;
     const preferShort =
       !(usage.pageId === 7 && BASIC_PREFER_MED.has(usage.Id));
     const label = getButtonLabel(usage, { preferShort });
     const pair = label.match(/^(\S{1,2}) (\S{1,2})$/);
-    const width = (w ?? 1) * UNIT_PX + ((w ?? 1) - 1) * 4; // include the gap absorbed
+    const metadata = hid_usage_get_metadata(usage.pageId, usage.Id, layout);
+    // Browser tooltip carries the long-form identity: handy for keys like
+    // 変換 / 無変換 / かな where the on-cap label is the Japanese name but
+    // the user might recognise the HID identity (Int4 / Int5 / Lang1).
+    const tooltip = metadata.long || metadata.med || usage.Name;
+    const width = cellWidthPx(w);
     return (
-      <Button
-        key={usageValue}
-        onPress={() => onValueChanged(usageValue)}
-        style={{ width: `${width}px` }}
-        className={`h-12 p-0.5 rounded border text-center flex items-center justify-center text-sm leading-none shrink-0 ${selectedKey === usageValue ? "bg-primary text-primary-content" : "bg-base-200 hover:bg-base-300"}`}
-      >
-        {pair ? (
-          <span className="flex flex-col items-center gap-px">
-            <span className="text-[0.65em] opacity-70">{pair[2]}</span>
-            <span>{pair[1]}</span>
-          </span>
-        ) : (
-          label
-        )}
-      </Button>
+      <Tooltip key={usageValue} label={tooltip}>
+        <Button
+          onPress={() => onValueChanged(usageValue)}
+          style={{ width: `${width}px` }}
+          className={`h-12 p-0.5 rounded border text-center flex items-center justify-center text-sm leading-none shrink-0 ${selectedKey === usageValue ? "bg-primary text-primary-content" : "bg-base-200 hover:bg-base-300"}`}
+        >
+          {pair ? (
+            <span className="flex flex-col items-center gap-px">
+              <span className="text-[0.65em] opacity-70">{pair[2]}</span>
+              <span>{pair[1]}</span>
+            </span>
+          ) : (
+            label
+          )}
+        </Button>
+      </Tooltip>
     );
+  };
+
+  // Renders one item from a shape row — either a real key button or a
+  // transparent spacer (e.g. JIS row 2's Enter-spans-rows placeholder).
+  const renderBasicCell = (item: ShapeRowItem, index: number) => {
+    if (item.usage === null) {
+      return (
+        <div
+          key={`spacer-${index}`}
+          style={{ width: `${cellWidthPx(item.w)}px` }}
+          className="h-12 shrink-0"
+          aria-hidden="true"
+        />
+      );
+    }
+    return renderBasicButton({ usage: item.usage, w: item.w });
   };
 
   const sortedCategories = useMemo(() => {
     const categoryOrder = [
-      "Basic",
       "Function + Nav",
       "Numpad",
       "Apps/Media/Special",
@@ -395,13 +401,23 @@ const HidUsageGrid = ({
     });
   }, [categorizedUsages]);
 
+  // Top-level tab order: ANSI basic, ISO/JIS, then the category tabs.
+  const allTabs = useMemo(
+    () => [...BASIC_TIER_TABS, ...sortedCategories],
+    [sortedCategories]
+  );
+
   const [search, setSearch] = useState("");
   const trimmedSearch = search.trim().toLowerCase();
 
-  // Auto-select the tab containing the current value when it changes. When
-  // the value resets (no selection / 0 from a behavior swap), fall back to
-  // the first tab instead of leaving the user on the previous behavior's
-  // stale category.
+  // Auto-select the tab containing the current value when it changes.
+  // Keys in the basic-tier (letters / numbers / mods / etc.) prefer the
+  // user's last-used basic-tier tab (Basic vs ISO/JIS), persisted to
+  // localStorage so a JIS user doesn't click ISO/JIS every time.
+  const [preferredBasicTab, setPreferredBasicTab] = useLocalStorageState<string>(
+    "picker-basic-tab",
+    BASIC_TAB_ID
+  );
   const [activeTab, setActiveTab] = useState<string | null>(null);
   useEffect(() => {
     if (value === undefined || value === 0) {
@@ -409,6 +425,18 @@ const HidUsageGrid = ({
       return;
     }
     const masked = mask_mods(value);
+    const page = (masked >> 16) & 0xffff;
+    const usageId = masked & 0xffff;
+    if (page === 7 && BASIC_TIER_HID_IDS.has(usageId)) {
+      // ISO-only or JIS-only keys (NUHS / NUBS / ¥ / IME) force the
+      // ISO/JIS tab; ANSI-shared keys go wherever the user last was.
+      if (ISO_ONLY_HID_IDS.has(usageId) || JIS_ONLY_HID_IDS.has(usageId)) {
+        setActiveTab(ISO_JIS_TAB_ID);
+      } else {
+        setActiveTab(preferredBasicTab);
+      }
+      return;
+    }
     for (const cat of sortedCategories) {
       const hit = categorizedUsages[cat]?.some(
         (u) => ((u.pageId << 16) | u.Id) === masked
@@ -418,14 +446,24 @@ const HidUsageGrid = ({
         return;
       }
     }
-  }, [value, categorizedUsages, sortedCategories]);
+  }, [value, categorizedUsages, sortedCategories, preferredBasicTab]);
+
+  const onTabChange = useCallback(
+    (k: string) => {
+      setActiveTab(k);
+      if (k === BASIC_TAB_ID || k === ISO_JIS_TAB_ID) {
+        setPreferredBasicTab(k);
+      }
+    },
+    [setPreferredBasicTab]
+  );
 
   const searchResults = useMemo(() => {
     if (!trimmedSearch) {
       return null;
     }
     return allUsages.filter((usage) => {
-      const metadata = hid_usage_get_metadata(usage.pageId, usage.Id);
+      const metadata = hid_usage_get_metadata(usage.pageId, usage.Id, layout);
       const haystack = [
         usage.Name,
         metadata?.short,
@@ -438,7 +476,7 @@ const HidUsageGrid = ({
         .toLowerCase();
       return haystack.includes(trimmedSearch);
     });
-  }, [allUsages, trimmedSearch]);
+  }, [allUsages, trimmedSearch, layout]);
 
   const renderUsageButton = (usage: Usage) => {
     const usageValue = (usage.pageId << 16) | usage.Id;
@@ -485,11 +523,11 @@ const HidUsageGrid = ({
       ) : (
     <Tabs
       className="flex flex-col"
-      selectedKey={activeTab ?? sortedCategories[0]}
-      onSelectionChange={(k) => setActiveTab(k as string)}
+      selectedKey={activeTab ?? preferredBasicTab}
+      onSelectionChange={(k) => onTabChange(k as string)}
     >
       <TabList className="flex border-b">
-        {sortedCategories.map((category) => (
+        {allTabs.map((category) => (
           <Tab
             key={category}
             id={category}
@@ -499,26 +537,35 @@ const HidUsageGrid = ({
           </Tab>
         ))}
       </TabList>
-      {sortedCategories.map((category) => (
+      {allTabs.map((category) => (
         <TabPanel
           key={category}
           id={category}
           className={
             // Unified height across all tabs so switching tabs doesn't
-            // shift the rest of the picker. Sized to fit the tallest case
-            // (Basic = ANSI 60% layout).
-            category === "Basic" ||
+            // shift the rest of the picker. Sized to fit the 5-row
+            // basic-tier shapes (ANSI / ISO / JIS all 5 rows tall).
+            category === BASIC_TAB_ID ||
+            category === ISO_JIS_TAB_ID ||
             category === "Numpad" ||
             category === "Function + Nav"
               ? "min-h-[17rem] max-h-[17rem] overflow-auto p-1 border border-t-0 rounded-b rac-focus-visible:ring-2 rac-focus-visible:ring-primary"
               : "min-h-[17rem] max-h-[17rem] overflow-y-auto flex flex-wrap justify-start content-start gap-1 p-1 border border-t-0 rounded-b rac-focus-visible:ring-2 rac-focus-visible:ring-primary"
           }
         >
-          {category === "Basic" ? (
+          {category === BASIC_TAB_ID ? (
             <div className="flex flex-col gap-1 w-fit">
-              {basicRows.map((row, i) => (
+              {ansiRows.map((row, i) => (
                 <div key={i} className="flex gap-1">
-                  {row.map(renderBasicButton)}
+                  {row.map((cell, j) => renderBasicCell(cell, j))}
+                </div>
+              ))}
+            </div>
+          ) : category === ISO_JIS_TAB_ID ? (
+            <div className="flex flex-col gap-1 w-fit">
+              {isoOrJisRows.map((row, i) => (
+                <div key={i} className="flex gap-1">
+                  {row.map((cell, j) => renderBasicCell(cell, j))}
                 </div>
               ))}
             </div>
