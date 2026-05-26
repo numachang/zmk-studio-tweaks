@@ -1,14 +1,35 @@
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Maximize2, X } from "lucide-react";
+
 import { ExternalLink } from "./misc/ExternalLink";
+import { useModalRef } from "./misc/useModalRef";
 
 export interface HeroPageProps {
   onConnect: () => void;
   hasTransports: boolean;
 }
 
+interface FeatureImage {
+  src: string;
+  alt: string;
+  /**
+   * Short label shown as a corner badge on the thumbnail and as the
+   * title above the lightbox image (e.g. "JIS", "Korean"). When set,
+   * the thumbnail becomes click-to-zoom.
+   */
+  label?: string;
+}
+
 interface Feature {
   title: string;
   body: string;
-  images: { src: string; alt: string }[];
+  images: FeatureImage[];
+  /**
+   * When set, lay images out in a 2-column grid instead of the default
+   * stacked / single-image layout. Useful for "compare N similar shots"
+   * features (the host-layout row's 2x2 grid of language variants).
+   */
+  gridCols?: 2;
 }
 
 const FEATURES: Feature[] = [
@@ -60,11 +81,45 @@ const FEATURES: Feature[] = [
       },
     ],
   },
+  {
+    title: "Speak your keyboard's language",
+    body: "Pick the host OS keyboard layout you actually use — 22 layouts ship today, from US ANSI to JIS, Korean, German QWERTZ, French AZERTY and a dozen more — and labels in the picker and on the keymap retrace what the host will type. The HID code on the device stays the same; only the display follows the layout. The ISO/JIS tab also switches its physical shape per host: ¥ and 変換/無変換/かな in their real positions on JIS, 한자/한/영 flanking Space on Korean, NUHS/NUBS on European ISO.",
+    gridCols: 2,
+    images: [
+      {
+        src: "/screenshots/layout-jis.png",
+        alt: "Picker's ISO/JIS tab rendered as a JIS 60% layout, with 全/半, ¥, 無変換, 変換 and かな in their physical positions",
+        label: "日本語 · JIS",
+      },
+      {
+        src: "/screenshots/layout-ko.png",
+        alt: "Picker's ISO/JIS tab rendered as a Korean ANSI shape with 한자 and 한/영 flanking Space, and Hangul jamo (ㅁ / ㅂ / ㅓ etc.) printed on every letter key",
+        label: "한국어 · Korean",
+      },
+      {
+        src: "/screenshots/layout-fr.png",
+        alt: "Picker's Basic tab with French AZERTY host labels — Q and A swapped, W and Z swapped, accented number row",
+        label: "Français · AZERTY",
+      },
+      {
+        src: "/screenshots/layout-de.png",
+        alt: "Picker's Basic tab with German QWERTZ host labels — Y and Z swapped, ß on the minus key, umlauts on the home row",
+        label: "Deutsch · QWERTZ",
+      },
+    ],
+  },
 ];
 
 export const HeroPage = ({ onConnect, hasTransports }: HeroPageProps) => {
+  const [expanded, setExpanded] = useState<FeatureImage | null>(null);
+  const openImage = useCallback((image: FeatureImage) => {
+    if (image.label) setExpanded(image);
+  }, []);
+  const closeImage = useCallback(() => setExpanded(null), []);
+
   return (
     <div className="overflow-y-auto h-full w-full">
+      <ImageLightbox image={expanded} onClose={closeImage} />
       <div className="mx-auto max-w-6xl px-6 py-12 flex flex-col gap-16">
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           <div className="flex flex-col gap-6">
@@ -144,7 +199,12 @@ export const HeroPage = ({ onConnect, hasTransports }: HeroPageProps) => {
           </h2>
 
           {FEATURES.map((feature, i) => (
-            <FeatureRow key={feature.title} feature={feature} flip={i % 2 === 1} />
+            <FeatureRow
+              key={feature.title}
+              feature={feature}
+              flip={i % 2 === 1}
+              onImageClick={openImage}
+            />
           ))}
         </section>
 
@@ -175,47 +235,86 @@ export const HeroPage = ({ onConnect, hasTransports }: HeroPageProps) => {
 interface FeatureRowProps {
   feature: Feature;
   flip: boolean;
+  onImageClick: (image: FeatureImage) => void;
 }
 
-const FeatureRow = ({ feature, flip }: FeatureRowProps) => {
-  const stack = feature.images.length > 1;
+const FeatureRow = ({ feature, flip, onImageClick }: FeatureRowProps) => {
+  const grid = feature.gridCols === 2;
+  const stack = !grid && feature.images.length > 1;
+  const single = !grid && feature.images.length === 1;
+  const wrapperClass = grid
+    ? "w-full grid grid-cols-2 gap-3"
+    : `w-full flex flex-col ${stack ? "gap-3" : "gap-2"}`;
+  const baseFrame = "rounded-lg border border-base-300 bg-base-200 overflow-hidden";
+  const cellFrame = single
+    ? `aspect-[16/10] ${baseFrame} flex items-center justify-center`
+    : baseFrame;
+  const imgClass = single
+    ? "w-full h-full object-contain"
+    : "w-full h-auto block";
+  const renderImage = (image: FeatureImage, expandable: boolean) => (
+    <>
+      <div className="relative w-full bg-base-200 overflow-hidden">
+        <img
+          src={image.src}
+          alt={image.alt}
+          loading="lazy"
+          className={imgClass}
+          onError={(e) => {
+            const img = e.currentTarget;
+            img.style.display = "none";
+            const fallback = img.nextElementSibling as HTMLElement | null;
+            if (fallback) fallback.style.display = "flex";
+          }}
+        />
+        <div
+          className={`${
+            single ? "w-full h-full" : "py-8"
+          } items-center justify-center text-sm text-base-content/60 px-4 text-center`}
+          style={{ display: "none" }}
+        >
+          Screenshot pending — drop a PNG at{" "}
+          <code className="mx-1">{image.src}</code>
+        </div>
+      </div>
+      {expandable && image.label && (
+        <div className="flex items-center justify-between gap-2 px-3 py-2 border-t border-base-300 bg-base-100">
+          <span className="text-sm font-semibold text-base-content truncate">
+            {image.label}
+          </span>
+          <Maximize2
+            aria-hidden
+            className="w-4 h-4 text-base-content/40 group-hover:text-primary transition-colors duration-200 shrink-0"
+          />
+        </div>
+      )}
+    </>
+  );
+
   const imageBlock = (
     <div className="md:w-1/2 flex items-center justify-center">
-      <div className={`w-full flex flex-col ${stack ? "gap-3" : "gap-2"}`}>
-        {feature.images.map((image) => (
-          <div
-            key={image.src}
-            className={
-              stack
-                ? "rounded-lg border border-base-300 bg-base-200 overflow-hidden"
-                : "aspect-[16/10] rounded-lg border border-base-300 bg-base-200 overflow-hidden flex items-center justify-center"
-            }
-          >
-            <img
-              src={image.src}
-              alt={image.alt}
-              loading="lazy"
-              className={
-                stack ? "w-full h-auto block" : "w-full h-full object-contain"
-              }
-              onError={(e) => {
-                const img = e.currentTarget;
-                img.style.display = "none";
-                const fallback = img.nextElementSibling as HTMLElement | null;
-                if (fallback) fallback.style.display = "flex";
-              }}
-            />
-            <div
-              className={`${
-                stack ? "py-8" : "w-full h-full"
-              } items-center justify-center text-sm text-base-content/60 px-4 text-center`}
-              style={{ display: "none" }}
-            >
-              Screenshot pending — drop a PNG at{" "}
-              <code className="mx-1">{image.src}</code>
+      <div className={wrapperClass}>
+        {feature.images.map((image) => {
+          const expandable = Boolean(image.label);
+          if (expandable) {
+            return (
+              <button
+                key={image.src}
+                type="button"
+                onClick={() => onImageClick(image)}
+                aria-label={`Enlarge: ${image.label}`}
+                className={`${baseFrame} group cursor-zoom-in transition-all duration-300 hover:border-primary/60 hover:shadow-xl hover:-translate-y-0.5 text-left p-0 flex flex-col`}
+              >
+                {renderImage(image, true)}
+              </button>
+            );
+          }
+          return (
+            <div key={image.src} className={cellFrame}>
+              {renderImage(image, false)}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
@@ -236,5 +335,66 @@ const FeatureRow = ({ feature, flip }: FeatureRowProps) => {
       {imageBlock}
       {textBlock}
     </div>
+  );
+};
+
+interface ImageLightboxProps {
+  image: FeatureImage | null;
+  onClose: () => void;
+}
+
+const ImageLightbox = ({ image, onClose }: ImageLightboxProps) => {
+  const open = image !== null;
+  const dialogRef = useModalRef(open, true, true);
+  const lastImageRef = useRef<FeatureImage | null>(null);
+  if (image) lastImageRef.current = image;
+
+  // Wire the dialog's native `close` event (Escape key, outside click via
+  // useModalRef, or the X button) back to our React `open` state so the
+  // lightbox actually disappears.
+  useEffect(() => {
+    const el = dialogRef.current;
+    if (!el) return;
+    const handle = () => onClose();
+    el.addEventListener("close", handle);
+    return () => el.removeEventListener("close", handle);
+  }, [dialogRef, onClose]);
+
+  // Render last shown image during the close animation so the dialog
+  // doesn't pop empty before unmounting.
+  const shown = image ?? lastImageRef.current;
+
+  return (
+    <dialog
+      ref={dialogRef}
+      aria-label={shown?.label ? `${shown.label} screenshot` : "Screenshot"}
+      className="p-0 bg-transparent backdrop:bg-black/70 backdrop:backdrop-blur-sm max-w-[95vw] max-h-[95vh] rounded-xl"
+    >
+      {shown && (
+        <div className="relative flex flex-col gap-3 p-4 bg-base-100 rounded-xl shadow-2xl">
+          <div className="flex items-center justify-between gap-4">
+            {shown.label && (
+              <span className="px-3 py-1 rounded-md bg-primary/15 text-primary text-sm font-semibold">
+                {shown.label}
+              </span>
+            )}
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close"
+              className="ml-auto p-1.5 rounded-md hover:bg-base-200 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          <img
+            src={shown.src}
+            alt={shown.alt}
+            className="block max-w-[90vw] max-h-[78vh] w-auto h-auto object-contain rounded-md"
+          />
+          <p className="text-xs text-base-content/60 max-w-[90vw]">{shown.alt}</p>
+        </div>
+      )}
+    </dialog>
   );
 };
