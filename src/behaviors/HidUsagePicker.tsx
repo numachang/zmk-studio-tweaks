@@ -25,6 +25,8 @@ import {
   ISO_ROWS,
   JIS_ONLY_HID_IDS,
   JIS_ROWS,
+  KO_ONLY_HID_IDS,
+  KO_ROWS,
   SPACER_ID,
 } from "../layouts/physical";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -253,16 +255,24 @@ const HidUsageGrid = ({
   );
 
   const ansiRows = useMemo(() => buildShapeRows(ANSI_ROWS), [buildShapeRows]);
-  // ISO/JIS tab renders the JIS shape when host = JIS (¥ / `\_` / IME
-  // keys in their real physical positions), otherwise the ISO shape.
-  // JIS is Japan-only and ISO covers the rest of the non-ANSI world,
-  // so host layout uniquely identifies the right shape in the common
-  // case; users with mismatched host/keyboard can still pick the
-  // unique keys directly from the picker even when the wrong shape
-  // is rendered.
+  // ISO/JIS tab shape follows the active host layout's `physical` hint
+  // so the picker mirrors the user's actual keyboard:
+  //   - JIS  -> Japanese 5-row shape with ¥, `\_`, 無変換, 変換, かな
+  //   - KO   -> Korean ANSI-shape with 한자 / 한/영 flanking Space
+  //   - ANSI -> ISO shape (fallback that still lets US-ANSI users bind
+  //             ISO compat keys NUHS / NUBS without leaving the tab)
+  //   - ISO  -> ISO shape
+  const altShape = useMemo(() => {
+    switch (layout.physical) {
+      case "jis": return JIS_ROWS;
+      case "ko":  return KO_ROWS;
+      case "iso": return ISO_ROWS;
+      default:    return ISO_ROWS;
+    }
+  }, [layout.physical]);
   const isoOrJisRows = useMemo(
-    () => buildShapeRows(layout.id === "jis" ? JIS_ROWS : ISO_ROWS),
-    [buildShapeRows, layout.id]
+    () => buildShapeRows(altShape),
+    [buildShapeRows, altShape]
   );
 
   const UNIT_PX = 48;
@@ -428,9 +438,14 @@ const HidUsageGrid = ({
     const page = (masked >> 16) & 0xffff;
     const usageId = masked & 0xffff;
     if (page === 7 && BASIC_TIER_HID_IDS.has(usageId)) {
-      // ISO-only or JIS-only keys (NUHS / NUBS / ¥ / IME) force the
-      // ISO/JIS tab; ANSI-shared keys go wherever the user last was.
-      if (ISO_ONLY_HID_IDS.has(usageId) || JIS_ONLY_HID_IDS.has(usageId)) {
+      // Shape-specific keys (ISO NUHS/NUBS, JIS ¥/IME, Korean 한자/
+      // 한/영) force the ISO/JIS tab; ANSI-shared keys go wherever the
+      // user last was.
+      if (
+        ISO_ONLY_HID_IDS.has(usageId) ||
+        JIS_ONLY_HID_IDS.has(usageId) ||
+        KO_ONLY_HID_IDS.has(usageId)
+      ) {
         setActiveTab(ISO_JIS_TAB_ID);
       } else {
         setActiveTab(preferredBasicTab);

@@ -53,6 +53,14 @@ export type LayoutOverride = Partial<Pick<Keycode, "short" | "med" | "long">>;
 
 export type LayoutOverrideMap = ReadonlyMap<number, LayoutOverride>;
 
+/**
+ * Physical-keyboard family this layout's users are typically on. Drives
+ * what shape the picker's ISO/JIS tab renders. Most layouts split cleanly:
+ * Europe / UK / ANZ uses ISO, Japan uses JIS, Korea uses an ANSI-with-
+ * IME-extras variant, US uses plain ANSI.
+ */
+export type PhysicalFamily = "ansi" | "iso" | "jis" | "ko";
+
 export interface HostLayout {
   /** Stable ID used in localStorage. Don't change after release. */
   id: string;
@@ -60,24 +68,29 @@ export interface HostLayout {
   name: string;
   /** Per-HID overrides; empty for the identity (US ANSI = base SSOT). */
   overrides: LayoutOverrideMap;
+  /** Physical keyboard family (drives picker ISO/JIS tab shape). */
+  physical: PhysicalFamily;
 }
 
 export const US_ANSI_LAYOUT: HostLayout = {
   id: "us-ansi",
   name: "English (US ANSI)",
   overrides: new Map(),
+  physical: "ansi",
 };
 
 export const JIS_LAYOUT: HostLayout = {
   id: "jis",
   name: "日本語 (Japanese)",
   overrides: JIS_OVERRIDES,
+  physical: "jis",
 };
 
 export const KO_LAYOUT: HostLayout = {
   id: "ko",
   name: "한국어 (Korean)",
   overrides: KO_OVERRIDES,
+  physical: "ko",
 };
 
 // Layouts are listed in roughly geographic / script grouping so the
@@ -88,26 +101,28 @@ export const LAYOUTS: ReadonlyArray<HostLayout> = [
   US_ANSI_LAYOUT,
   JIS_LAYOUT,
   KO_LAYOUT,
-  { id: "en-uk",    name: "English (UK)",               overrides: EN_UK_OVERRIDES },
-  { id: "en-ca",    name: "English (Canadian CSA)",     overrides: EN_CA_OVERRIDES },
-  { id: "us-intl",  name: "English (US International)", overrides: US_INTL_OVERRIDES },
-  { id: "de",       name: "Deutsch (German)",           overrides: DE_OVERRIDES },
-  { id: "fr",       name: "Français (French)",          overrides: FR_OVERRIDES },
-  { id: "es",       name: "Español (Spanish)",          overrides: ES_OVERRIDES },
-  { id: "es-latam", name: "Español (Latinoamericano)",  overrides: ES_LATAM_OVERRIDES },
-  { id: "it",       name: "Italiano (Italian)",         overrides: IT_OVERRIDES },
-  { id: "pt",       name: "Português (Portuguese)",     overrides: PT_OVERRIDES },
-  { id: "pt-br",    name: "Português (Brasileiro)",     overrides: PT_BR_OVERRIDES },
-  { id: "sv",       name: "Svenska (Swedish)",          overrides: SV_OVERRIDES },
-  { id: "no",       name: "Norsk (Norwegian)",          overrides: NO_OVERRIDES },
-  { id: "da",       name: "Dansk (Danish)",             overrides: DA_OVERRIDES },
-  { id: "ch",       name: "Schweiz / Suisse (Swiss)",   overrides: CH_OVERRIDES },
-  { id: "pl",       name: "Polski (Polish)",            overrides: PL_OVERRIDES },
-  { id: "hu",       name: "Magyar (Hungarian)",         overrides: HU_OVERRIDES },
-  { id: "sk",       name: "Slovenský (Slovak)",         overrides: SK_OVERRIDES },
-  { id: "hr",       name: "Hrvatski (Croatian)",        overrides: HR_OVERRIDES },
-  { id: "tr",       name: "Türkçe (Turkish)",           overrides: TR_OVERRIDES },
-  { id: "eurkey",   name: "EurKey",                     overrides: EURKEY_OVERRIDES },
+  // Canadian CSA, US International keep the ANSI physical form.
+  { id: "en-ca",    name: "English (Canadian CSA)",     overrides: EN_CA_OVERRIDES,    physical: "ansi" },
+  { id: "us-intl",  name: "English (US International)", overrides: US_INTL_OVERRIDES,  physical: "ansi" },
+  // Everyone else on this list is ISO-physical in the wild.
+  { id: "en-uk",    name: "English (UK)",               overrides: EN_UK_OVERRIDES,    physical: "iso" },
+  { id: "de",       name: "Deutsch (German)",           overrides: DE_OVERRIDES,       physical: "iso" },
+  { id: "fr",       name: "Français (French)",          overrides: FR_OVERRIDES,       physical: "iso" },
+  { id: "es",       name: "Español (Spanish)",          overrides: ES_OVERRIDES,       physical: "iso" },
+  { id: "es-latam", name: "Español (Latinoamericano)",  overrides: ES_LATAM_OVERRIDES, physical: "iso" },
+  { id: "it",       name: "Italiano (Italian)",         overrides: IT_OVERRIDES,       physical: "iso" },
+  { id: "pt",       name: "Português (Portuguese)",     overrides: PT_OVERRIDES,       physical: "iso" },
+  { id: "pt-br",    name: "Português (Brasileiro)",     overrides: PT_BR_OVERRIDES,    physical: "iso" },
+  { id: "sv",       name: "Svenska (Swedish)",          overrides: SV_OVERRIDES,       physical: "iso" },
+  { id: "no",       name: "Norsk (Norwegian)",          overrides: NO_OVERRIDES,       physical: "iso" },
+  { id: "da",       name: "Dansk (Danish)",             overrides: DA_OVERRIDES,       physical: "iso" },
+  { id: "ch",       name: "Schweiz / Suisse (Swiss)",   overrides: CH_OVERRIDES,       physical: "iso" },
+  { id: "pl",       name: "Polski (Polish)",            overrides: PL_OVERRIDES,       physical: "iso" },
+  { id: "hu",       name: "Magyar (Hungarian)",         overrides: HU_OVERRIDES,       physical: "iso" },
+  { id: "sk",       name: "Slovenský (Slovak)",         overrides: SK_OVERRIDES,       physical: "iso" },
+  { id: "hr",       name: "Hrvatski (Croatian)",        overrides: HR_OVERRIDES,       physical: "iso" },
+  { id: "tr",       name: "Türkçe (Turkish)",           overrides: TR_OVERRIDES,       physical: "iso" },
+  { id: "eurkey",   name: "EurKey",                     overrides: EURKEY_OVERRIDES,   physical: "iso" },
 ];
 
 export const DEFAULT_LAYOUT_ID = US_ANSI_LAYOUT.id;
