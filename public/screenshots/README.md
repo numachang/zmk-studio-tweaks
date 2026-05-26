@@ -16,6 +16,10 @@ plain file replace is enough — no rebuild step beyond the usual
 | `io-buttons.png`        | Cropped strip of the header showing the Download / Upload (Export / Import) buttons. Cropped from `import.png`. |
 | `io-export-toast.png`   | Cropped Export toast only ("Exported N layers to ..."). Cropped from `export.png`. |
 | `io-import-toast.png`   | Cropped Import toast only ("Updated N bindings ... Press Save to keep them after restart..."). Cropped from `import.png`. |
+| `layout-jis.png`        | Picker ISO/JIS tab rendered as the JIS 60% shape (¥, `\_`, 無変換, 変換, かな in their real positions) with JIS host labels. |
+| `layout-ko.png`         | Picker ISO/JIS tab rendered as the Korean ANSI shape (한자 / 한/영 flanking Space) with Hangul jamo printed on every letter key. |
+| `layout-fr.png`         | Picker Basic tab with French AZERTY host labels (Q↔A swap, accented number row). |
+| `layout-de.png`         | Picker Basic tab with German QWERTZ host labels (Y↔Z swap, ß, Ü, Ö, Ä). |
 
 The `io-*` files are tight crops of `export.png` / `import.png` and are
 what the hero page actually displays. If you re-shoot the full-app

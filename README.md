@@ -38,7 +38,7 @@ the intent is to send it back upstream as a PR.
 | - | ------- | ------ | ---------------- |
 | 1 | **Keymap import/export** — round-trip a keymap as a JSON file | ✅ Shipped | [PR #171](https://github.com/zmkfirmware/zmk-studio/pull/171), [issue #166](https://github.com/zmkfirmware/zmk-studio/issues/166) |
 | 2 | **Visual key picker** — grid-style HID usage picker with cross-tab search, physical-keyboard layouts, and a chip-grid behavior selector | ✅ Shipped | [PR #159](https://github.com/zmkfirmware/zmk-studio/pull/159) |
-| 3 | **Host-layout localization** — choose how the host OS interprets keys (e.g. JIS / Japanese) | 🛠️ Planned | — |
+| 3 | **Host-layout localization** — show picker and keymap labels for the host OS keyboard layout (22 layouts incl. JIS, Korean, German, French, Spanish, …) and switch the picker's basic-tier shape between ANSI / ISO / JIS | ✅ Shipped | — |
 
 The shipped tweaks live on `main` and are served from the [Try it](#try-it) link above.
 See `CLAUDE.md` for the working stance behind these choices.
@@ -56,6 +56,11 @@ See `CLAUDE.md` for the working stance behind these choices.
 - **Visual layer picker** — pick a target layer from a small layer-list panel instead of by index.
 - **Polished key preview** — long labels are fit to the key, and undo / setLayerBinding rejections
   from the firmware are surfaced via toasts instead of being swallowed.
+- **Host keyboard-layout overlay** — a header dropdown picks the OS layout you actually use; picker
+  and keymap labels follow. 22 layouts ship, including JIS (Japanese) and Korean. The picker's
+  basic-tier tab also offers an ISO/JIS shape that renders ¥ / `\_` / 変換 / 無変換 / かな in
+  their real positions when the host is JIS. HID bindings are untouched — only the display
+  follows the layout.
 
 ## Getting started (development)
 
