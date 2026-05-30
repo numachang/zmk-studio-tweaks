@@ -195,3 +195,73 @@ export const MiniMinivan: Story = {
     hoverZoom: false,
   },
 };
+
+// Regression demo for zmk-studio#97: a pair of thumb keys rotated about a
+// shared origin (rx/ry) plus one rotated about the layout origin (rx = ry = 0).
+// Before the `?? ` fix these pivoted around each key's own corner instead.
+const ROTATED_POSITIONS = [
+  // Two plain rows for reference.
+  ...[..."QWER"].map((c, i) => ({
+    id: `r0-${i}`,
+    x: i,
+    y: 0,
+    width: 1,
+    height: 1,
+    header: "Key Press",
+    children: [<span>{c}</span>],
+  })),
+  ...[..."ASDF"].map((c, i) => ({
+    id: `r1-${i}`,
+    x: i,
+    y: 1,
+    width: 1,
+    height: 1,
+    header: "Key Press",
+    children: [<span>{c}</span>],
+  })),
+  // Thumb cluster rotated about a shared origin near its left edge.
+  {
+    id: "thumb-0",
+    x: 1,
+    y: 2.5,
+    width: 1.5,
+    height: 1,
+    r: 20,
+    rx: 1,
+    ry: 2.5,
+    header: "Key Press",
+    children: [<span>T1</span>],
+  },
+  {
+    id: "thumb-1",
+    x: 2.5,
+    y: 2.5,
+    width: 1.5,
+    height: 1,
+    r: 20,
+    rx: 1,
+    ry: 2.5,
+    header: "Key Press",
+    children: [<span>T2</span>],
+  },
+  // Key rotated about the layout origin (0,0) — the exact #97 case.
+  {
+    id: "origin-rot",
+    x: 5,
+    y: 1,
+    width: 1,
+    height: 1,
+    r: -15,
+    rx: 0,
+    ry: 0,
+    header: "Key Press",
+    children: [<span>O</span>],
+  },
+];
+
+export const RotatedKeys: Story = {
+  args: {
+    positions: ROTATED_POSITIONS,
+    hoverZoom: true,
+  },
+};
