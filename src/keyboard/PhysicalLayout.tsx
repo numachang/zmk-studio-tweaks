@@ -56,8 +56,11 @@ function scalePosition(
   const transformStyle = "preserve-3d";
 
   if (r) {
-    let transformX = ((rx || x) - x) * oneU;
-    let transformY = ((ry || y) - y) * oneU;
+    // Use `??` so an explicit rotation origin of 0 is honored; `rx || x`
+    // collapsed a legitimate 0 back to the key's own position, pivoting the
+    // key around its own corner instead of the layout origin (#97).
+    let transformX = ((rx ?? x) - x) * oneU;
+    let transformY = ((ry ?? y) - y) * oneU;
     transformOrigin = `${transformX}px ${transformY}px`;
     transform = `rotate(${r}deg)`;
   }
