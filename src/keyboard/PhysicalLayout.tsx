@@ -45,7 +45,7 @@ interface PhysicalLayoutPositionLocation {
   ry?: number;
 }
 
-function scalePosition(
+export function scalePosition(
   { x, y, r, rx, ry }: PhysicalLayoutPositionLocation,
   oneU: number,
 ): CSSProperties {
@@ -56,8 +56,13 @@ function scalePosition(
   const transformStyle = "preserve-3d";
 
   if (r) {
-    let transformX = ((rx || x) - x) * oneU;
-    let transformY = ((ry || y) - y) * oneU;
+    // Rotate around the layout point (rx, ry), expressed in this key's local
+    // pixel space. Use `??` (not `||`) so an explicit origin of 0 stays 0 —
+    // `rx || x` collapsed a legitimate 0 back to the key's own x, pivoting the
+    // key around its own corner instead of the layout origin (zmk-studio#97).
+    // This matches the bounding-box math below, which already uses `??`.
+    const transformX = ((rx ?? x) - x) * oneU;
+    const transformY = ((ry ?? y) - y) * oneU;
     transformOrigin = `${transformX}px ${transformY}px`;
     transform = `rotate(${r}deg)`;
   }
